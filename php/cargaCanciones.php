@@ -1,22 +1,24 @@
 <?php
-//Módulo para cargar las tapas de los albumes.
+//Módulo para cargar el array de canciones
 
-//Traemos la cadena de conexión.
+
+$id = $_POST["id"];
+
+
+//Incluímos la conexión.
 include("conexion.php");
 
 
 if ($cnx) {
-    $consulta = "SELECT * FROM artistas";
+    $consulta = "SELECT * FROM canciones WHERE can_idalbum = '$id'";
     $resultado = mysqli_query($cnx, $consulta);
     $datos = mysqli_fetch_all($resultado, MYSQLI_ASSOC);
 }else{
-    die("Falló la conexión con la base de datos");
+    die("fallo")
 }
 
 mysqli_close($cnx);
 
-
 echo json_encode($datos);
-
 
 ?>

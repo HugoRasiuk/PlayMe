@@ -52,7 +52,7 @@ function cargaAlbumSeleccionado(_id) {
                    "ON albumes.alb_idartista = artistas.art_id " +
                    "WHERE alb_id = " + String(_id);
     $.ajax({
-        url: "../php/cargaDatosAlbum.php",
+        url: "../php/cargaDatos.php",
         type: "POST",
         async: false,
         data: {cadena:consulta},
@@ -64,7 +64,7 @@ function cargaAlbumSeleccionado(_id) {
                 if (clave == "alb_foto") {
                     ALBUM.foto = valor;
                 }
-                if (clave == "alb_aniolanzmiento") {
+                if (clave == "alb_aniolanzamiento") {
                     ALBUM.anio_lanzamiento = valor;
                 }
                 if (clave == "art_nombre") {
@@ -76,7 +76,24 @@ function cargaAlbumSeleccionado(_id) {
             });
         }
     })
-    //Mostrar los datos del album y cargar la lista de las canciones.
+    //Mostramos los datos del album.
+    $(".info__imagen").attr("src", ALBUM.foto);
+    $(".info__imagen").attr("alt", "Imagén de" + ALBUM.artista + ", " + ALBUM.nombre);
+    $(".info__artista").text(ALBUM.artista);
+    $(".info__album").text(ALBUM.nombre);
+    $(".info__anio").text(ALBUM.anio_lanzamiento);
+    //Cargamos la lista de canciones.
+    $.ajax({
+        url: "../php/cargaCanciones.php",
+        type: "POST",
+        async: false,
+        data: {id:ALBUM.id},
+        success: function(respuesta) {
+            json.parse(respuesta, function(clave, valor) {
+
+            })
+        }
+    })
 }
 
 

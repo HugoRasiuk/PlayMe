@@ -1,0 +1,628 @@
+/*Variables*/
+:root {
+    --color-fondo: rgba(70, 0, 100, 1);
+    --color-formulario: rgb(0, 0, 0);
+    --color-borde: rgb(255, 0, 0);
+}
+
+
+body {
+    margin: 0rem;
+    background: var(--color-fondo);
+    background-image: url("../imagenes/FondoRock.png");
+    background-size: contain;
+}
+
+.soporte {
+    min-height: 100vh;
+    background: rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    transition: background 0.5s;
+}
+.soporte_transparente {
+    background: rgba(0, 0, 0, 0);
+}
+
+
+
+
+
+
+
+/*ventana*/
+.ventana {
+    height: 28rem;
+    width: 25.1rem;
+    overflow: hidden;
+}
+
+
+
+
+
+
+
+/*banda*/
+.banda {
+    width: auto;
+    height: 28rem;
+    margin-left: 0rem;
+    transition: margin-left 0.5s;
+}
+
+
+
+
+
+
+
+/*formularioIngreso*/
+.ingreso {
+    width: 25rem;
+    height: 25rem;
+    margin-top: 0rem;
+    margin-left: 0rem;
+    background: black;
+    border-radius: 3rem;
+    border: red solid 1px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.grafico {
+    width: 10rem;
+    height: 10rem;
+    background: black;
+    border: red solid 0.2rem;
+    border-radius: 50%;
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0rem;
+}
+
+.logo {
+    background: red;
+    width: 20rem;
+    height: 5rem;
+    border-radius: 2.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.botones {
+    width: 20rem;
+    height: 3rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.botones button {
+    background: rgba(130, 130, 150, 1);
+    color: white;
+    border: none;
+    height: 3rem;
+    width: 8rem;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    transition: background 1s;
+}
+
+.botones button:hover {
+    background: red;
+}
+
+
+
+
+
+
+
+/*formularioUsuario*/
+.formularioUsuario {
+    padding: 0rem;
+    background: var(--color-formulario);
+    border: var(--color-borde) solid 1px;
+    width: 25rem;
+    height: 25rem;
+    border-radius: 3rem;
+    visibility: hidden;
+    display: flex;
+    margin-top: -25rem;
+    margin-left: 25rem;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+h2 {
+    margin: 0rem;
+    margin-top: 2rem;
+    padding: 0rem;
+    width: 20rem;
+    text-align: center;
+    font-size: 2rem;
+    color: red;
+    font-style: italic;
+}
+
+.campos {
+    margin: 0rem;
+    margin-top: 3rem;
+    padding: 0rem;
+    width: 20rem;
+    height: 3rem;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.formularioUsuario input {
+    background: rgb(220, 220, 220);
+    color: black;
+    border: none;
+    width: 20rem;
+    height: 1.3rem;
+}
+
+.formularioUsuario label {
+    color: white;
+    font-size: 1rem;
+}
+
+.mensajeUsuario {
+    margin: 0rem;
+    margin-top: 2rem;
+    padding: 0rem;
+    width: 20rem;
+    height: 2rem;
+    font-size: 0.7rem;
+    color: rgb(200, 200, 200);
+    text-align: center;
+}
+
+.formularioUsuario .botones_formulario {
+    margin: 0rem;
+    margin-top: 5rem;
+    padding: 0rem;
+    width: 22rem;
+    height: 3rem;
+   display: flex;
+   justify-content: space-between;
+}
+
+.botones_formulario button {
+    width: 3rem;
+    height: 3rem;
+    border: none;
+    border-radius: 1.5rem;
+    background: rgba(130, 130, 150, 1);
+    color: white;
+    transition: background 1s;
+}
+
+.botones_formulario button:hover {
+    background: red;
+}
+
+
+
+
+
+
+
+/*formularioContraseña*/
+.formularioContrasenia {
+    padding: 0rem;
+    background: var(--color-formulario);
+    border: var(--color-borde) solid 1px;
+    width: 25rem;
+    height: 25rem;
+    border-radius: 3rem;
+    visibility: hidden;
+    display: flex;
+    margin-top: -25rem;
+    margin-left: 50rem;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.camposContrasenia {
+    margin: 0rem;
+    margin-top: 3rem;
+    padding: 0rem;
+    width: 20rem;
+    height: 3rem;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.formularioContrasenia input {
+    background: rgb(220, 220, 220);
+    color: black;
+    border: none;
+    width: 20rem;
+    height: 1.3rem;
+}
+
+.formularioContrasenia label {
+    color: white;
+    font-size: 1rem;
+}
+
+.mensajeContrasenia {
+    margin: 0rem;
+    margin-top: 2rem;
+    padding: 0rem;
+    width: 20rem;
+    height: 2rem;
+    font-size: 0.7rem;
+    color: rgb(200, 200, 200);
+    text-align: center;
+}
+
+.formularioContrasenia .botones_contrasenia {
+    margin: 0rem;
+    margin-top: 5rem;
+    padding: 0rem;
+    width: 22rem;
+    height: 3rem;
+   display: flex;
+   justify-content: space-between;
+}
+
+.botones_contrasenia button:nth-child(1),
+.botones_contrasenia button:nth-child(3)
+{
+    width: 3rem;
+    height: 3rem;
+    border: none;
+    border-radius: 1.5rem;
+    background: rgba(130, 130, 150, 1);
+    color: white;
+    transition: background 1s;
+}
+
+.botones_contrasenia button:nth-child(2) {
+    font-size: 0.7rem;
+    width: 9rem;
+    height: 2rem;
+    border: none;
+    border-radius: 1rem;
+    background: rgba(130, 130, 150, 1);
+    color: white;
+    transition: background 1s;
+}
+
+.botones_contrasenia button:hover {
+    background: red;
+}
+
+
+
+
+
+
+
+/*formularioRecuperar*/
+.formularioRecuperar {
+    padding: 0rem;
+    background: var(--color-formulario);
+    border: var(--color-borde) solid 1px;
+    width: 25rem;
+    height: 25rem;
+    border-radius: 3rem;
+    visibility: hidden;
+    display: flex;
+    margin-top: -25rem;
+    margin-left: 75rem;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+h3 {
+    margin: 0rem;
+    margin-top: 1rem;
+    padding: 0rem;
+    width: 20rem;
+    text-align: center;
+    font-size: 1rem;
+    color: red;
+    font-style: italic;
+}
+
+.opciones {
+    margin-top: 1rem;
+    height: 13rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.opciones input {
+    background: rgb(50, 50, 60);
+    color: white;
+    font-size: 0.7rem;
+    width: 22rem;
+    height: 1rem;
+    border: none;
+}
+
+.botonesRecuperacion {
+    margin: 0rem;
+    margin-top: 3rem;
+    padding: 0rem;
+    width: 22rem;
+    height: 3rem;
+   display: flex;
+   justify-content: space-between;
+}
+
+.botonesRecuperacion button {
+    width: 3rem;
+    height: 3rem;
+    border: none;
+    border-radius: 1.5rem;
+    background: rgba(130, 130, 150, 1);
+    color: white;
+    transition: background 1s;
+}
+
+.botonesRecuperacion button:hover {
+    background: red;
+}
+
+.botonesRecuperacion p {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    text-align: center;
+    font-size: 0.7rem;
+    color: rgb(200, 200, 200);
+}
+
+
+
+
+
+
+
+/*formularioUsuarioRegistro*/
+.formularioUsuarioRegistro {
+    padding: 0rem;
+    background: var(--color-formulario);
+    border: var(--color-borde) solid 1px;
+    width: 25rem;
+    height: 25rem;
+    border-radius: 3rem;
+    visibility: hidden;
+    display: flex;
+    margin-top: -24.8rem;
+    margin-left: 25rem;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.camposUsuarioRegistro {
+    margin: 0rem;
+    margin-top: 3rem;
+    padding: 0rem;
+    width: 20rem;
+    height: 3rem;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.formularioUsuarioRegistro input {
+    background: rgb(220, 220, 220);
+    color: black;
+    border: none;
+    width: 20rem;
+    height: 1.3rem;
+}
+
+.formularioUsuarioRegistro label {
+    color: white;
+    font-size: 1rem;
+}
+
+.mensajeUsuarioRegistro {
+    margin: 0rem;
+    margin-top: 2rem;
+    padding: 0rem;
+    width: 20rem;
+    height: 2rem;
+    font-size: 0.7rem;
+    color: rgb(200, 200, 200);
+    text-align: center;
+}
+
+.formularioUsuarioRegistro .botones_formularioRegistro {
+    margin: 0rem;
+    margin-top: 5rem;
+    padding: 0rem;
+    width: 22rem;
+    height: 3rem;
+   display: flex;
+   justify-content: space-between;
+}
+
+.botones_formularioRegistro button {
+    width: 3rem;
+    height: 3rem;
+    border: none;
+    border-radius: 1.5rem;
+    background: rgba(130, 130, 150, 1);
+    color: white;
+    transition: background 1s;
+}
+
+.botones_formularioRegistro button:hover {
+    background: red;
+}
+
+
+
+
+
+
+
+/*formularioContraseniaRegistro*/
+.formularioContraseniaRegistro {
+    padding: 0rem;
+    background: var(--color-formulario);
+    border: var(--color-borde) solid 1px;
+    width: 25rem;
+    height: 25rem;
+    border-radius: 3rem;
+    visibility: hidden;
+    display: flex;
+    margin-top: -25rem;
+    margin-left: 50rem;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.camposContraseniaRegistro {
+    margin: 0rem;
+    margin-top: 3rem;
+    padding: 0rem;
+    width: 20rem;
+    height: 3rem;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.formularioContraseniaRegistro input {
+    background: rgb(220, 220, 220);
+    color: black;
+    border: none;
+    width: 20rem;
+    height: 1.3rem;
+}
+
+.formularioContraseniaRegistro label {
+    color: white;
+    font-size: 1rem;
+}
+
+.formularioContraseniaRegistro :nth-child(3) {
+    margin-top: 1rem;
+}    
+
+.mensajeContraseniaRegistro {
+    margin: 0rem;
+    margin-top: 4rem;
+    padding: 0rem;
+    width: 20rem;
+    height: 2rem;
+    font-size: 0.7rem;
+    color: rgb(200, 200, 200);
+    text-align: center;
+}
+
+.botones_contraseniaRegistro {
+    margin: 0rem;
+    margin-top: 2rem;
+    padding: 0rem;
+    width: 22rem;
+    height: 3rem;
+   display: flex;
+   justify-content: space-between;
+}
+
+.botones_contraseniaRegistro button {
+    width: 3rem;
+    height: 3rem;
+    border: none;
+    border-radius: 1.5rem;
+    background: rgba(130, 130, 150, 1);
+    color: white;
+    transition: background 1s;
+}
+
+.botones_contraseniaRegistro button:hover {
+    background: red;
+}
+
+
+
+
+
+
+
+/*formularioRecuperarRegistro*/
+.formularioRecuperarRegistro {
+    padding: 0rem;
+    background: var(--color-formulario);
+    border: var(--color-borde) solid 1px;
+    width: 25rem;
+    height: 25rem;
+    border-radius: 3rem;
+    visibility: hidden;
+    display: flex;
+    margin-top: -25rem;
+    margin-left: 75rem;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.opcionesRegistro {
+    margin-top: 1rem;
+    height: 13rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.opcionesRegistro input {
+    background: rgb(50, 50, 60);
+    color: white;
+    font-size: 0.7rem;
+    width: 22rem;
+    height: 1rem;
+    border: none;
+}
+
+.botonesRecuperacionRegistro {
+    margin: 0rem;
+    margin-top: 3rem;
+    padding: 0rem;
+    width: 22rem;
+    height: 3rem;
+   display: flex;
+   justify-content: space-between;
+}
+
+.botonesRecuperacionRegistro button {
+    width: 3rem;
+    height: 3rem;
+    border: none;
+    border-radius: 1.5rem;
+    background: rgba(130, 130, 150, 1);
+    color: white;
+    transition: background 1s;
+}
+
+.botonesRecuperacionRegistro button:hover {
+    background: red;
+}
+
+.botonesRecuperacionRegistro p {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    text-align: center;
+    font-size: 0.7rem;
+    color: rgb(200, 200, 200);
+}

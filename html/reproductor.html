@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PlayMe</title>
+    <link rel="stylesheet" href="../css/normalize.css">
+    <link rel="stylesheet" href="../css/reproductor.css">
+</head>
+
+
+
+<body>
+    <main class="contenedor">
+        <header class="logo">
+            <img src="../imagenes/PlayMe.png" alt="Logo de PlayMe" class="logo__imagen">
+        </header>
+
+        <header class="datos">
+            <div class="datos__opaca">
+                <section class="datos__usuario">
+                    <p id="datos__nombre_usuario" class="datos__nombre_usuario"></p>
+                </section>
+
+                <section class="datos__foto">
+                </section>
+            </div>
+        </header>
+
+        <section class="filtro">
+            <button id="btnAnterior" class="filtro__btnAnterior filtro__boton_dif">
+                <img src="../imagenes/Anterior.png" alt="Botón de imagenes anteriores">
+            </button>
+
+            <section class="filtro__contenedor">
+                <div class="filtro__canciones filtro__boton">
+                    <img src="../imagenes/Filtros/Canciones.png" alt="Botón de filtrado por canción">
+                </div>
+
+                <div class="filtro__artista filtro__boton">
+                    <img src="../imagenes/Filtros/Artista.png" alt="Botón de filtrado por artista">
+                </div>
+
+                <div class="filtro__album filtro__boton">
+                    <img src="../imagenes/Filtros/Album.png" alt="Botón de filtrado por album">
+                </div>
+
+                <div class="filtro__favoritos filtro__boton">
+                    <img src="../imagenes/Filtros/Favoritos.png" alt="Botón de favoritos">
+                </div>
+
+                <div class="filtro__sugeridos filtro__boton">
+                    <img src="../imagenes/Filtros/Recomendados.png" alt="Botón de sugeridos">
+                </div>
+
+                <div id="btnFiltros" class="filtro__filtro filtro__boton">
+                    <img src="../imagenes/Filtros/Filtrar.png" alt="Botón de filtrado">
+                </div>
+            </section>
+
+            <button id="btnSiguiente" class="filtro__btnSiguiente filtro__boton_dif">
+                <img src="../imagenes/Siguiente.png" alt="Botón de imagenes siguientes">
+            </button>
+        </section>
+
+        <section class="listas">
+            <h3 class="listas__titulo">Canciones</h3>
+
+            <section class="listas__canciones">
+                <p>Hey, mother fuckeer, love me now or if you wanto to kell your mother fucker</p>
+                <p>Hey, mother fuckeer, love me now</p>
+                <p>Hey, mother fuckeer, love me now</p>
+                <p>Hey, mother fuckeer, love me now</p>
+                <p>Hey, mother fuckeer, love me now</p>
+                <p>Hey, mother fuckeer, love me now</p>
+                <p>Hey, mother fuckeer, love me now</p>
+                <p>Hey, mother fuckeer, love me now</p>
+                <p>Hey, mother fuckeer, love me now</p>
+                <p>Hey, mother fuckeer, love me now</p>
+                <p>Hey, mother fuckeer, love me now</p>
+                <p>Hey, mother fuckeer, love me now</p>
+                <p>Hey, mother fuckeer, love me now</p>
+                <p>Hey, mother fuckeer, love me now</p>
+                <p>Hey, mother fuckeer, love me now</p>
+                <p>Hey, mother fuckeer, love me now</p>
+                <p>Hey, mother fuckeer, love me now</p>
+                <p>Hey, mother fuckeer, love me now</p>
+                <p>Hey, mother fuckeer, love me now</p>
+                <p>Hey, mother fuckeer, love me now</p>
+            </section>
+        </section>
+
+        <section class="imagenes">
+            <div>
+                <img class="tapa0 tapa">
+            </div>
+
+            <div>
+                <img class="tapa1 tapa">
+            </div>
+
+            <div>
+                <img class="tapa2 tapa">
+            </div>
+
+            <div>
+                <img class="tapa3 tapa">
+            </div>
+
+            <div>
+                <img class="tapa4 tapa">
+            </div>
+
+            <div>
+                <img class="tapa5 tapa">
+            </div>
+            <div>
+                <img class="tapa6 tapa">
+            </div>
+            <div>
+                <img class="tapa7 tapa">
+            </div>
+            <div>
+                <img class="tapa8 tapa">
+            </div>
+            <div>
+                <img class="tapa9 tapa">
+            </div>
+            <div>
+                <img class="tapa10 tapa">
+            </div>
+            <div>
+                <img class="tapa11 tapa">
+            </div>
+        </section>
+
+        <footer class="reproductor">
+            <div class="reproductor_todos_losBotones">
+                <section class="reproductor__botones_reproductor">
+                    <button class="reproductor__botones reproductor__btnPlay">
+                        <img src="../imagenes/Botones/Play.png" alt="Botón de play">
+                    </button>
+                    
+                    <button class="reproductor__botones">
+                        <img src="../imagenes/Botones/Parar.png" alt="Botón de detener">
+                    </button>
+    
+                    <button class="reproductor__botones reproductor__btnAdelantar">
+                        <img src="../imagenes/Botones/Adelantar.png" alt="Botón de adelantar">
+                    </button>
+    
+                    <button class="reproductor__botones">
+                        <img src="../imagenes/Botones/Retroceder.png" alt="Botón de retroceder">
+                    </button>
+    
+                    <button class="reproductor__botones reproductor__btnAnterior">
+                        <img src="../imagenes/Botones/Cancion _anterior.png" alt="Botón de canción anterior">
+                    </button>
+    
+                    <button class="reproductor__botones">
+                        <img src="../imagenes/Botones/Cancion_siguiente.png" alt="Botón de canción siguiente">
+                    </button>
+                </section>
+    
+                <section class="reproductor__botones_adicionales">
+                    <section class="reproductor__volumen">
+                        <div class="volumen__barra">
+                        </div>
+
+                        <div class="boton__volumen">                            
+                        </div>
+                    </section>
+
+                    <div class="reproductor__btnAdicional">
+                        <img src="../imagenes/Botones/Mute.png" alt="Botón de mute">
+                    </div>
+
+                    <div class="reproductor__btnAdicional">
+                        <img src="../imagenes/Botones/Loop.png" alt="Botón de loop">
+                    </div>
+                </section>
+            </div>
+
+            <div class="barra_desplazamiento">
+            </div>
+        </footer>
+
+        <footer class="info">
+            <img src="../imagenes/Tapas/TheBeatles_1962_1966.jpg" alt="" class="info__imagen">
+
+            <section class="info__data">      
+                <p>
+                    Artista: The Beatles<br>
+                    Album: The besto of <br>
+                    Año: 1970
+                </p>
+            </section>
+        </footer>
+    </main>
+
+    <script src="../js/jquery.js"></script>
+    <script src="../js/ClaseUsuario.js"></script>
+    <script src="../js/ClaseAlbum.js"></script>
+    <script src="../js/reproductor.js"></script>
+</body>
+
+
+
+</html>

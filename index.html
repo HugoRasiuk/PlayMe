@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PlayMe</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/index.css">
+</head>
+
+
+<body>
+    <main class="soporte">
+
+    <main class="ventana">
+        <section class="banda">
+            <section class="ingreso">
+                <section class="grafico">
+                    <img src="imagenes/Play.png" alt="">
+                </section>
+    
+                <div class="logo">
+                    <img src="imagenes/PlayMe.png" alt="">
+                </div>
+        
+                <div class="botones">
+                    <button id="btnIngresar">Ingresar</button>
+                    <button id="btnRegistrarse">Registrarse</button>
+                </div>
+            </section>
+    
+            <section class="formularioUsuario">
+                <h2>Ingreso</h2>
+    
+                <section class="campos">
+                    <label for="">Usuario</label>
+                    <input type="text" id="txtUsuario" name="txtUsuario">
+                </section>
+
+                <section>
+                    <p class="mensajeUsuario">Ingrese su nombre de usuario</p>
+                </section>
+    
+                <section class="botones_formulario">
+                    <button id="btnUsuarioAnterior">
+                        <img src="imagenes/FlechaIzq.png" alt="">
+                    </button>
+                    <button id="btnUsuarioSiguiente">
+                        <img src="imagenes/FlechaDer.png" alt="">
+                    </button>
+                </section>
+            </section>
+
+            <section class="formularioContrasenia">
+                <h2>Ingreso</h2>
+    
+                <section class="camposContrasenia">
+                    <label for="">Contraseña</label>
+                    <input type="password" id="txtContrasenia" name="txtContrasenia">
+                </section>
+
+                <section>
+                    <p class="mensajeContrasenia">Ingrese su contraseña</p>
+                </section>
+    
+                <section class="botones_contrasenia">
+                    <button id="btnContraseniaAnterior">
+                        <img src="imagenes/FlechaIzq.png" alt="">
+                    </button>
+                    <button id="btnOlviveContrasenia">Olvidé mi contraseña</button>
+                    <button id="btnContraseniaSiguiente">
+                        <img src="imagenes/FlechaDer.png" alt="">
+                    </button>
+                </section>
+            </section>
+            
+            <section class="formularioRecuperar">
+                <h3>Preguntas de recuperación de contraseña</h3>
+    
+                <section class="opciones">
+                    <input type="text" id="1" class="txtOpcionesRecuperar" placeholder="Comida favorita">
+                    <input type="text" id="2" class="txtOpcionesRecuperar" placeholder="Nombre de la mascota">
+                    <input type="text" id="3" class="txtOpcionesRecuperar" placeholder="Grupo o cantante favorito">
+                    <input type="text" id="4" class="txtOpcionesRecuperar" placeholder="Película favorita">
+                    <input type="text" id="5" class="txtOpcionesRecuperar" placeholder="Libro favorito">
+                    <input type="text" id="6" class="txtOpcionesRecuperar" placeholder="Lugar donde nació">
+                    <input type="text" id="7" class="txtOpcionesRecuperar" placeholder="Escuela donde estudió">
+                </section>
+    
+                <section class="botonesRecuperacion">
+                    <button id="btnRecuperarAnterior">
+                        <img src="imagenes/FlechaIzq.png" alt="">
+                    </button>
+                    <p class="iniciorecuperacion">Seleccione y complete solo una respuesta con la que desea recuperar su contraseña</p>
+                    <button id="btnRecuperarSiguiente">
+                        <img src="imagenes/FlechaDer.png" alt="">
+                    </button>
+                </section>
+            </section>
+
+
+            
+            <!-- Formularios de registro -->
+            <section class="formularioUsuarioRegistro">
+                <h2>Registro</h2>
+    
+                <section class="camposUsuarioRegistro">
+                    <label for="">Usuario</label>
+                    <input type="text" id="txtUsuarioRegistro" name="txtUsuarioRegistro">
+                </section>
+
+                <section>
+                    <p class="mensajeUsuarioRegistro">Ingrese un nombre de usuario</p>
+                </section>
+    
+                <section class="botones_formularioRegistro">
+                    <button id="btnUsuarioRegistroAnterior">
+                        <img src="imagenes/FlechaIzq.png" alt="">
+                    </button>
+                    <button id="btnUsuarioRegistroSiguiente">
+                        <img src="imagenes/FlechaDer.png" alt="">
+                    </button>
+                </section>
+            </section>
+
+            <section class="formularioContraseniaRegistro">
+                <h2 class="tituloContrasenia">Registro</h2>
+    
+                <section class="camposContraseniaRegistro">
+                    <label for="">Contraseña</label>
+                    <input type="password" id="txtContraseniaRegistro" name="txtContraseniaRegistro">
+                    <label for="">Ingrese nuevamente la contraseña</label>
+                    <input type="password" id="txtContraseniaRegistroRepeticion" name="txtContraseniaRegistroRepeticion">
+                </section>
+
+                <section>
+                    <p class="mensajeContraseniaRegistro">Ingrese una contraseña de al menos 8 caracteres que contenga mayúsculas, minúsculas y un número</p>
+                </section>
+    
+                <section class="botones_contraseniaRegistro">
+                    <button id="btnContraseniaRegistroAnterior">
+                        <img src="imagenes/FlechaIzq.png" alt="">
+                    </button>
+                    <button id="btnContraseniaRegistroSiguiente">
+                        <img src="imagenes/FlechaDer.png" alt="">
+                    </button>
+                </section>
+            </section>
+            
+            <section class="formularioRecuperarRegistro">
+                <h3>Preguntas  de recuperación de contraseña</h3>
+    
+                <section class="opcionesRegistro">
+                    <input type="text" id="r1" class="txtOpcionesRecuperarRegistro" placeholder="Comida favorita">
+                    <input type="text" id="r2" class="txtOpcionesRecuperarRegistro" placeholder="Nombre de la mascota">
+                    <input type="text" id="r3" class="txtOpcionesRecuperarRegistro" placeholder="Grupo o cantante favorito">
+                    <input type="text" id="r4" class="txtOpcionesRecuperarRegistro" placeholder="Película favorita">
+                    <input type="text" id="r5" class="txtOpcionesRecuperarRegistro" placeholder="Libro favorito">
+                    <input type="text" id="r6" class="txtOpcionesRecuperarRegistro" placeholder="Lugar donde nació">
+                    <input type="text" id="r7" class="txtOpcionesRecuperarRegistro" placeholder="Escuela donde estudió">
+                </section>
+    
+                <section class="botonesRecuperacionRegistro">
+                    <button id="btnRecuperarRegistroAnterior">
+                        <img src="imagenes/FlechaIzq.png" alt="">
+                    </button>
+                    <p class="mensajeRecuperacionRegistro">Seleccione y complete  al menos 3 de las opciones para la recuperación de su contraseña en caso de olvidarla</p>
+                    <button id="btnRecuperarRegistroSiguiente">
+                        <img src="imagenes/FlechaDer.png" alt="">
+                    </button>
+                </section>
+            </section>
+        </section>
+
+    </main>
+    </main>
+
+    <script src="js/jquery.js"></script>
+    <script src="js/animar.js"></script>
+    <script src="js/valida.js"></script>
+    <script src="js/index.js"></script>
+</body>
+
+
+
+</html>

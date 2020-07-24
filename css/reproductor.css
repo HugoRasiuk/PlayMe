@@ -153,6 +153,17 @@ body {
     height: 90%;
     overflow-y: scroll;
 }
+.listas__canciones_tabla {
+    font-size: 1.2rem;
+}
+.listas__canciones_tabla td {
+    padding: 0.3rem;
+    padding-left: 1rem;
+}
+.estrella_lista {
+    width: 1.2rem;
+    object-fit: contain;
+}
 
 
 
@@ -218,7 +229,7 @@ body {
 .reproductor__btnAnterior {
     margin-right: -5%;
 }
-.reproductor__btnAdelantar {
+.reproductor__btnRetroceder {
     margin-right: -5%;
 }
 .reproductor img {
@@ -320,7 +331,7 @@ body {
 
 
 
-/*Cambios al llegar a los*/
+/*Cambios al llegar a los 1500 px*/
 @media screen and (max-width: 1500px) {
 
     .listas__canciones {

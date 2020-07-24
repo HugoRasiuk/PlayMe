@@ -7,7 +7,9 @@ class Album {
         this._anio_lanzamiento = "";
         this._artista = "";
         this._foto_artista = "";
-        this._canciones = [];
+        this._canciones = [[], [], []];
+        this._indice = 0;
+        this._media = null;
     }
     //Get y Set.
     get id() {
@@ -57,5 +59,29 @@ class Album {
     }
     set canciones(valor) {
         this._canciones = valor;
+        this._indice = 0;
+    }
+    set media(valor) {
+        this._media = valor;
+    }
+
+
+
+    //Métodos.
+    //Método para la reproducción de las canciones del album.
+    reproducir() {
+        if (this._canciones[0].length != 0) {
+            this._media.src = this._canciones[2][this._indice];
+            this._media.play()
+        }
+    }
+
+    siguienteCancion() {
+        if (!this._media.paused) {
+            if (this._indice < this._canciones[0].length - 1) {
+                this._indice++;
+                this.reproducir();
+            }
+        }
     }
 }

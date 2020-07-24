@@ -67,26 +67,8 @@
             <h3 class="listas__titulo">Canciones</h3>
 
             <section class="listas__canciones">
-                <p>Hey, mother fuckeer, love me now or if you wanto to kell your mother fucker</p>
-                <p>Hey, mother fuckeer, love me now</p>
-                <p>Hey, mother fuckeer, love me now</p>
-                <p>Hey, mother fuckeer, love me now</p>
-                <p>Hey, mother fuckeer, love me now</p>
-                <p>Hey, mother fuckeer, love me now</p>
-                <p>Hey, mother fuckeer, love me now</p>
-                <p>Hey, mother fuckeer, love me now</p>
-                <p>Hey, mother fuckeer, love me now</p>
-                <p>Hey, mother fuckeer, love me now</p>
-                <p>Hey, mother fuckeer, love me now</p>
-                <p>Hey, mother fuckeer, love me now</p>
-                <p>Hey, mother fuckeer, love me now</p>
-                <p>Hey, mother fuckeer, love me now</p>
-                <p>Hey, mother fuckeer, love me now</p>
-                <p>Hey, mother fuckeer, love me now</p>
-                <p>Hey, mother fuckeer, love me now</p>
-                <p>Hey, mother fuckeer, love me now</p>
-                <p>Hey, mother fuckeer, love me now</p>
-                <p>Hey, mother fuckeer, love me now</p>
+                <table id="tabla_canciones" class="listas__canciones_tabla">                    
+                </table>
             </section>
         </section>
 
@@ -135,29 +117,31 @@
         </section>
 
         <footer class="reproductor">
+            <audio id="media"></audio>
+
             <div class="reproductor_todos_losBotones">
                 <section class="reproductor__botones_reproductor">
-                    <button class="reproductor__botones reproductor__btnPlay">
+                    <button class="reproductor__botones reproductor__btnPlay" id="btnPlay">
                         <img src="../imagenes/Botones/Play.png" alt="Botón de play">
                     </button>
                     
-                    <button class="reproductor__botones">
+                    <button class="reproductor__botones" id="btnParar">
                         <img src="../imagenes/Botones/Parar.png" alt="Botón de detener">
                     </button>
     
-                    <button class="reproductor__botones reproductor__btnAdelantar">
+                    <button class="reproductor__botones reproductor__btnRetroceder" id="btnRetroceder">
+                        <img src="../imagenes/Botones/Retroceder.png" alt="Botón de retroceder">
+                    </button>
+
+                    <button class="reproductor__botones reproductor__btnAdelantar" id="btnAdelantar">
                         <img src="../imagenes/Botones/Adelantar.png" alt="Botón de adelantar">
                     </button>
     
-                    <button class="reproductor__botones">
-                        <img src="../imagenes/Botones/Retroceder.png" alt="Botón de retroceder">
-                    </button>
-    
-                    <button class="reproductor__botones reproductor__btnAnterior">
+                    <button class="reproductor__botones reproductor__btnAnterior" id="btnAnteriorReproductor">
                         <img src="../imagenes/Botones/Cancion _anterior.png" alt="Botón de canción anterior">
                     </button>
     
-                    <button class="reproductor__botones">
+                    <button class="reproductor__botones" id="btnSiguienteReproductor">
                         <img src="../imagenes/Botones/Cancion_siguiente.png" alt="Botón de canción siguiente">
                     </button>
                 </section>

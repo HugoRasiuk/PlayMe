@@ -17,12 +17,16 @@ var id_album = [];
 var nombre_album = [];
 var foto_album = [];
 var artista_album = [];
-
+//Constante para el media.
+var media;
 
 
 
 //Inicializamos la aplicación.
 $(document).ready(function() {
+    //Relacionamos la etiqueta audio con la constante.
+    media = document.getElementById("media");
+    ALBUM.media = media;
     //obtenemos los datos de la cookie y los mostramos.
     extraerDatosCookie();
     mostrarDatosUsuario();
@@ -39,8 +43,46 @@ $(document).ready(function() {
     //Asociamos los eventos.
     $(".tapa").click(function() {
         cargaAlbumSeleccionado($(this).attr("id"));
+        muestraListaCanciones();
+    });
+    $("#btnPlay").click(function() {
+        ALBUM.reproducir();
+    });
+    $("#btnSiguienteReproductor").click(function() {
+        ALBUM.siguienteCancion();
     });
 })
+
+
+
+//Mostramos las canciones en la tabla de HTML.
+function  muestraListaCanciones() {
+    let tamanio = ALBUM.canciones[0].length;
+    let tabla = document.getElementById("tabla_canciones");
+    let texto;
+    let imagen;
+    for (let i = 0; i < tamanio; i++) {
+        let fila = document.createElement("tr");
+        for (let j = 1; j <= 2; j++) {
+            let celda = document.createElement("td");
+            if (j == 1) {
+                imagen = document.createElement("img");
+                imagen.setAttribute("class", "estrella_lista");
+                imagen.src = "../imagenes/Estrella_negra.png";
+                imagen.alt = "Estrella de favorito para " + ALBUM.canciones[1][i];
+                texto = imagen;
+            }else{
+                if (j == 2) {
+                    texto = document.createTextNode(ALBUM.canciones[1][i]);
+                }
+            }
+            celda.appendChild(texto);
+            fila.appendChild(celda);
+            tabla.appendChild(fila);
+
+        }
+    }
+}
 
 
 
@@ -83,15 +125,33 @@ function cargaAlbumSeleccionado(_id) {
     $(".info__album").text(ALBUM.nombre);
     $(".info__anio").text(ALBUM.anio_lanzamiento);
     //Cargamos la lista de canciones.
+    //Arrays para los datos obtenidos.
+    let id = [];
+    let nombre = [];
+    let url = [];
+    consulta = "SELECT can_id, can_nombre, can_url FROM canciones " +
+               "WHERE can_idalbum = " + String(ALBUM.id);
     $.ajax({
-        url: "../php/cargaCanciones.php",
+        url: "../php/cargaDatos.php",
         type: "POST",
         async: false,
-        data: {id:ALBUM.id},
+        data: {cadena:consulta},
         success: function(respuesta) {
-            json.parse(respuesta, function(clave, valor) {
-
+            JSON.parse(respuesta, function(clave, valor) {
+                if (clave == "can_id") {
+                    id.push(valor);
+                }
+                if (clave == "can_nombre") {
+                    nombre.push(valor);
+                }
+                if (clave == "can_url") {
+                    url.push(valor);
+                }
             })
+            let matriz = [];
+            ALBUM.canciones = [];
+            matriz.push(id, nombre, url);
+            ALBUM.canciones = matriz;
         }
     })
 }

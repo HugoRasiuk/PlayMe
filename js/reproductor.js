@@ -8,11 +8,6 @@ const ALBUM = new Album();
 
 
 //Variables globales.
-//Arrays del artista.
-// var id_artista = [];
-// var nombre_artista = [];
-// var foto_artista = [];
-//Arrays de los albumes.
 var id_album = [];
 var nombre_album = [];
 var foto_album = [];
@@ -31,32 +26,38 @@ $(document).ready(function() {
     extraerDatosCookie();
     mostrarDatosUsuario();
     //cadena para la consulta de los datos.
-    let consulta =  "SELECT alb_id, alb_nombre, alb_foto, art_nombre FROM albumes " +
+    let consulta = "SELECT alb_id, alb_nombre, alb_foto, art_nombre from albumes " +
+                    "INNER JOIN canciones_albumes " +
+                    "ON albumes.alb_id = canciones_albumes.cal_idalbum " +
+                    "INNER JOIN canciones_artistas " +
+                    "ON canciones_albumes.cal_idcancion = canciones_artistas.car_idcancion " +
                     "INNER JOIN artistas " +
-                    "ON albumes.alb_idartista = artistas.art_id " +
-                    "ORDER BY albumes.alb_nombre";
+                    "ON canciones_artistas.car_idartista = artistas.art_id " +
+                    "group by alb_id " +
+                    "ORDER BY alb_nombre desc";
     //Cargamos las imágenes de las tapas de los albumes.
     cargaAlbumes(consulta);
     muestraAlbumes();
     //Cargamos las animaciones.
     cargaAnimaciones();
     //Asociamos los eventos.
-    $(".tapa").click(function() {
-        cargaAlbumSeleccionado($(this).attr("id"));
-        muestraListaCanciones();
-    });
-    $("#btnPlay").click(function() {
-        ALBUM.reproducir();
-    });
-    $("#btnSiguienteReproductor").click(function() {
-        ALBUM.siguienteCancion();
-    });
+     $(".tapa").click(function() {
+         cargarAlbumSeleccionado($(this).attr("id"));
+         limpiarListaCanciones()
+         mostrarListaCanciones();
+     });
+     $("#btnPlay").click(function() {
+         ALBUM.reproducir();
+     });
+     $("#btnSiguienteReproductor").click(function() {
+         ALBUM.siguienteCancion();
+     });
 })
 
 
 
 //Mostramos las canciones en la tabla de HTML.
-function  muestraListaCanciones() {
+function  mostrarListaCanciones() {
     let tamanio = ALBUM.canciones[0].length;
     let tabla = document.getElementById("tabla_canciones");
     let texto;
@@ -86,13 +87,17 @@ function  muestraListaCanciones() {
 
 
 
-function cargaAlbumSeleccionado(_id) {
+function cargarAlbumSeleccionado(_id) {
     ALBUM.id = _id;
     //Obtenemos los datos.
-    let consulta = "SELECT alb_nombre, alb_foto, alb_aniolanzamiento, art_nombre, art_foto " +
-                   "FROM albumes INNER JOIN artistas " +
-                   "ON albumes.alb_idartista = artistas.art_id " +
-                   "WHERE alb_id = " + String(_id);
+    let consulta = "SELECT alb_id, alb_nombre, alb_foto, alb_aniolanzamiento, art_nombre FROM albumes " +
+                   "INNER JOIN canciones_albumes " +
+                   "ON albumes.alb_id = canciones_albumes.cal_idalbum " +
+                   "INNER JOIN canciones_artistas " +
+                   "ON canciones_albumes.cal_idcancion = canciones_artistas.car_idcancion " +
+                   "INNER JOIN artistas " +
+                   "ON canciones_artistas.car_idartista = artistas.art_id " +
+                   "WHERE alb_id = " + String(_id) + ";";
     $.ajax({
         url: "../php/cargaDatos.php",
         type: "POST",
@@ -112,9 +117,6 @@ function cargaAlbumSeleccionado(_id) {
                 if (clave == "art_nombre") {
                     ALBUM.artista = valor;
                 }
-                if (clave == "art_foto") {
-                    ALBUM.foto_artista = valor;
-                }
             });
         }
     })
@@ -130,7 +132,9 @@ function cargaAlbumSeleccionado(_id) {
     let nombre = [];
     let url = [];
     consulta = "SELECT can_id, can_nombre, can_url FROM canciones " +
-               "WHERE can_idalbum = " + String(ALBUM.id);
+               "INNER JOIN canciones_albumes " +
+               "ON canciones.can_id = canciones_albumes.cal_idcancion " +
+               "WHERE cal_idalbum = " + String(ALBUM.id) + ";";
     $.ajax({
         url: "../php/cargaDatos.php",
         type: "POST",
@@ -158,6 +162,16 @@ function cargaAlbumSeleccionado(_id) {
 
 
 
+function limpiarListaCanciones() {
+    let tabla = document.getElementById("tabla_canciones");
+    let cantidad_filas = tabla.rows.length;
+    for (let i = cantidad_filas; i > 0; i--) {
+        tabla.deleteRow(i - 1);
+    }
+}
+
+
+
 //Extraemos los datos de la cookie.
 function extraerDatosCookie() {
     let datosCookie = document.cookie.split(";");
@@ -179,46 +193,6 @@ function extraerDatosCookie() {
 function mostrarDatosUsuario() {
     $("#datos__nombre_usuario").text(USUARIO.usuario);
 }
-
-
-
-//Cargamos los artistas.
-// function cargaArtistas() {
-//     id_artista = [];
-//     nombre_artista = [];
-//     foto_artista = [];
-//     $.ajax ({
-//         url: "../php/cargaArtistas.php",
-//         type: "POST",
-//         async: false,
-//         success: function(respuesta) {
-//             JSON.parse(respuesta, function(clave, valor) {
-//                 if (clave == "art_id") {
-//                     id_artista.push(valor);
-//                 }
-//                 if (clave == "art_nombre") {
-//                     nombre_artista.push(valor);
-//                 }
-//                 if (clave == "art_foto") {
-//                     foto_artista.push(valor);
-//                 }
-//             });
-//         }
-//     });
-//     //Limpiamos todas las imágenes.
-//     let cadena = "";
-//     for (let i = 0; i <= 12; i++) {
-//         cadena = ".tapa" + String(i);
-//         $(cadena).attr("src", "");
-//     }
-//     //Variable para el indice de los contenedores de las tapas.
-//     let indice = 0;
-//     for (let i = 0; i < foto_artista.length; i++) {
-//         cadena = ".tapa" + String(indice);
-//         $(cadena).attr("src", foto_artista[i]);
-//         indice++;
-//     }
-// };
 
 
 

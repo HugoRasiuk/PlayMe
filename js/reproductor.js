@@ -8,6 +8,7 @@ const ALBUM = new Album();
 
 
 //Variables globales.
+var bucle = false;
 var id_album = [];
 var nombre_album = [];
 var foto_album = [];
@@ -34,7 +35,7 @@ $(document).ready(function() {
                     "INNER JOIN artistas " +
                     "ON canciones_artistas.car_idartista = artistas.art_id " +
                     "group by alb_id " +
-                    "ORDER BY alb_nombre desc";
+                    "ORDER BY alb_nombre";
     //Cargamos las imágenes de las tapas de los albumes.
     cargaAlbumes(consulta);
     muestraAlbumes();
@@ -45,13 +46,79 @@ $(document).ready(function() {
          cargarAlbumSeleccionado($(this).attr("id"));
          limpiarListaCanciones()
          mostrarListaCanciones();
-     });
+         ALBUM.cargarFuenteMedio();
+         $("#btnPlay_img").attr("src", "../imagenes/Botones/Play.png");
+         $("#btnPlay_img").attr("alt", "Botón de play");
+  });
      $("#btnPlay").click(function() {
-         ALBUM.reproducir();
+         if (!media.paused && !media.ended) {
+            ALBUM.pausar();
+            $("#btnPlay_img").attr("src", "../imagenes/Botones/Play.png");
+            $("#btnPlay_img").attr("alt", "Botón de play");
+        }else{
+            if (ALBUM.reproducir()) {
+                $("#btnPlay_img").attr("src", "../imagenes/Botones/Pausa.png");
+                $("#btnPlay_img").attr("alt", "Botón de pausa");
+            }
+        }
      });
+     $("#btnParar").click(function() {
+         ALBUM.detenerCancion();
+         $("#btnPlay_img").attr("src", "../imagenes/Botones/Play.png");
+         $("#btnPlay_img").attr("alt", "Botón de play");
+  });
      $("#btnSiguienteReproductor").click(function() {
-         ALBUM.siguienteCancion();
-     });
+         if (media.src != "") {
+             if (ALBUM.siguienteCancion()) {
+                $("#btnPlay_img").attr("src", "../imagenes/Botones/Pausa.png");
+                $("#btnPlay_img").attr("alt", "Botón de pausa");
+             }
+         }
+    });
+    $("#btnAnteriorReproductor").click(function() {
+        if (media.src != "") {
+            if (ALBUM.anteriorCancion()) {
+               $("#btnPlay_img").attr("src", "../imagenes/Botones/Pausa.png");
+               $("#btnPlay_img").attr("alt", "Botón de pausa");
+            }
+        }
+    });
+    $("#btnAdelantar").click(function() {
+        ALBUM.adelantarCancion();
+    });
+    $("#btnRetroceder").click(function() {
+        ALBUM.retrocederCancion();
+    });
+    $("#btnMute").click(function() {
+        if (media.muted) {
+            ALBUM.silencioSonido();
+            $("#btnMute_img").attr("src", "../imagenes/Botones/Mute.png");
+        }else{
+            ALBUM.silencioSonido();
+            $("#btnMute_img").attr("src", "../imagenes/Botones/Sonido.png");
+        }
+    });
+    //Evento al terminar la reproducción de la canción.
+    media.addEventListener("ended", function() {
+        if (!ALBUM.siguienteCancion()) {
+            $("#btnPlay_img").attr("src", "../imagenes/Botones/Play.png");
+            $("#btnPlay_img").attr("alt", "Botón de play");
+        }        
+        
+    })
+    //Control del deslizador del volumen.
+    $("#desVolumen").mousedown(function() {
+        bucle = true;
+    });
+    $("#desVolumen").mousemove(function() {
+        if (bucle) {
+            
+        }
+    });
+    //Soltar el deslizador del volumen.
+    $("#desVolumen").mouseup(function() {
+        alert();
+    });
 })
 
 

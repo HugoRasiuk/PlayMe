@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-07-2020 a las 05:59:03
+-- Tiempo de generación: 26-07-2020 a las 06:56:07
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.6
 
@@ -206,7 +206,7 @@ INSERT INTO `canciones` (`can_id`, `can_nombre`, `can_url`, `can_idgenero`) VALU
 (80, '08 Hell Or High Water', '../Albumes/AC-DC/Fly On The Wall/08 Hell Or High Water.mp3', 1),
 (81, '09 Back In Business', '../Albumes/AC-DC/Fly On The Wall/09 Back In Business.mp3', 1),
 (82, '10 Send For The Man', '../Albumes/AC-DC/Fly On The Wall/10 Send For The Man.mp3', 1),
-(83, '01 For Those About To Rock (We Salute You)', '../Albumes/AC-DC/For Those About To Rock We Salute You/01 For Those About To Rock (We Salute You).mp', 1),
+(83, '01 For Those About To Rock (We Salute You)', '../Albumes/AC-DC/For Those About To Rock We Salute You/01 For Those About To Rock (We Salute You).mp3', 1),
 (84, '02 Put The Finger On You', '../Albumes/AC-DC/For Those About To Rock We Salute You/02 Put The Finger On You.mp3', 1),
 (85, '03 Let\'s Get It Up', '../Albumes/AC-DC/For Those About To Rock We Salute You/03 Let\'s Get It Up.mp3', 1),
 (86, '04 Inject The Venom', '../Albumes/AC-DC/For Those About To Rock We Salute You/04 Inject The Venom.mp3', 1),

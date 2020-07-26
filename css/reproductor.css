@@ -132,7 +132,7 @@ body {
     grid-column: 1 / 2;
     grid-row: 2 / 5;
     color: rgb(220, 220, 255);
-    font-size: 1.2rem;
+    font-size: 1rem;
     margin-bottom: 1%;
     padding-left: 1rem;
 }
@@ -153,12 +153,10 @@ body {
     height: 90%;
     overflow-y: scroll;
 }
-.listas__canciones_tabla {
-    font-size: 1.2rem;
-}
 .listas__canciones_tabla td {
     padding: 0.3rem;
     padding-left: 1rem;
+    font-size: 1rem;
 }
 .estrella_lista {
     width: 1.2rem;
@@ -334,8 +332,10 @@ body {
 /*Cambios al llegar a los 1500 px*/
 @media screen and (max-width: 1500px) {
 
-    .listas__canciones {
-        font-size: 1rem;
+    .listas__canciones_tabla td {
+        padding: 0.1rem;
+        padding-left: 0.8rem;
+        font-size: 0.8rem;
     }
 
     .nueva_posicion {

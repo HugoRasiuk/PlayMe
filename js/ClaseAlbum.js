@@ -9,6 +9,7 @@ class Album {
         this._foto_artista = "";
         this._canciones = [[], [], []];
         this._indice = 0;
+        this._respuesta = false;
         this._media = null;
     }
     //Get y Set.
@@ -71,17 +72,79 @@ class Album {
     //Método para la reproducción de las canciones del album.
     reproducir() {
         if (this._canciones[0].length != 0) {
-            this._media.src = this._canciones[2][this._indice];
             this._media.play()
+            this._respuesta = true
+        }else{
+            this._respuesta = false;
+        }
+        return this._respuesta;
+    }
+
+    //Detener.
+    detenerCancion() {
+        this._media.load();
+    }
+
+    //Pausar.
+    pausar() {
+        this._media.pause();
+    }
+
+    //Pasar a la siguiente canción.
+    siguienteCancion() {
+        if (this._indice < this._canciones[0].length - 1) {
+            this._indice++;
+            this._media.src = this._canciones[2][this._indice];
+            this._media.play();
+            this._respuesta = true;
+        }else{
+            this._respuesta = false;
+        }
+        return this._respuesta;
+    }
+
+    //Volver a la canción anterior.
+    anteriorCancion() {
+        if (this._indice > 0) {
+            this._indice--;
+            this._media.src = this._canciones[2][this._indice];
+            this._media.play();
+            this._respuesta = true;
+        }else{
+            this._respuesta = false;
+        }
+        return this._respuesta;
+    }
+
+    //Cargamos la fuente del medio.
+    cargarFuenteMedio() {
+        this._media.src = this._canciones[2][0];
+    }
+
+    //Adelantar la canción.
+    adelantarCancion() {
+        if (this._media.src != "" && !this._media.paused && !this._media.ended) {
+            if (this._media.currentTime + 15 < this._media.duration) {
+                this._media.currentTime += 10;
+            }
         }
     }
 
-    siguienteCancion() {
-        if (!this._media.paused) {
-            if (this._indice < this._canciones[0].length - 1) {
-                this._indice++;
-                this.reproducir();
+    //retroceder la canción.
+    retrocederCancion() {
+        if (this._media.src != "" && !this._media.paused && !this._media.ended) {
+            if (this._media.currentTime - 15 > 0) {
+                this._media.currentTime -= 10;
             }
+        }
+    }
+
+    //Mute.
+    silencioSonido() {
+        if (this._media.muted) {
+            this._media.muted = false;
+        }else{
+            this._media.muted = true;
         }
     }
 }

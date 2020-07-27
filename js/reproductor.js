@@ -22,7 +22,12 @@ var media;
 $(document).ready(function() {
     //Relacionamos la etiqueta audio con la constante.
     media = document.getElementById("media");
+    //Establecemos el volumen.
+    media.volume = 0.8;
+    $("#btnDeslizadorVolumen").val(0.8);
     ALBUM.media = media;
+    //Asignamos la posición de la barra de desplazamiento del reproductor.
+    $("#barra_tiempo").val(0);
     //obtenemos los datos de la cookie y los mostramos.
     extraerDatosCookie();
     mostrarDatosUsuario();
@@ -49,6 +54,7 @@ $(document).ready(function() {
          ALBUM.cargarFuenteMedio();
          $("#btnPlay_img").attr("src", "../imagenes/Botones/Play.png");
          $("#btnPlay_img").attr("alt", "Botón de play");
+         $("#barra_tiempo").val(0);
   });
      $("#btnPlay").click(function() {
          if (!media.paused && !media.ended) {
@@ -59,6 +65,7 @@ $(document).ready(function() {
             if (ALBUM.reproducir()) {
                 $("#btnPlay_img").attr("src", "../imagenes/Botones/Pausa.png");
                 $("#btnPlay_img").attr("alt", "Botón de pausa");
+                $("#cancion" + String(ALBUM.indice)).css("color", "red");
             }
         }
      });
@@ -72,6 +79,8 @@ $(document).ready(function() {
              if (ALBUM.siguienteCancion()) {
                 $("#btnPlay_img").attr("src", "../imagenes/Botones/Pausa.png");
                 $("#btnPlay_img").attr("alt", "Botón de pausa");
+                $("#cancion" + String(ALBUM.indice - 1)).css("color", "rgb(220, 220, 255)");
+                $("#cancion" + String(ALBUM.indice)).css("color", "red");
              }
          }
     });
@@ -80,6 +89,8 @@ $(document).ready(function() {
             if (ALBUM.anteriorCancion()) {
                $("#btnPlay_img").attr("src", "../imagenes/Botones/Pausa.png");
                $("#btnPlay_img").attr("alt", "Botón de pausa");
+               $("#cancion" + String(ALBUM.indice + 1)).css("color", "rgb(220, 220, 255)");
+               $("#cancion" + String(ALBUM.indice)).css("color", "red");
             }
         }
     });
@@ -93,33 +104,81 @@ $(document).ready(function() {
         if (media.muted) {
             ALBUM.silencioSonido();
             $("#btnMute_img").attr("src", "../imagenes/Botones/Mute.png");
+            $("#btnMute_img").attr("alt", "Botón de silenciar");
         }else{
             ALBUM.silencioSonido();
             $("#btnMute_img").attr("src", "../imagenes/Botones/Sonido.png");
+            $("#btnMute_img").attr("alt", "Botón de habilitar sonido");
         }
+    });
+    $("#btnLoop").click(function() {
+        if (media.loop) {
+            media.loop = false;
+            $("#btnLoop_img").attr("src", "../imagenes/Botones/Loop.png");
+            $("#btnLoop_img").attr("alt", "Botón de loop");
+        }else{
+            media.loop = true;
+            $("#btnLoop_img").attr("src", "../imagenes/Botones/No_loop.png");
+            $("#btnLoop_img").attr("alt", "Botón de quitar loop");
+        }
+    });
+    // //Evento al cambiar el deslizador del volumen.
+    $("#btnDeslizadorVolumen").change(function() {
+        media.volume = $("#btnDeslizadorVolumen").val();
     });
     //Evento al terminar la reproducción de la canción.
     media.addEventListener("ended", function() {
         if (!ALBUM.siguienteCancion()) {
             $("#btnPlay_img").attr("src", "../imagenes/Botones/Play.png");
             $("#btnPlay_img").attr("alt", "Botón de play");
-        }        
+        }else{
+            $("#cancion" + String(ALBUM.indice - 1)).css("color", "rgb(220, 220, 255)");
+            $("#cancion" + String(ALBUM.indice)).css("color", "red");
+        }
         
     })
-    //Control del deslizador del volumen.
-    $("#desVolumen").mousedown(function() {
-        bucle = true;
-    });
-    $("#desVolumen").mousemove(function() {
-        if (bucle) {
-            
+    //Evento al cambiar el tiempo de reproducción de la canción.
+    media.addEventListener("timeupdate", function() {
+        let duracion = media.duration;
+        $("#barra_tiempo").attr("max", duracion);
+        let tiempo_actual = media.currentTime;
+        $("#barra_tiempo").val(tiempo_actual);
+        duracion = convierteTiempo(duracion);
+        tiempo_actual = convierteTiempo(tiempo_actual);
+        if (duracion == "NaN:NaN") {
+            duracion = "00:00";
         }
-    });
-    //Soltar el deslizador del volumen.
-    $("#desVolumen").mouseup(function() {
-        alert();
+        if (tiempo_actual == "NaN:NaN") {
+            tiempo_actual = "00:00";
+        }
+        let cadena = tiempo_actual + " de " + duracion;
+        $("#barra_texto").text(cadena);
+    })
+    //Evento al cambiar el deslizador del tiempo de reproducción.
+    $("#barra_tiempo").change(function() {
+        media.currentTime = $("#barra_tiempo").val();
     });
 })
+
+
+
+function convierteTiempo(_tiempo) {
+    let cadena = "";
+    let segundos_totales = Math.floor(_tiempo);
+    let minutos = Math.floor(segundos_totales / 60);
+    let parte_decimal = segundos_totales / 60 - minutos;
+    let segundos = Math.round(parte_decimal * 60);
+    segundos = String(segundos);
+    if (segundos.length == 1) {
+        segundos = "0" + segundos;
+    }
+    minutos = String(minutos);
+    if (minutos.length == 1) {
+        minutos = "0" + minutos;
+    }
+    cadena = minutos + ":" + segundos; 
+    return cadena;
+}
 
 
 
@@ -134,6 +193,7 @@ function  mostrarListaCanciones() {
         for (let j = 1; j <= 2; j++) {
             let celda = document.createElement("td");
             if (j == 1) {
+                celda.setAttribute("id", "estrella" + String(i));
                 imagen = document.createElement("img");
                 imagen.setAttribute("class", "estrella_lista");
                 imagen.src = "../imagenes/Estrella_negra.png";
@@ -141,6 +201,7 @@ function  mostrarListaCanciones() {
                 texto = imagen;
             }else{
                 if (j == 2) {
+                    celda.setAttribute("id", "cancion" + String(i));
                     texto = document.createTextNode(ALBUM.canciones[1][i]);
                 }
             }

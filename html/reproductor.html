@@ -148,27 +148,25 @@
     
                 <section class="reproductor__botones_adicionales">
                     <section class="reproductor__volumen">
-                        <div class="volumen__barra">
-                        </div>
-
-                        <div class="boton__volumen" id="desVolumen">
-                        </div>
+                        <input type="range" class="btnDeslizdorVolumen" id="btnDeslizadorVolumen" min="0" max="1" step="0.01">
                     </section>
 
                     <div class="reproductor__btnAdicional" id="btnMute">
-                        <img src="../imagenes/Botones/Mute.png" alt="Botón de mute" id="btnMute_img">
+                        <img src="../imagenes/Botones/Mute.png" alt="Botón de silenciar" id="btnMute_img">
                     </div>
 
-                    <div class="reproductor__btnAdicional">
-                        <img src="../imagenes/Botones/Loop.png" alt="Botón de loop">
+                    <div class="reproductor__btnAdicional" id="btnLoop">
+                        <img src="../imagenes/Botones/Loop.png" alt="Botón de loop" id="btnLoop_img">
                     </div>
                 </section>
             </div>
         </footer>
 
         <footer class="barra">
-            <div class="barra_desplazamiento">
+            <div class="barra_contenedor">
+                <input type="range" class="barra_tiempo" id="barra_tiempo" min="0" step="0.01">
             </div>
+            <p class="barra_texto" id="barra_texto"></p>
         </footer>
 
 

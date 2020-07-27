@@ -160,7 +160,8 @@ body {
 }
 .estrella_lista {
     width: 1.2rem;
-    object-fit: contain;
+    -o-object-fit: contain;
+       object-fit: contain;
 }
 
 
@@ -254,26 +255,69 @@ body {
     width: 13.25rem;
     height: 1.875rem;
 }
-.volumen__barra {
-    background: white;
-    width: 13.25rem;
-    height: 0.25rem;
-    margin-top: 0.8125rem;
-}
-.boton__volumen {
-    width: 1.5rem;
-    height: 1.875rem;
-    border-radius: 0.5rem;
-    border: white solid 1px;
-    background: rgb(150, 20, 20);
-    margin-top: -1.0625rem;
-    margin-left: 8rem;
-}
 .reproductor__botones_adicionales img {
     width: 100%;
     height: 100%;
     -o-object-fit: contain;
        object-fit: contain;
+}
+.btnDeslizdorVolumen {
+    height: 1rem;
+    -webkit-appearance: none;
+    margin: 0px;
+    width: 100%;
+    background: transparent;
+}
+.btnDeslizdorVolumen:focus {
+    outline: none;
+}
+/*Track del deslizador.*/
+.btnDeslizdorVolumen::-moz-range-track {
+    background: white;
+    width: 100%;
+    height: 0.3rem;
+}
+.btnDeslizdorVolumen::-webkit-slider-runnable-track {
+    background: white;
+    width: 100%;
+    height: 1rem;
+}
+.btnDeslizdorVolumen::-ms-track {
+    background: white;
+    width: 100%;
+    height: 0.3rem;
+}
+/*Thumb.*/
+.btnDeslizdorVolumen::-moz-range-thumb {
+    height: 1.5rem;
+    width: 1.5rem;
+    background: rgb(150, 40, 40);
+    border-radius: 0.5rem;
+    border: white solid 1px;
+    cursor: pointer;
+}
+.btnDeslizdorVolumen::-webkit-slider-thumb {
+    height: 1.5rem;
+    width: 1.5rem;
+    background: rgb(150, 40, 40);
+    border-radius: 0.5rem;
+    border: white solid 1px;
+    cursor: pointer;
+}
+.btnDeslizdorVolumen::-ms-thumb {
+    height: 1.5rem;
+    width: 1.5rem;
+    background: rgb(150, 40, 40);
+    border-radius: 0.5rem;
+    border: white solid 1px;
+    cursor: pointer;
+}
+/*Fill lower.*/
+.btnDeslizdorVolumen::-moz-range-progress {
+    background: red;
+}
+.btnDeslizdorVolumen::-ms-fill-lower {
+    background: red;
 }
 
 
@@ -286,13 +330,46 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
-.barra_desplazamiento {
-    margin-top: 1rem;
+.barra_contenedor {
     width: 90%;
-    height: 0.5rem;
-    background: rgb(255, 255, 255);
 }
+.barra_tiempo {
+    height: 1rem;
+    -webkit-appearance: none;
+    margin: 0px;
+    background: transparent;
+    width: 100%;
+}
+.barra_tiempo:focus {
+    outline: none;
+}
+.barra_tiempo::-moz-range-track {
+    background: white;
+    width: 100%;
+    height: 0.3rem;
+}
+.barra_tiempo::-moz-range-thumb {
+    background: black;
+    border: white solid 1px;
+
+}
+.barra_tiempo::-moz-range-progress {
+    background: red;
+    height: 0.3rem;
+}
+.barra_texto {
+    width: 10rem;
+    height: 1.5rem;
+    padding-top: 0.25rem;
+    border-radius: 0.75rem;
+    font-size: 1rem;
+    background: black;
+    color: rgb(255, 0, 0);
+    text-align: center;
+}
+
 
 
 
@@ -312,7 +389,8 @@ body {
     width: 5rem;
     height: 5rem;
     background: rgb(50, 50, 70);
-    object-fit: contain;
+    -o-object-fit: contain;
+       object-fit: contain;
 }
 .info__data {
     color: white;

@@ -65,6 +65,12 @@ class Album {
     set media(valor) {
         this._media = valor;
     }
+    get indice() {
+        return this._indice;
+    }
+    set indice (valor) {
+        this._indice = valor;
+    }
 
 
 

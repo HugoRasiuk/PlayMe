@@ -7,7 +7,7 @@ class Album {
         this._anio_lanzamiento = "";
         this._artista = "";
         this._foto_artista = "";
-        this._canciones = [[], [], []];
+        this._canciones = [];
         this._indice = 0;
         this._respuesta = false;
         this._media = null;
@@ -77,7 +77,7 @@ class Album {
     //Métodos.
     //Método para la reproducción de las canciones del album.
     reproducir() {
-        if (this._canciones[0].length != 0) {
+        if (this._canciones.length != 0) {
             this._media.play()
             this._respuesta = true
         }else{
@@ -98,9 +98,9 @@ class Album {
 
     //Pasar a la siguiente canción.
     siguienteCancion() {
-        if (this._indice < this._canciones[0].length - 1) {
+        if (this._indice < this._canciones.length - 1) {
             this._indice++;
-            this._media.src = this._canciones[2][this._indice];
+            this._media.src = this._canciones[this._indice].url;
             this._media.play();
             this._respuesta = true;
         }else{
@@ -113,7 +113,7 @@ class Album {
     anteriorCancion() {
         if (this._indice > 0) {
             this._indice--;
-            this._media.src = this._canciones[2][this._indice];
+            this._media.src = this._canciones[this._indice].url;
             this._media.play();
             this._respuesta = true;
         }else{
@@ -124,7 +124,7 @@ class Album {
 
     //Cargamos la fuente del medio.
     cargarFuenteMedio() {
-        this._media.src = this._canciones[2][0];
+        this._media.src = this._canciones[this._indice].url;
     }
 
     //Adelantar la canción.

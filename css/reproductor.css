@@ -163,6 +163,9 @@ body {
     -o-object-fit: contain;
        object-fit: contain;
 }
+.cancion:hover {
+    cursor: default;
+}
 
 
 
@@ -294,6 +297,8 @@ body {
     background: rgb(150, 40, 40);
     border-radius: 0.5rem;
     border: white solid 1px;
+}
+.btnDeslizdorVolumen::-moz-range-thumb:hover {
     cursor: pointer;
 }
 .btnDeslizdorVolumen::-webkit-slider-thumb {
@@ -353,7 +358,9 @@ body {
 .barra_tiempo::-moz-range-thumb {
     background: black;
     border: white solid 1px;
-
+}
+.barra_tiempo::-moz-range-thumb:hover {
+    cursor: pointer;
 }
 .barra_tiempo::-moz-range-progress {
     background: red;

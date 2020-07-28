@@ -5,6 +5,7 @@
 //Instanciamos los objetos.
 const USUARIO = new Usuario();
 const ALBUM = new Album();
+const ARTISTA = new Artista();
 
 
 //Variables globales.
@@ -40,17 +41,18 @@ $(document).ready(function() {
                     "INNER JOIN artistas " +
                     "ON canciones_artistas.car_idartista = artistas.art_id " +
                     "group by alb_id " +
-                    "ORDER BY alb_nombre";
+                    "ORDER BY alb_nombre" + ";";
     //Cargamos las imágenes de las tapas de los albumes.
     cargaAlbumes(consulta);
     muestraAlbumes();
     //Cargamos las animaciones.
     cargaAnimaciones();
-    //Asociamos los eventos.
+    //Asociamos los eventos de las tapas de los albumes.
      $(".tapa").click(function() {
          cargarAlbumSeleccionado($(this).attr("id"));
          limpiarListaCanciones()
          mostrarListaCanciones();
+         ALBUM.indice = 0;
          ALBUM.cargarFuenteMedio();
          $("#btnPlay_img").attr("src", "../imagenes/Botones/Play.png");
          $("#btnPlay_img").attr("alt", "Botón de play");
@@ -65,7 +67,8 @@ $(document).ready(function() {
             if (ALBUM.reproducir()) {
                 $("#btnPlay_img").attr("src", "../imagenes/Botones/Pausa.png");
                 $("#btnPlay_img").attr("alt", "Botón de pausa");
-                $("#cancion" + String(ALBUM.indice)).css("color", "red");
+                $("#" + String(ALBUM.indice)).css("color", "red");
+                $(".info__artista").text(ALBUM.canciones[ALBUM.indice].artista);
             }
         }
      });
@@ -79,8 +82,9 @@ $(document).ready(function() {
              if (ALBUM.siguienteCancion()) {
                 $("#btnPlay_img").attr("src", "../imagenes/Botones/Pausa.png");
                 $("#btnPlay_img").attr("alt", "Botón de pausa");
-                $("#cancion" + String(ALBUM.indice - 1)).css("color", "rgb(220, 220, 255)");
-                $("#cancion" + String(ALBUM.indice)).css("color", "red");
+                $("#" + String(ALBUM.indice - 1)).css("color", "rgb(220, 220, 255)");
+                $("#" + String(ALBUM.indice)).css("color", "red");
+                $(".info__artista").text(ALBUM.canciones[ALBUM.indice].artista);
              }
          }
     });
@@ -89,8 +93,9 @@ $(document).ready(function() {
             if (ALBUM.anteriorCancion()) {
                $("#btnPlay_img").attr("src", "../imagenes/Botones/Pausa.png");
                $("#btnPlay_img").attr("alt", "Botón de pausa");
-               $("#cancion" + String(ALBUM.indice + 1)).css("color", "rgb(220, 220, 255)");
-               $("#cancion" + String(ALBUM.indice)).css("color", "red");
+               $("#" + String(ALBUM.indice + 1)).css("color", "rgb(220, 220, 255)");
+               $("#" + String(ALBUM.indice)).css("color", "red");
+               $(".info__artista").text(ALBUM.canciones[ALBUM.indice].artista);
             }
         }
     });
@@ -184,7 +189,7 @@ function convierteTiempo(_tiempo) {
 
 //Mostramos las canciones en la tabla de HTML.
 function  mostrarListaCanciones() {
-    let tamanio = ALBUM.canciones[0].length;
+    let tamanio = ALBUM.canciones.length;
     let tabla = document.getElementById("tabla_canciones");
     let texto;
     let imagen;
@@ -196,21 +201,73 @@ function  mostrarListaCanciones() {
                 celda.setAttribute("id", "estrella" + String(i));
                 imagen = document.createElement("img");
                 imagen.setAttribute("class", "estrella_lista");
+                imagen.setAttribute("id", String(ALBUM.canciones[i].id) * (-1));
                 imagen.src = "../imagenes/Estrella_negra.png";
-                imagen.alt = "Estrella de favorito para " + ALBUM.canciones[1][i];
+                imagen.alt = "Estrella de favorito para " + ALBUM.canciones[i].nombre;
                 texto = imagen;
             }else{
                 if (j == 2) {
-                    celda.setAttribute("id", "cancion" + String(i));
-                    texto = document.createTextNode(ALBUM.canciones[1][i]);
+                    celda.setAttribute("id", String(i));
+                    celda.setAttribute("class", "cancion");
+                    texto = document.createTextNode(ALBUM.canciones[i].nombre);
                 }
             }
             celda.appendChild(texto);
             fila.appendChild(celda);
             tabla.appendChild(fila);
-
         }
     }
+    //Verificamos si existen canciones favoritas dentro de la lista del album seleccionado.
+    let idcanciones = [];
+    for (let i = 0; i < ALBUM.canciones.length; i++) {
+        idcanciones.push(ALBUM.canciones[i].id);
+    }
+    $.ajax({
+        url: "../php/buscaFavoritos.php",
+        type: "POST",
+        async: false,
+        data: {idusuario:USUARIO.id, idcanciones},
+        success: function(respuesta) {
+            JSON.parse(respuesta, function(clave, valor) {
+                if (!isNaN(valor)) {
+                    let id = (Number(valor) * 1) * (-1);
+                    $("#" + id).addClass("rellena");
+                    $("#" + id).attr("src", "../imagenes/Estrella_roja.png");
+                }
+            });
+        }
+    });
+    //Asignamos las funciones al hacer click sobre las estrellas.
+    $(".estrella_lista").click(function() {
+        if ($(this).hasClass("rellena")) {
+            let id_cancion = Number($(this).attr("id") * (-1));
+            $.ajax({
+                url: "../php/borraFavorito.php",
+                type: "POST",
+                data: {idusuario:USUARIO.id, idcancion:id_cancion}
+            });
+            $(this).attr("src", "../imagenes/Estrella_negra.png");
+            $(this).removeClass("rellena");
+        }else{
+            //Guardamos en la base de datos el favorito.
+            let id_cancion = Number($(this).attr("id") * (-1));
+            $.ajax({
+                url: "../php/guardaFavorito.php",
+                type: "POST",
+                data: {idusuario:USUARIO.id, idcancion:id_cancion}
+            });
+            $(this).attr("src", "../imagenes/Estrella_roja.png");
+            $(this).addClass("rellena");
+        }
+    });
+    //Asignamos las funciones al hacer click sobre la canción.
+    $(".cancion").click(function() {
+        $("#" + ALBUM.indice).css("color", "rgb(220, 220, 255)");
+        ALBUM.indice = $(this).attr("id");
+        ALBUM.cargarFuenteMedio();
+        ALBUM.reproducir();
+        $(this).css("color", "red");
+    });
 }
 
 
@@ -259,9 +316,14 @@ function cargarAlbumSeleccionado(_id) {
     let id = [];
     let nombre = [];
     let url = [];
-    consulta = "SELECT can_id, can_nombre, can_url FROM canciones " +
-               "INNER JOIN canciones_albumes " +
-               "ON canciones.can_id = canciones_albumes.cal_idcancion " +
+    let artista = [];
+    consulta = "SELECT can_id, can_nombre, can_url, art_nombre FROM canciones_albumes " +
+               "INNER JOIN canciones " +
+               "ON canciones_albumes.cal_idcancion = canciones.can_id " +
+               "INNER JOIN canciones_artistas " +
+               "ON canciones.can_id = canciones_artistas.car_idcancion " +
+               "INNER JOIN artistas " +
+               "ON canciones_artistas.car_idartista = artistas.art_id " +
                "WHERE cal_idalbum = " + String(ALBUM.id) + ";";
     $.ajax({
         url: "../php/cargaDatos.php",
@@ -279,11 +341,24 @@ function cargarAlbumSeleccionado(_id) {
                 if (clave == "can_url") {
                     url.push(valor);
                 }
+                if (clave == "art_nombre") {
+                    artista.push(valor);
+                }
             })
-            let matriz = [];
+            //Eliminamos de memoria todos los objetos cancion anteriores y vaciamos el array.
+            for (let i = 0; i < ALBUM.canciones.length; i++) {
+                delete ALBUM.canciones[i];
+            }
             ALBUM.canciones = [];
-            matriz.push(id, nombre, url);
-            ALBUM.canciones = matriz;
+            //Instanciamos los objetos cancion y los asignamos a la propiedad canciones del objeto album.
+            for (let i = 0; i < nombre.length; i++) {
+                const CANCION = new Cancion();
+                CANCION.id = id[i];
+                CANCION.nombre = nombre[i];
+                CANCION.url = url[i];
+                CANCION.artista = artista[i];
+                ALBUM.canciones.push(CANCION);
+            }
         }
     })
 }

@@ -6,6 +6,7 @@
 const USUARIO = new Usuario();
 const ALBUM = new Album();
 const ARTISTA = new Artista();
+const CANCION = new Cancion();
 
 
 //Variables globales.
@@ -14,6 +15,7 @@ var id_album = [];
 var nombre_album = [];
 var foto_album = [];
 var artista_album = [];
+var indice_album = 0;
 //Constante para el media.
 var media;
 
@@ -27,6 +29,7 @@ $(document).ready(function() {
     media.volume = 0.8;
     $("#btnDeslizadorVolumen").val(0.8);
     ALBUM.media = media;
+    CANCION.media = media;
     //Asignamos la posición de la barra de desplazamiento del reproductor.
     $("#barra_tiempo").val(0);
     //obtenemos los datos de la cookie y los mostramos.
@@ -53,18 +56,19 @@ $(document).ready(function() {
          limpiarListaCanciones()
          mostrarListaCanciones();
          ALBUM.indice = 0;
-         ALBUM.cargarFuenteMedio();
+         ALBUM.asignarCancion();
          $("#btnPlay_img").attr("src", "../imagenes/Botones/Play.png");
          $("#btnPlay_img").attr("alt", "Botón de play");
          $("#barra_tiempo").val(0);
   });
      $("#btnPlay").click(function() {
          if (!media.paused && !media.ended) {
-            ALBUM.pausar();
+            CANCION.pausar();
             $("#btnPlay_img").attr("src", "../imagenes/Botones/Play.png");
             $("#btnPlay_img").attr("alt", "Botón de play");
         }else{
-            if (ALBUM.reproducir()) {
+            if (ALBUM.checkListaCargada()) {
+                CANCION.reproducir();
                 $("#btnPlay_img").attr("src", "../imagenes/Botones/Pausa.png");
                 $("#btnPlay_img").attr("alt", "Botón de pausa");
                 $("#" + String(ALBUM.indice)).css("color", "red");
@@ -73,13 +77,14 @@ $(document).ready(function() {
         }
      });
      $("#btnParar").click(function() {
-         ALBUM.detenerCancion();
+         CANCION.detenerCancion();
          $("#btnPlay_img").attr("src", "../imagenes/Botones/Play.png");
          $("#btnPlay_img").attr("alt", "Botón de play");
   });
      $("#btnSiguienteReproductor").click(function() {
          if (media.src != "") {
              if (ALBUM.siguienteCancion()) {
+                 CANCION.reproducir();
                 $("#btnPlay_img").attr("src", "../imagenes/Botones/Pausa.png");
                 $("#btnPlay_img").attr("alt", "Botón de pausa");
                 $("#" + String(ALBUM.indice - 1)).css("color", "rgb(220, 220, 255)");
@@ -91,6 +96,7 @@ $(document).ready(function() {
     $("#btnAnteriorReproductor").click(function() {
         if (media.src != "") {
             if (ALBUM.anteriorCancion()) {
+                CANCION.reproducir();
                $("#btnPlay_img").attr("src", "../imagenes/Botones/Pausa.png");
                $("#btnPlay_img").attr("alt", "Botón de pausa");
                $("#" + String(ALBUM.indice + 1)).css("color", "rgb(220, 220, 255)");
@@ -100,18 +106,18 @@ $(document).ready(function() {
         }
     });
     $("#btnAdelantar").click(function() {
-        ALBUM.adelantarCancion();
+        CANCION.adelantar();
     });
     $("#btnRetroceder").click(function() {
-        ALBUM.retrocederCancion();
+        CANCION.retroceder();
     });
     $("#btnMute").click(function() {
         if (media.muted) {
-            ALBUM.silencioSonido();
+            CANCION.silencioSonido();
             $("#btnMute_img").attr("src", "../imagenes/Botones/Mute.png");
             $("#btnMute_img").attr("alt", "Botón de silenciar");
         }else{
-            ALBUM.silencioSonido();
+            CANCION.silencioSonido();
             $("#btnMute_img").attr("src", "../imagenes/Botones/Sonido.png");
             $("#btnMute_img").attr("alt", "Botón de habilitar sonido");
         }
@@ -127,6 +133,32 @@ $(document).ready(function() {
             $("#btnLoop_img").attr("alt", "Botón de quitar loop");
         }
     });
+    $("#btnSiguiente").click(function() {
+        //Evaluamos si estamos fuera del rango.
+        if (!(indice_album >= id_album.length)) {
+            let albumes_restantes = id_album.length - indice_album;
+            //Evaluamos si quedan como mínimo 12 albumes por mostrar.
+            if (albumes_restantes > 11) {
+                muestraAlbumes();
+            }else{
+                //Establecemos el índice para que complete los 12 albumes en pantalla.
+                indice_album = id_album.length - 12;
+                muestraAlbumes();
+            }
+
+        }
+    });
+    $("#btnAnterior").click(function() {
+        if (indice_album >= 24) {
+            indice_album -= 24;
+            muestraAlbumes();
+        }else{
+            if (indice_album > 12) {
+                indice_album = 0;
+                muestraAlbumes();
+            }
+        }
+    });
     // //Evento al cambiar el deslizador del volumen.
     $("#btnDeslizadorVolumen").change(function() {
         media.volume = $("#btnDeslizadorVolumen").val();
@@ -137,8 +169,9 @@ $(document).ready(function() {
             $("#btnPlay_img").attr("src", "../imagenes/Botones/Play.png");
             $("#btnPlay_img").attr("alt", "Botón de play");
         }else{
-            $("#cancion" + String(ALBUM.indice - 1)).css("color", "rgb(220, 220, 255)");
-            $("#cancion" + String(ALBUM.indice)).css("color", "red");
+            CANCION.reproducir();
+            $("#" + String(ALBUM.indice - 1)).css("color", "rgb(220, 220, 255)");
+            $("#" + String(ALBUM.indice)).css("color", "red");
         }
         
     })
@@ -264,9 +297,11 @@ function  mostrarListaCanciones() {
     $(".cancion").click(function() {
         $("#" + ALBUM.indice).css("color", "rgb(220, 220, 255)");
         ALBUM.indice = $(this).attr("id");
-        ALBUM.cargarFuenteMedio();
-        ALBUM.reproducir();
+        ALBUM.asignarCancion();
+        CANCION.reproducir();
         $(this).css("color", "red");
+        $("#btnPlay_img").attr("src", "../imagenes/Botones/Pausa.png");
+       $("#btnPlay_img").attr("alt", "Botón de pausa");
     });
 }
 
@@ -441,14 +476,12 @@ function muestraAlbumes() {
         $(cadena).attr("alt", "");
     }
     //Cargamos las imágenes en los contenedores.
-    //Variable para el indice del array de albumes.
-    let indice = 0;
     for (let i = 0; i < 12; i++) {
         cadena = ".tapa" + String(i);
-        $(cadena).attr("id", id_album[indice]);
-        $(cadena).attr("src", foto_album[indice]);
-        $(cadena).attr("alt", artista_album[indice] + ", " + nombre_album[indice]);
-        indice++;
+        $(cadena).attr("id", id_album[indice_album]);
+        $(cadena).attr("src", foto_album[indice_album]);
+        $(cadena).attr("alt", artista_album[indice_album] + ", " + nombre_album[indice_album]);
+        indice_album++;
     }
 }
 

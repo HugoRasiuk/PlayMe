@@ -7,6 +7,7 @@ class Cancion {
         this._url = "";
         this._idgenero = 0;
         this._artista = "";
+        this._media = "";
     }
 
     //Getter y setter
@@ -44,4 +45,51 @@ class Cancion {
     set artista(valor) {
         this._artista = valor;
     }
+
+    set media(valor) {
+        this._media = valor;
+    }
+
+    //Métodos.
+    reproducir() {
+        this._media.play();
+    }
+
+    //Pausar
+    pausar() {
+        this._media.pause();
+    }
+
+        //Detener.
+        detenerCancion() {
+            this._media.load();
+        }
+
+            //Mute.
+    silencioSonido() {
+        if (this._media.muted) {
+            this._media.muted = false;
+        }else{
+            this._media.muted = true;
+        }
+    }
+
+    //Adelantar la canción.
+    adelantar() {
+        if (this._media.src != "" && !this._media.paused && !this._media.ended) {
+            if (this._media.currentTime + 15 < this._media.duration) {
+                this._media.currentTime += 10;
+            }
+        }
+    }
+
+    //retroceder la canción.
+    retroceder() {
+        if (this._media.src != "" && !this._media.paused && !this._media.ended) {
+            if (this._media.currentTime - 15 > 0) {
+                this._media.currentTime -= 10;
+            }
+        }
+    }
+  
 }  

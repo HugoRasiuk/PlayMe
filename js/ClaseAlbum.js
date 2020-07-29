@@ -75,33 +75,11 @@ class Album {
 
 
     //Métodos.
-    //Método para la reproducción de las canciones del album.
-    reproducir() {
-        if (this._canciones.length != 0) {
-            this._media.play()
-            this._respuesta = true
-        }else{
-            this._respuesta = false;
-        }
-        return this._respuesta;
-    }
-
-    //Detener.
-    detenerCancion() {
-        this._media.load();
-    }
-
-    //Pausar.
-    pausar() {
-        this._media.pause();
-    }
-
     //Pasar a la siguiente canción.
     siguienteCancion() {
         if (this._indice < this._canciones.length - 1) {
             this._indice++;
             this._media.src = this._canciones[this._indice].url;
-            this._media.play();
             this._respuesta = true;
         }else{
             this._respuesta = false;
@@ -114,7 +92,6 @@ class Album {
         if (this._indice > 0) {
             this._indice--;
             this._media.src = this._canciones[this._indice].url;
-            this._media.play();
             this._respuesta = true;
         }else{
             this._respuesta = false;
@@ -122,35 +99,20 @@ class Album {
         return this._respuesta;
     }
 
+    //Checkeamos que haya una lista cargada para reproducir.
+    checkListaCargada() {
+        if (this._canciones.length != 0) {
+            this._respuesta = true
+        }else{
+            this._respuesta = false;
+        }
+        return this._respuesta;
+    }
+
     //Cargamos la fuente del medio.
-    cargarFuenteMedio() {
+    asignarCancion() {
         this._media.src = this._canciones[this._indice].url;
     }
 
-    //Adelantar la canción.
-    adelantarCancion() {
-        if (this._media.src != "" && !this._media.paused && !this._media.ended) {
-            if (this._media.currentTime + 15 < this._media.duration) {
-                this._media.currentTime += 10;
-            }
-        }
-    }
-
-    //retroceder la canción.
-    retrocederCancion() {
-        if (this._media.src != "" && !this._media.paused && !this._media.ended) {
-            if (this._media.currentTime - 15 > 0) {
-                this._media.currentTime -= 10;
-            }
-        }
-    }
-
-    //Mute.
-    silencioSonido() {
-        if (this._media.muted) {
-            this._media.muted = false;
-        }else{
-            this._media.muted = true;
-        }
-    }
+    
 }

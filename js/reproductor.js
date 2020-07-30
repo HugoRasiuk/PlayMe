@@ -18,6 +18,9 @@ var artista_album = [];
 var indice_album = 0;
 //Constante para el media.
 var media;
+//Variables para los temporizadores.
+var tiempo_fadeout = 500;
+var tiempo_fadein = 500;
 
 
 
@@ -159,7 +162,36 @@ $(document).ready(function() {
             }
         }
     });
-    // //Evento al cambiar el deslizador del volumen.
+    ///Eventos click de los filtros.
+    $("#btnFiltroCancion").click(function() {
+        //Quitamos los demás filtros de la pantalla.
+        $("#btnFiltroArtista").fadeOut(tiempo_fadeout);
+        $("#btnFiltroAlbum").fadeOut(tiempo_fadeout);
+        $("#btnFiltroFavoritos").fadeOut(tiempo_fadeout);
+        $("#btnFiltroRecomendados").fadeOut(tiempo_fadeout);
+        $("#btnFiltroGeneral").fadeOut(tiempo_fadeout);
+        $(".filtro__canciones").css("margin-left", "0rem");
+        setTimeout(function() {
+            $(".filtro__txt").css("display", "inline-block");
+            $("#txtFiltro").focus();
+            $("#txtFiltro").keydown(function(tecla) {
+                if (tecla.which == "13") {
+                }
+                if (tecla.which == "27") {
+                    //Devolvemos los filtros a la pantalla
+                    $(".filtro__txt").css("display", "none");
+                    $("#btnFiltroArtista").fadeIn(tiempo_fadeout);
+                    $("#btnFiltroAlbum").fadeIn(tiempo_fadeout);
+                    $("#btnFiltroFavoritos").fadeIn(tiempo_fadeout);
+                    $("#btnFiltroRecomendados").fadeIn(tiempo_fadeout);
+                    $("#btnFiltroGeneral").fadeIn(tiempo_fadeout);
+                    $(".filtro__canciones").css("margin-left", "21.5rem");
+                    $(".filtro__canciones").removeClass("nueva_posicion_filtro");
+                }
+            });
+        }, 500)
+    });
+    //Evento al cambiar el deslizador del volumen.
     $("#btnDeslizadorVolumen").change(function() {
         media.volume = $("#btnDeslizadorVolumen").val();
     });
@@ -496,7 +528,7 @@ function cargaAnimaciones() {
         $(".filtro__filtro").addClass("nueva_posicion");
     });
     //Acciones al salir el mouse de la barra de filtros.
-    $(".filtro").mouseleave(function() {
+    $(".filtro__contenedor").mouseleave(function() {
         $(".filtro__canciones").removeClass("nueva_posicion_filtro");
         $(".filtro__artista").removeClass("nueva_posicion");
         $(".filtro__album").removeClass("nueva_posicion");

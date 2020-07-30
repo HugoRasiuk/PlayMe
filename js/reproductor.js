@@ -170,7 +170,6 @@ $(document).ready(function() {
         $("#btnFiltroFavoritos").fadeOut(tiempo_fadeout);
         $("#btnFiltroRecomendados").fadeOut(tiempo_fadeout);
         $("#btnFiltroGeneral").fadeOut(tiempo_fadeout);
-        $(".filtro__canciones").css("margin-left", "0rem");
         setTimeout(function() {
             $(".filtro__txt").css("display", "inline-block");
             $("#txtFiltro").focus();
@@ -180,15 +179,186 @@ $(document).ready(function() {
                 if (tecla.which == "27") {
                     //Devolvemos los filtros a la pantalla
                     $(".filtro__txt").css("display", "none");
+                    $("#btnFiltroCancion").removeClass("filtro_posicion_izquierda");
+                    if ($("#btnFiltroArtista").hasClass("filtro__artista_nueva_posicion")) {
+                        $("#btnFiltroCancion").addClass("filtro__canciones_nueva_posicion");
+                    }
                     $("#btnFiltroArtista").fadeIn(tiempo_fadeout);
                     $("#btnFiltroAlbum").fadeIn(tiempo_fadeout);
                     $("#btnFiltroFavoritos").fadeIn(tiempo_fadeout);
                     $("#btnFiltroRecomendados").fadeIn(tiempo_fadeout);
                     $("#btnFiltroGeneral").fadeIn(tiempo_fadeout);
-                    $(".filtro__canciones").css("margin-left", "21.5rem");
-                    $(".filtro__canciones").removeClass("nueva_posicion_filtro");
                 }
             });
+        }, 500);
+        setTimeout(function() {
+            $("#btnFiltroCancion").removeClass("filtro__canciones_nueva_posicion");
+            $("#btnFiltroCancion").addClass("filtro_posicion_izquierda");
+        }, 500)
+    });
+    $("#btnFiltroArtista").click(function() {
+        //Quitamos los demás filtros de la pantalla.
+        $("#btnFiltroCancion").fadeOut(tiempo_fadeout);
+        $("#btnFiltroAlbum").fadeOut(tiempo_fadeout);
+        $("#btnFiltroFavoritos").fadeOut(tiempo_fadeout);
+        $("#btnFiltroRecomendados").fadeOut(tiempo_fadeout);
+        $("#btnFiltroGeneral").fadeOut(tiempo_fadeout);
+        setTimeout(function() {
+            $(".filtro__txt").css("display", "inline-block");
+            $("#txtFiltro").focus();
+            $("#txtFiltro").keydown(function(tecla) {
+                if (tecla.which == "13") {
+                }
+                if (tecla.which == "27") {
+                    //Devolvemos los filtros a la pantalla
+                    $(".filtro__txt").css("display", "none");
+                    $("#btnFiltroArtista").removeClass("filtro_posicion_izquierda");
+                    if ($("#btnFiltroAlbum").hasClass("filtro__album_nueva_posicion")) {
+                        $("#btnFiltroArtista").addClass("filtro__artista_nueva_posicion");
+                    }
+                    $("#btnFiltroCancion").fadeIn(tiempo_fadeout);
+                    $("#btnFiltroAlbum").fadeIn(tiempo_fadeout);
+                    $("#btnFiltroFavoritos").fadeIn(tiempo_fadeout);
+                    $("#btnFiltroRecomendados").fadeIn(tiempo_fadeout);
+                    $("#btnFiltroGeneral").fadeIn(tiempo_fadeout);
+                }
+            });
+        }, 1000);
+        setTimeout(function() {
+            $("#btnFiltroArtista").removeClass("filtro__artista_nueva_posicion");
+            $("#btnFiltroArtista").addClass("filtro_posicion_izquierda");
+        }, 500)
+    });
+    $("#btnFiltroAlbum").click(function() {
+        //Quitamos los demás filtros de la pantalla.
+        $("#btnFiltroCancion").fadeOut(tiempo_fadeout);
+        $("#btnFiltroArtista").fadeOut(tiempo_fadeout);
+        $("#btnFiltroFavoritos").fadeOut(tiempo_fadeout);
+        $("#btnFiltroRecomendados").fadeOut(tiempo_fadeout);
+        $("#btnFiltroGeneral").fadeOut(tiempo_fadeout);
+        setTimeout(function() {
+            $(".filtro__txt").css("display", "inline-block");
+            $("#txtFiltro").focus();
+            $("#txtFiltro").keydown(function(tecla) {
+                if (tecla.which == "13") {
+                }
+                if (tecla.which == "27") {
+                    //Devolvemos los filtros a la pantalla
+                    $(".filtro__txt").css("display", "none");
+                    $("#btnFiltroAlbum").removeClass("filtro_posicion_izquierda");
+                    if ($("#btnFiltroArtista").hasClass("filtro__artista_nueva_posicion")) {
+                        $("#btnFiltroAlbum").addClass("filtro__album_nueva_posicion");
+                    }
+                    $("#btnFiltroCancion").fadeIn(tiempo_fadeout);
+                    $("#btnFiltroArtista").fadeIn(tiempo_fadeout);
+                    $("#btnFiltroFavoritos").fadeIn(tiempo_fadeout);
+                    $("#btnFiltroRecomendados").fadeIn(tiempo_fadeout);
+                    $("#btnFiltroGeneral").fadeIn(tiempo_fadeout);
+                }
+            });
+        }, 1000);
+        setTimeout(function() {
+            $("#btnFiltroAlbum").removeClass("filtro__album_nueva_posicion");
+            $("#btnFiltroAlbum").addClass("filtro_posicion_izquierda");
+        }, 500)
+    });
+    $("#btnFiltroFavoritos").click(function() {
+        //Quitamos los demás filtros de la pantalla.
+        $("#btnFiltroCancion").fadeOut(tiempo_fadeout);
+        $("#btnFiltroArtista").fadeOut(tiempo_fadeout);
+        $("#btnFiltroAlbum").fadeOut(tiempo_fadeout);
+        $("#btnFiltroRecomendados").fadeOut(tiempo_fadeout);
+        $("#btnFiltroGeneral").fadeOut(tiempo_fadeout);
+        setTimeout(function() {
+            $(".filtro__txt").css("display", "inline-block");
+            $("#txtFiltro").focus();
+            $("#txtFiltro").keydown(function(tecla) {
+                if (tecla.which == "13") {
+                }
+                if (tecla.which == "27") {
+                    //Devolvemos los filtros a la pantalla
+                    $(".filtro__txt").css("display", "none");
+                    $("#btnFiltroFavoritos").removeClass("filtro_posicion_izquierda");
+                    if ($("#btnFiltroAlbum").hasClass("filtro__album_nueva_posicion")) {
+                        $("#btnFiltroFavoritos").addClass("filtro__favoritos_nueva_posicion");
+                    }
+                    $("#btnFiltroCancion").fadeIn(tiempo_fadeout);
+                    $("#btnFiltroArtista").fadeIn(tiempo_fadeout);
+                    $("#btnFiltroAlbum").fadeIn(tiempo_fadeout);
+                    $("#btnFiltroRecomendados").fadeIn(tiempo_fadeout);
+                    $("#btnFiltroGeneral").fadeIn(tiempo_fadeout);
+                }
+            });
+        }, 1000);
+        setTimeout(function() {
+            $("#btnFiltroFavoritos").removeClass("filtro__favoritos_nueva_posicion");
+            $("#btnFiltroFavoritos").addClass("filtro_posicion_izquierda");
+        }, 500)
+    });
+    $("#btnFiltroRecomendados").click(function() {
+        //Quitamos los demás filtros de la pantalla.
+        $("#btnFiltroCancion").fadeOut(tiempo_fadeout);
+        $("#btnFiltroArtista").fadeOut(tiempo_fadeout);
+        $("#btnFiltroAlbum").fadeOut(tiempo_fadeout);
+        $("#btnFiltroFavoritos").fadeOut(tiempo_fadeout);
+        $("#btnFiltroGeneral").fadeOut(tiempo_fadeout);
+        setTimeout(function() {
+            $(".filtro__txt").css("display", "inline-block");
+            $("#txtFiltro").focus();
+            $("#txtFiltro").keydown(function(tecla) {
+                if (tecla.which == "13") {
+                }
+                if (tecla.which == "27") {
+                    //Devolvemos los filtros a la pantalla
+                    $(".filtro__txt").css("display", "none");
+                    $("#btnFiltroRecomendados").removeClass("filtro_posicion_izquierda");
+                    if ($("#btnFiltroAlbum").hasClass("filtro__album_nueva_posicion")) {
+                        $("#btnFiltroRecomendados").addClass("filtro__sugeridos_nueva_posicion");
+                    }
+                    $("#btnFiltroCancion").fadeIn(tiempo_fadeout);
+                    $("#btnFiltroArtista").fadeIn(tiempo_fadeout);
+                    $("#btnFiltroAlbum").fadeIn(tiempo_fadeout);
+                    $("#btnFiltroFavoritos").fadeIn(tiempo_fadeout);
+                    $("#btnFiltroGeneral").fadeIn(tiempo_fadeout);
+                }
+            });
+        }, 1000);
+        setTimeout(function() {
+            $("#btnFiltroRecomendados").removeClass("filtro__sugeridos_nueva_posicion");
+            $("#btnFiltroRecomendados").addClass("filtro_posicion_izquierda");
+        }, 500)
+    });
+    $("#btnFiltroGeneral").click(function() {
+        //Quitamos los demás filtros de la pantalla.
+        $("#btnFiltroCancion").fadeOut(tiempo_fadeout);
+        $("#btnFiltroArtista").fadeOut(tiempo_fadeout);
+        $("#btnFiltroAlbum").fadeOut(tiempo_fadeout);
+        $("#btnFiltroFavoritos").fadeOut(tiempo_fadeout);
+        $("#btnFiltroRecomendados").fadeOut(tiempo_fadeout);
+        setTimeout(function() {
+            $(".filtro__txt").css("display", "inline-block");
+            $("#txtFiltro").focus();
+            $("#txtFiltro").keydown(function(tecla) {
+                if (tecla.which == "13") {
+                }
+                if (tecla.which == "27") {
+                    //Devolvemos los filtros a la pantalla
+                    $(".filtro__txt").css("display", "none");
+                    $("#btnFiltroGeneral").removeClass("filtro_posicion_izquierda");
+                    if ($("#btnFiltroAlbum").hasClass("filtro__album_nueva_posicion")) {
+                        $("#btnFiltroGeneral").addClass("filtro__filtro_nueva_posicion");
+                    }
+                    $("#btnFiltroCancion").fadeIn(tiempo_fadeout);
+                    $("#btnFiltroArtista").fadeIn(tiempo_fadeout);
+                    $("#btnFiltroAlbum").fadeIn(tiempo_fadeout);
+                    $("#btnFiltroFavoritos").fadeIn(tiempo_fadeout);
+                    $("#btnFiltroRecomendados").fadeIn(tiempo_fadeout);
+                }
+            });
+        }, 1000);
+        setTimeout(function() {
+            $("#btnFiltroGeneral").removeClass("filtro__filtro_nueva_posicion");
+            $("#btnFiltroGeneral").addClass("filtro_posicion_izquierda");
         }, 500)
     });
     //Evento al cambiar el deslizador del volumen.
@@ -520,20 +690,20 @@ function muestraAlbumes() {
 
 function cargaAnimaciones() {
     $(".filtro__filtro").mouseenter(function() {
-        $(".filtro__canciones").addClass("nueva_posicion_filtro");
-        $(".filtro__artista").addClass("nueva_posicion");
-        $(".filtro__album").addClass("nueva_posicion");
-        $(".filtro__favoritos").addClass("nueva_posicion");
-        $(".filtro__sugeridos").addClass("nueva_posicion");
-        $(".filtro__filtro").addClass("nueva_posicion");
+        $(".filtro__canciones").addClass("filtro__canciones_nueva_posicion");
+        $(".filtro__artista").addClass("filtro__artista_nueva_posicion");
+        $(".filtro__album").addClass("filtro__album_nueva_posicion");
+        $(".filtro__favoritos").addClass("filtro__favoritos_nueva_posicion");
+        $(".filtro__sugeridos").addClass("filtro__sugeridos_nueva_posicion");
+        $(".filtro__filtro").addClass("filtro__filtro_nueva_posicion");
     });
     //Acciones al salir el mouse de la barra de filtros.
     $(".filtro__contenedor").mouseleave(function() {
-        $(".filtro__canciones").removeClass("nueva_posicion_filtro");
-        $(".filtro__artista").removeClass("nueva_posicion");
-        $(".filtro__album").removeClass("nueva_posicion");
-        $(".filtro__favoritos").removeClass("nueva_posicion");
-        $(".filtro__sugeridos").removeClass("nueva_posicion");
-        $(".filtro__filtro").removeClass("nueva_posicion");
+        $(".filtro__canciones").removeClass("filtro__canciones_nueva_posicion");
+        $(".filtro__artista").removeClass("filtro__artista_nueva_posicion");
+        $(".filtro__album").removeClass("filtro__album_nueva_posicion");
+        $(".filtro__favoritos").removeClass("filtro__favoritos_nueva_posicion");
+        $(".filtro__sugeridos").removeClass("filtro__sugeridos_nueva_posicion");
+        $(".filtro__filtro").removeClass("filtro__filtro_nueva_posicion");
     });
 }

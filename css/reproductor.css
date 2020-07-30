@@ -92,11 +92,12 @@ body {
 }
 .filtro__boton {
     padding: 0px;
-    height: 3.125rem;
-    width: 3.125rem;
-    margin-left: -3.375rem;
+    height: 3rem;
+    width: 3rem;
+    margin-left: 21rem;
     transition: margin-left 0.5s;
     display: inline-block;
+    position: absolute;
 }
 .filtro__boton img {
     width: 100%;
@@ -107,27 +108,38 @@ body {
 .filtro__contenedor {
     margin: 0px;
     padding-left: 0.125rem;
-    height: 3.125rem;
+    height: 3rem;
     width: 45rem;
     background: black;
     overflow: hidden;
 }
-.filtro__canciones {
-    margin-left: 21.5rem;
-    transition: margin-left 0.5s;
+.filtro__canciones_nueva_posicion {
+    margin-left: 0rem;
 }
-.nueva_posicion {
-    margin-left: 11%;
+.filtro__artista_nueva_posicion {
+    margin-left:  8.4rem;
 }
-.nueva_posicion_filtro {
-    margin-left: 0%;
+.filtro__album_nueva_posicion {
+    margin-left: 16.8rem;
+}
+.filtro__favoritos_nueva_posicion {
+    margin-left: 25.2rem;
+}
+.filtro__sugeridos_nueva_posicion {
+    margin-left: 33.6rem;
+}
+.filtro__filtro_nueva_posicion {
+    margin-left: 42rem;
+}
+.filtro_posicion_izquierda {
+    margin-left: 0rem;
 }
 .filtro__txt {
     display: none;
-    position: fixed;
-    margin-left: 1rem;
+    position: absolute;
+    margin-left: 5rem;
     padding-top: 0.6rem;
-    height: 3.125rem;
+    height: 3rem;
     width: 40rem;
 }
 .filtro__txt_input {

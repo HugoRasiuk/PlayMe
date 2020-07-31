@@ -51,6 +51,7 @@ $(document).ready(function() {
     //Cargamos las imágenes de las tapas de los albumes.
     cargaAlbumes(consulta);
     muestraAlbumes();
+    $(".imagenes > div").css("opacity", "1");
     //Cargamos las animaciones.
     cargaAnimaciones();
     //Asociamos los eventos de las tapas de los albumes.
@@ -143,10 +144,16 @@ $(document).ready(function() {
             //Evaluamos si quedan como mínimo 12 albumes por mostrar.
             if (albumes_restantes > 11) {
                 muestraAlbumes();
+                if (indice_album == id_album.length) {
+                    $(".filtro__btnSiguiente").css("visibility", "hidden");
+                }
+                $(".filtro__btnAnterior").css("visibility", "visible");
             }else{
                 //Establecemos el índice para que complete los 12 albumes en pantalla.
                 indice_album = id_album.length - 12;
                 muestraAlbumes();
+                $(".filtro__btnAnterior").css("visibility", "visible");
+                $(".filtro__btnSiguiente").css("visibility", "hidden");
             }
 
         }
@@ -154,11 +161,17 @@ $(document).ready(function() {
     $("#btnAnterior").click(function() {
         if (indice_album >= 24) {
             indice_album -= 24;
+            if (indice_album == 0) {
+                $(".filtro__btnAnterior").css("visibility", "hidden");
+            }
             muestraAlbumes();
+            $(".filtro__btnSiguiente").css("visibility", "visible");
         }else{
             if (indice_album > 12) {
                 indice_album = 0;
                 muestraAlbumes();
+                $(".filtro__btnSiguiente").css("visibility", "visible");
+                $(".filtro__btnAnterior").css("visibility", "hidden");
             }
         }
     });
@@ -434,6 +447,7 @@ function  mostrarListaCanciones() {
             let celda = document.createElement("td");
             if (j == 1) {
                 celda.setAttribute("id", "estrella" + String(i));
+                celda.setAttribute("style", "opacity: 0;");
                 imagen = document.createElement("img");
                 imagen.setAttribute("class", "estrella_lista");
                 imagen.setAttribute("id", String(ALBUM.canciones[i].id) * (-1));
@@ -505,6 +519,17 @@ function  mostrarListaCanciones() {
         $("#btnPlay_img").attr("src", "../imagenes/Botones/Pausa.png");
        $("#btnPlay_img").attr("alt", "Botón de pausa");
     });
+    //Temporizador  para mostrar la lista de canciones.
+    let i = 0;
+    let temporizador =  setInterval(function() {
+        if (i == tamanio) {
+            clearInterval(temporizador);
+        }else{
+            $("#" + String(i)).css("color", "rgb(220, 220, 255)");
+            $("#estrella" + String(i)).css("opacity", "1");
+            i++;
+        }
+    }, 30);
 }
 
 

@@ -16,6 +16,7 @@ var nombre_album = [];
 var foto_album = [];
 var artista_album = [];
 var indice_album = 0;
+var cero_grados = true;
 //Constante para el media.
 var media;
 //Variables para los temporizadores.
@@ -146,7 +147,13 @@ $(document).ready(function() {
             let albumes_restantes = id_album.length - indice_album;
             //Evaluamos si quedan como mínimo 12 albumes por mostrar.
             if (albumes_restantes > 11) {
-                muestraAlbumes();
+                if (cero_grados) {
+                    giraAlbumes_0_90();
+                    giraAlbumes_90_180();
+                }else{
+                    giraAlbumes_180_270();
+                    giraAlbumes_270_0();
+                }
                 if (indice_album == id_album.length) {
                     $(".filtro__btnSiguiente").css("visibility", "hidden");
                 }
@@ -154,7 +161,13 @@ $(document).ready(function() {
             }else{
                 //Establecemos el índice para que complete los 12 albumes en pantalla.
                 indice_album = id_album.length - 12;
-                muestraAlbumes();
+                if (cero_grados) {
+                    giraAlbumes_0_90();
+                    giraAlbumes_90_180();
+                }else{
+                    giraAlbumes_180_270();
+                    giraAlbumes_270_0();
+                }
                 $(".filtro__btnAnterior").css("visibility", "visible");
                 $(".filtro__btnSiguiente").css("visibility", "hidden");
             }
@@ -167,13 +180,25 @@ $(document).ready(function() {
             if (indice_album == 0) {
                 $(".filtro__btnAnterior").css("visibility", "hidden");
             }
-            muestraAlbumes();
+            if (cero_grados) {
+                giraAlbumes_0_270();
+                giraAlbumes_270_180();
+            }else{
+                giraAlbumes_180_90();
+                giraAlbumes_90_0();
+            }
             $(".filtro__btnSiguiente").css("visibility", "visible");
         }else{
             if (indice_album > 12) {
                 indice_album = 0;
-                muestraAlbumes();
-                $(".filtro__btnSiguiente").css("visibility", "visible");
+                if (cero_grados) {
+                    giraAlbumes_0_270();
+                    giraAlbumes_270_180();
+                }else{
+                    giraAlbumes_180_90();
+                    giraAlbumes_90_0();
+                }
+                    $(".filtro__btnSiguiente").css("visibility", "visible");
                 $(".filtro__btnAnterior").css("visibility", "hidden");
             }
         }
@@ -415,6 +440,138 @@ $(document).ready(function() {
         media.currentTime = $("#barra_tiempo").val();
     });
 })
+
+
+
+//Giramos las tapas.
+function giraAlbumes_0_90() {
+    let i = 0;
+    let temporizador =  setInterval(function() {
+        $("#contenedor_tapa" + String(i)).css("transform", "rotateY(90deg)");
+        //Limpiamos la imágen.
+        $(".tapa" + String(i)).attr("src", "");
+        $(".tapa" + String(i)).attr("alt", "");
+        //Cambiamos la imágen.
+        $(".tapa" + String(i)).attr("id", id_album[indice_album]);
+        $(".tapa" + String(i)).attr("src", foto_album[indice_album]);
+        $(".tapa" + String(i)).attr("alt", artista_album[indice_album] + ", " + nombre_album[indice_album]);
+        $(".tapa" + String(i)).css("transform", "rotateY(180deg)");
+        indice_album++;
+        i++;
+        if (i == 12) {
+            clearInterval(temporizador);
+        }
+    }, 100);
+}
+
+function giraAlbumes_90_180() {
+    let i = 0;
+    let temporizador =  setInterval(function() {
+        $("#contenedor_tapa" + String(i)).css("transform", "rotateY(180deg)");
+        i++;
+        if (i == 12) {
+            clearInterval(temporizador);
+        }
+    }, 100);
+    cero_grados = false;
+}
+
+function giraAlbumes_180_270() {
+    let i = 0;
+    let temporizador =  setInterval(function() {
+        $("#contenedor_tapa" + String(i)).css("transform", "rotateY(270deg)");
+        //Limpiamos la imágen.
+        $(".tapa" + String(i)).attr("src", "");
+        $(".tapa" + String(i)).attr("alt", "");
+        //Cambiamos la imágen.
+        $(".tapa" + String(i)).attr("id", id_album[indice_album]);
+        $(".tapa" + String(i)).attr("src", foto_album[indice_album]);
+        $(".tapa" + String(i)).attr("alt", artista_album[indice_album] + ", " + nombre_album[indice_album]);
+        $(".tapa" + String(i)).css("transform", "rotateY(0deg)");
+        indice_album++;
+        i++;
+        if (i == 12) {
+            clearInterval(temporizador);
+        }
+    }, 100);
+}
+
+function giraAlbumes_270_0() {
+    let i = 0;
+    let temporizador =  setInterval(function() {
+        $("#contenedor_tapa" + String(i)).css("transform", "rotateY(0deg)");
+        i++;
+        if (i == 12) {
+            clearInterval(temporizador);
+        }
+    }, 100);
+    cero_grados = true;
+}
+
+//Giramos las tapas en sentido contrario.
+function giraAlbumes_0_270() {
+    let i = 0;
+    let temporizador =  setInterval(function() {
+        $("#contenedor_tapa" + String(i)).css("transform", "rotateY(-90deg)");
+        //Limpiamos la imágen.
+        $(".tapa" + String(i)).attr("src", "");
+        $(".tapa" + String(i)).attr("alt", "");
+        //Cambiamos la imágen.
+        $(".tapa" + String(i)).attr("id", id_album[indice_album]);
+        $(".tapa" + String(i)).attr("src", foto_album[indice_album]);
+        $(".tapa" + String(i)).attr("alt", artista_album[indice_album] + ", " + nombre_album[indice_album]);
+        $(".tapa" + String(i)).css("transform", "rotateY(180deg)");
+        indice_album++;
+        i++;
+        if (i == 12) {
+            clearInterval(temporizador);
+        }
+    }, 100);
+}
+
+function giraAlbumes_270_180() {
+    let i = 0;
+    let temporizador =  setInterval(function() {
+        $("#contenedor_tapa" + String(i)).css("transform", "rotateY(-180deg)");
+        i++;
+        if (i == 12) {
+            clearInterval(temporizador);
+        }
+    }, 100);
+    cero_grados = false;
+}
+
+function giraAlbumes_180_90() {
+    let i = 0;
+    let temporizador =  setInterval(function() {
+        $("#contenedor_tapa" + String(i)).css("transform", "rotateY(-270deg)");
+        //Limpiamos la imágen.
+        $(".tapa" + String(i)).attr("src", "");
+        $(".tapa" + String(i)).attr("alt", "");
+        //Cambiamos la imágen.
+        $(".tapa" + String(i)).attr("id", id_album[indice_album]);
+        $(".tapa" + String(i)).attr("src", foto_album[indice_album]);
+        $(".tapa" + String(i)).attr("alt", artista_album[indice_album] + ", " + nombre_album[indice_album]);
+        $(".tapa" + String(i)).css("transform", "rotateY(0deg)");
+s        indice_album++;
+        i++;
+        if (i == 12) {
+            clearInterval(temporizador);
+        }
+    }, 100);
+}
+
+function giraAlbumes_90_0() {
+    let i = 0;
+    let temporizador =  setInterval(function() {
+        $("#contenedor_tapa" + String(i)).css("transform", "rotateY(0deg)");
+        i++;
+        if (i == 12) {
+            clearInterval(temporizador);
+        }
+    }, 100);
+    cero_grados = true;
+}
 
 
 

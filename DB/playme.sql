@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-07-2020 a las 04:54:22
+-- Tiempo de generación: 02-08-2020 a las 04:50:34
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.6
 
@@ -475,7 +475,7 @@ INSERT INTO `canciones` (`can_id`, `can_nombre`, `can_url`, `can_idgenero`) VALU
 (349, '09 And I Love Her', '../Albumes/The Beatles/1962-1966/09 And I Love Her.mp3', 2),
 (350, '10 Eight Days A Week', '../Albumes/The Beatles/1962-1966/10 Eight Days A Week.mp3', 2),
 (351, '11 I Feel Fine', '../Albumes/The Beatles/1962-1966/11 I Feel Fine.mp3', 2),
-(352, '12 Eleanor Rigby', '../Albumes/The Beatles/1962-1966/11 I Feel Fine.mp3', 2),
+(352, '12 Eleanor Rigby', '../Albumes/The Beatles/1962-1966/12 Eleanor Rigby.mp3', 2),
 (353, '13 Yellow Submarine', '../Albumes/The Beatles/1962-1966/13 Yellow Submarine.mp3', 2),
 (354, '14 Help!', '../Albumes/The Beatles/1962-1966/14 Help!.mp3', 2),
 (355, '15 You\'ve Got To Hide Your Love Away', '../Albumes/The Beatles/1962-1966/15 You\'ve Got To Hide Your Love Away.mp3', 2),
@@ -1569,7 +1569,16 @@ INSERT INTO `favoritas` (`fav_id`, `fav_idusuario`, `fav_idcancion`) VALUES
 (10, 15, 36),
 (11, 15, 71),
 (12, 15, 74),
-(13, 15, 81);
+(13, 15, 81),
+(14, 15, 325),
+(15, 15, 220),
+(16, 15, 434),
+(17, 15, 269),
+(18, 15, 450),
+(19, 15, 423),
+(20, 15, 425),
+(21, 15, 426),
+(23, 15, 139);
 
 -- --------------------------------------------------------
 
@@ -1797,7 +1806,7 @@ ALTER TABLE `canciones_artistas`
 -- AUTO_INCREMENT de la tabla `favoritas`
 --
 ALTER TABLE `favoritas`
-  MODIFY `fav_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `fav_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT de la tabla `generos`

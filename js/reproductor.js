@@ -245,7 +245,6 @@ $(document).ready(function() {
                 if (tecla.which == "13") {
                     texto_filtro = $("#txtFiltro").val();
                     if (texto_filtro != "") {
-                        texto_filtro = " "  + texto_filtro + " ";
                         let consulta = "SELECT alb_id, alb_nombre, alb_foto, art_nombre " +
                                        "FROM albumes " +
                                        "INNER JOIN canciones_albumes " +
@@ -418,6 +417,36 @@ $(document).ready(function() {
             $("#txtFiltro").focus();
             $("#txtFiltro").keydown(function(tecla) {
                 if (tecla.which == "13") {
+                    texto_filtro_NoAfectaLista = $("#txtFiltro").val();
+                    let consulta = "SELECT alb_id, alb_nombre, alb_foto, art_nombre " +
+                                   "FROM albumes " +
+                                   "INNER JOIN canciones_albumes " +
+                                   "ON albumes.alb_id = canciones_albumes.cal_idalbum " +
+                                   "INNER JOIN canciones " +
+                                   "ON canciones_albumes.cal_idcancion = canciones.can_id " +
+                                   "INNER JOIN CANCIONES_ARTISTAS " +
+                                   "ON canciones.can_id = canciones_artistas.car_idcancion " +
+                                   "INNER JOIN artistas " +
+                                   "ON canciones_artistas.car_idartista = artistas.art_id " +
+                                   "INNER JOIN favoritas " +
+                                   "ON canciones.can_id = favoritas.fav_idcancion " +
+                                   "WHERE fav_idusuario = " + String(USUARIO.id);
+                    if (texto_filtro_NoAfectaLista != "") {
+                        consulta = consulta + " AND alb_nombre like '%" + texto_filtro_NoAfectaLista + "%' " +
+                                              " OR can_nombre like '%" + texto_filtro_NoAfectaLista + "%' " +
+                                              " OR art_nombre like '%" + texto_filtro_NoAfectaLista + "%' ";
+                    }
+                    consulta = consulta +  " GROUP BY alb_id;";
+                    cargaAlbumes(consulta);
+                    $(".imagenes").fadeOut(tiempo_fadeout, function() {
+                        muestraAlbumes();
+                        $(".imagenes").fadeIn(tiempo_fadein);
+                    });
+                    if (id_album.length > 12) {
+                        $("#btnSiguiente").css("visibility", "visible");
+                    }else{
+                        $("#btnSiguiente").css("visibility", "hidden");
+                    }
                 }
                 if (tecla.which == "27") {
                     //Devolvemos los filtros a la pantalla
@@ -440,33 +469,13 @@ $(document).ready(function() {
         }, 500)
     });
     $("#btnFiltroRecomendados").click(function() {
+        buscarRecomendados();
         //Quitamos los demás filtros de la pantalla.
         $("#btnFiltroCancion").fadeOut(tiempo_fadeout);
         $("#btnFiltroArtista").fadeOut(tiempo_fadeout);
         $("#btnFiltroAlbum").fadeOut(tiempo_fadeout);
         $("#btnFiltroFavoritos").fadeOut(tiempo_fadeout);
         $("#btnFiltroGeneral").fadeOut(tiempo_fadeout);
-        setTimeout(function() {
-            $(".filtro__txt").css("display", "inline-block");
-            $("#txtFiltro").focus();
-            $("#txtFiltro").keydown(function(tecla) {
-                if (tecla.which == "13") {
-                }
-                if (tecla.which == "27") {
-                    //Devolvemos los filtros a la pantalla
-                    $(".filtro__txt").css("display", "none");
-                    $("#btnFiltroRecomendados").removeClass("filtro_posicion_izquierda");
-                    if ($("#btnFiltroAlbum").hasClass("filtro__album_nueva_posicion")) {
-                        $("#btnFiltroRecomendados").addClass("filtro__sugeridos_nueva_posicion");
-                    }
-                    $("#btnFiltroCancion").fadeIn(tiempo_fadeout);
-                    $("#btnFiltroArtista").fadeIn(tiempo_fadeout);
-                    $("#btnFiltroAlbum").fadeIn(tiempo_fadeout);
-                    $("#btnFiltroFavoritos").fadeIn(tiempo_fadeout);
-                    $("#btnFiltroGeneral").fadeIn(tiempo_fadeout);
-                }
-            });
-        }, 1000);
         setTimeout(function() {
             $("#btnFiltroRecomendados").removeClass("filtro__sugeridos_nueva_posicion");
             $("#btnFiltroRecomendados").addClass("filtro_posicion_izquierda");
@@ -578,6 +587,30 @@ $(document).ready(function() {
         media.currentTime = $("#barra_tiempo").val();
     });
 })
+
+
+
+function buscarRecomendados() {
+    //Buscamos los géneros de los favoritos del usuario.
+    let consulta = "SELECT gen_id" +
+                   " FROM generos" +
+                   " INNER JOIN canciones" +
+                   " ON generos.gen_id = canciones.can_idgenero" +
+                   " INNER JOIN favoritas" +
+                   " ON canciones.can_id = favoritas.fav_idcancion" +
+                   " WHERE fav_idusuario = " + String(USUARIO.id) +
+                   " GROUP BY gen_id";
+    //Buscamos las 5 canciones más marcadas como favoritas en dichos generos.
+    consulta = "SELECT count(*) AS cantidad" +
+               " FROM favoritas" +
+               " INNER JOIN canciones" +
+               " ON favoritas.fav_idcancion = canciones.can_id" +
+               " WHERE can_idgenero = 1" +
+               " GROUP BY can_id;" +
+               " ORDER BY cantidad DESC"
+               " LIMIT 5";
+    //Aramamos un album de sugeridos por cada género.
+}
 
 
 

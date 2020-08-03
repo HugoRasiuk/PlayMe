@@ -1,7 +1,6 @@
 "use strict";
 //Reproductor del sitio.
 
-
 //Instanciamos los objetos.
 const USUARIO = new Usuario();
 const ALBUM = new Album();
@@ -241,7 +240,7 @@ $(document).ready(function() {
         setTimeout(function() {
             $(".filtro__txt").css("display", "inline-block");
             $("#txtFiltro").focus();
-            $("#txtFiltro").keydown(function(tecla) {
+            $("#txtFiltro").on("keydown", function(tecla) {
                 if (tecla.which == "13") {
                     $("#btnQuitarFiltro").css("visibility", "visible");
                     texto_filtro = $("#txtFiltro").val();
@@ -300,7 +299,7 @@ $(document).ready(function() {
         setTimeout(function() {
             $(".filtro__txt").css("display", "inline-block");
             $("#txtFiltro").focus();
-            $("#txtFiltro").keydown(function(tecla) {
+            $("#txtFiltro").on("keydown", function(tecla) {
                 if (tecla.which == "13") {
                     $("#btnQuitarFiltro").css("visibility", "visible");
                     let texto_filtro_NoAfectaLista = $("#txtFiltro").val();
@@ -359,23 +358,23 @@ $(document).ready(function() {
         setTimeout(function() {
             $(".filtro__txt").css("display", "inline-block");
             $("#txtFiltro").focus();
-            $("#txtFiltro").keydown(function(tecla) {
+            $("#txtFiltro").on("keydown", function(tecla) {
                 if (tecla.which == "13") {
                     $("#btnQuitarFiltro").css("visibility", "visible");
                     texto_filtro_NoAfectaLista = $("#txtFiltro").val();
                     if (texto_filtro_NoAfectaLista != "") {
-                        let consulta = "SELECT alb_id, alb_nombre, alb_foto, art_nombre " +
-                                       "FROM albumes " +
-                                       "INNER JOIN canciones_albumes " +
-                                       "ON albumes.alb_id = canciones_albumes.cal_idalbum " +
-                                       "INNER JOIN canciones " +
-                                       "ON canciones_albumes.cal_idcancion = canciones.can_id " +
-                                       "INNER JOIN CANCIONES_ARTISTAS " +
-                                       "ON canciones.can_id = canciones_artistas.car_idcancion " +
-                                       "INNER JOIN artistas " +
-                                       "ON canciones_artistas.car_idartista = artistas.art_id " +
-                                       "WHERE alb_nombre like '%" + texto_filtro_NoAfectaLista + "%'" +
-                                       "GROUP BY alb_id;";
+                        let consulta = "SELECT alb_id, alb_nombre, alb_foto, art_nombre" +
+                                       " FROM albumes" +
+                                       " INNER JOIN canciones_albumes" +
+                                       " ON albumes.alb_id = canciones_albumes.cal_idalbum" +
+                                       " INNER JOIN canciones" +
+                                       " ON canciones_albumes.cal_idcancion = canciones.can_id" +
+                                       " INNER JOIN CANCIONES_ARTISTAS" +
+                                       " ON canciones.can_id = canciones_artistas.car_idcancion" +
+                                       " INNER JOIN artistas" +
+                                       " ON canciones_artistas.car_idartista = artistas.art_id" +
+                                       " WHERE alb_nombre like '%" + texto_filtro_NoAfectaLista + "%'" +
+                                       " GROUP BY alb_id;";
                         cargaAlbumes(consulta);
                         $(".imagenes").fadeOut(tiempo_fadeout, function() {
                             muestraAlbumes();
@@ -388,7 +387,7 @@ $(document).ready(function() {
                         }
                     };
                 }
-                if (tecla.which == "27") {
+                if (tecla == "27") {
                     //Devolvemos los filtros a la pantalla
                     $(".filtro__txt").css("display", "none");
                     $("#btnFiltroAlbum").removeClass("filtro_posicion_izquierda");
@@ -401,6 +400,7 @@ $(document).ready(function() {
                     $("#btnFiltroRecomendados").fadeIn(tiempo_fadein);
                     $("#btnFiltroGeneral").fadeIn(tiempo_fadein);
                 }
+            // });
             });
         }, 1000);
         setTimeout(function() {
@@ -418,7 +418,7 @@ $(document).ready(function() {
         setTimeout(function() {
             $(".filtro__txt").css("display", "inline-block");
             $("#txtFiltro").focus();
-            $("#txtFiltro").keydown(function(tecla) {
+            $("#txtFiltro").on("keydown", function(tecla) {
                 if (tecla.which == "13") {
                     $("#btnQuitarFiltro").css("visibility", "visible");
                     texto_filtro_NoAfectaLista = $("#txtFiltro").val();
@@ -496,7 +496,7 @@ $(document).ready(function() {
         setTimeout(function() {
             $(".filtro__txt").css("display", "inline-block");
             $("#txtFiltro").focus();
-            $("#txtFiltro").keydown(function(tecla) {
+            $("#txtFiltro").on("keydown", function(tecla) {
                 if (tecla.which == "13") {
                     $("#btnQuitarFiltro").css("visibility", "visible");
                     texto_filtro = $("#txtFiltro").val();
@@ -549,6 +549,7 @@ $(document).ready(function() {
     });
     //Acciones al hacer click en el botón de cerrar filtro.
     $("#btnQuitarFiltro").click(function() {
+        $("#txtFiltro").off();
         texto_filtro = "";
         texto_filtro_NoAfectaLista = "";
         $("#txtFiltro").val("");

@@ -549,7 +549,9 @@ $(document).ready(function() {
     });
     //Acciones al hacer click en el botón de cerrar filtro.
     $("#btnQuitarFiltro").click(function() {
+        //Quitamos la asociación de eventos.
         $("#txtFiltro").off();
+        //Limpiamos las variables de los filtros.
         texto_filtro = "";
         texto_filtro_NoAfectaLista = "";
         $("#txtFiltro").val("");
@@ -571,21 +573,25 @@ $(document).ready(function() {
         $("#btnFiltroRecomendados").fadeIn(tiempo_fadein);
         $("#btnFiltroGeneral").fadeIn(tiempo_fadein);
         //Recargamos las tapas de los albumes.
-        let consulta = "SELECT alb_id, alb_nombre, alb_foto, art_nombre FROM albumes " +
-                       "INNER JOIN canciones_albumes " +
-                       "ON albumes.alb_id = canciones_albumes.cal_idalbum " +
-                       "INNER JOIN canciones_artistas " +
-                       "ON canciones_albumes.cal_idcancion = canciones_artistas.car_idcancion " +
-                       "INNER JOIN artistas " +
-                       "ON canciones_artistas.car_idartista = artistas.art_id " +
-                       "group by alb_id " +
-                       "ORDER BY alb_nombre" + ";";
+        let consulta = "SELECT alb_id, alb_nombre, alb_foto, art_nombre FROM albumes" +
+                       " INNER JOIN canciones_albumes" +
+                       " ON albumes.alb_id = canciones_albumes.cal_idalbum" +
+                       " INNER JOIN canciones_artistas" +
+                       " ON canciones_albumes.cal_idcancion = canciones_artistas.car_idcancion" +
+                       " INNER JOIN artistas" +
+                       " ON canciones_artistas.car_idartista = artistas.art_id" +
+                       " GROUP BY alb_id" +
+                       " ORDER BY alb_nombre" + ";";
         //Cargamos las imágenes de las tapas de los albumes.
         cargaAlbumes(consulta);
         $(".imagenes").fadeOut(tiempo_fadeout, function() {
             muestraAlbumes();
             $(".imagenes").fadeIn(tiempo_fadein);
         });
+        //si hay más de 12 albumes para mostrar, hacemos visible el botón de siguientes imágenes.
+        if (id_album.length > 12) {
+            $("#btnSiguiente").css("visibility", "visible");
+        };
     });
     //Evento al cambiar el deslizador del volumen.
     $("#btnDeslizadorVolumen").change(function() {
@@ -647,22 +653,85 @@ function buscarRecomendados() {
                    " WHERE fav_idusuario = " + String(USUARIO.id) +
                    " GROUP BY gen_id";
     //Buscamos las 5 canciones más marcadas como favoritas en dichos generos.
-    consulta = "SELECT count(*) AS cantidad" +
+    consulta = "SELECT count(*) AS cantidad, can_id, can_nombre, can_url, art_nombre" +
                " FROM favoritas" +
                " INNER JOIN canciones" +
                " ON favoritas.fav_idcancion = canciones.can_id" +
+               " INNER JOIN canciones_artistas" +
+               " ON canciones.can_id = canciones_artistas.car_idcancion" +
+               " INNER JOIN artistas" +
+               " ON canciones_artistas.car_idartista = artistas.art_id" +
                " WHERE can_idgenero = 1" +
-               " GROUP BY can_id;" +
-               " ORDER BY cantidad DESC"
-               " LIMIT 5";
+               " GROUP BY can_id" +
+               " ORDER BY cantidad DESC" +
+               " LIMIT 10;";
     //Aramamos un album de sugeridos por cada género.
+    //Cargamos la lista de canciones.
+    //Arrays para los datos obtenidos.
+    let id = [];
+    let nombre = [];
+    let url = [];
+    let artista = [];
+    $.ajax({
+        url: "../php/cargaDatos.php",
+        type: "POST",
+        async: false,
+        data: {cadena:consulta},
+        success: function(respuesta) {
+            JSON.parse(respuesta, function(clave, valor) {
+                if (clave == "can_id") {
+                    id.push(valor);
+                }
+                if (clave == "can_nombre") {
+                    nombre.push(valor);
+                }
+                if (clave == "can_url") {
+                    url.push(valor);
+                }
+                if (clave == "art_nombre") {
+                    artista.push(valor);
+                }
+            })
+            //Eliminamos de memoria todos los objetos cancion anteriores y vaciamos el array.
+            for (let i = 0; i < ALBUM.canciones.length; i++) {
+                delete ALBUM.canciones[i];
+            }
+            ALBUM.canciones = [];
+            //Instanciamos los objetos cancion y los asignamos a la propiedad canciones del objeto album.
+            for (let i = 0; i < nombre.length; i++) {
+                const CANCION = new Cancion();
+                CANCION.id = id[i];
+                CANCION.nombre = nombre[i];
+                CANCION.url = url[i];
+                CANCION.artista = artista[i];
+                ALBUM.canciones.push(CANCION);
+            }
+            Hacemos fade out al volumen y mostramos la lista de canciones.
+            let volumen = media.volume;
+            let temporizador_volumen = setInterval(function() {
+                media.volume -= 0.1;
+                if (media.volume >= 0 && media.volume < 0.05) {
+                    media.load();
+                    limpiarListaCanciones()
+                    mostrarListaCanciones();
+                    ALBUM.indice = 0;
+                    ALBUM.asignarCancion();
+                    $("#btnPlay_img").attr("src", "../imagenes/Botones/Play.png");
+                    $("#btnPlay_img").attr("alt", "Botón de play");
+                    $("#barra_tiempo").val(0);
+                    media.volume = volumen;
+                    clearInterval(temporizador_volumen);
+                }
+            }, 50);
+        }
+    })
 }
 
 
 
 function fadeoutVolumen(_id_album_seleccionado) {
     let volumen = media.volume;
-    var temporizador_volumen = setInterval(function() {
+    let temporizador_volumen = setInterval(function() {
         media.volume -= 0.1;
         if (media.volume >= 0 && media.volume < 0.05) {
             media.load();

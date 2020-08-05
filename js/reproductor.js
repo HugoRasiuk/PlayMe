@@ -23,6 +23,8 @@ var media;
 //Variables para los temporizadores.
 var tiempo_fadeout = 500;
 var tiempo_fadein = 500;
+//Variable para saber si salimos del filtro.
+var filtro_activo = false;
 
 
 
@@ -387,7 +389,7 @@ $(document).ready(function() {
                         }
                     };
                 }
-                if (tecla == "27") {
+                if (tecla.which == "27") {
                     //Devolvemos los filtros a la pantalla
                     $(".filtro__txt").css("display", "none");
                     $("#btnFiltroAlbum").removeClass("filtro_posicion_izquierda");
@@ -534,8 +536,8 @@ $(document).ready(function() {
                     if ($("#btnFiltroAlbum").hasClass("filtro__album_nueva_posicion")) {
                         $("#btnFiltroGeneral").addClass("filtro__filtro_nueva_posicion");
                     }
-                    $("#btnFiltroCancion").fadeIn(tiemp_fadeIn);
-                    $("#btnFiltroArtista").fadeIn(tiempo_fadeIn);
+                    $("#btnFiltroCancion").fadeIn(tiempo_fadein);
+                    $("#btnFiltroArtista").fadeIn(tiempo_fadein);
                     $("#btnFiltroAlbum").fadeIn(tiempo_fadein);
                     $("#btnFiltroFavoritos").fadeIn(tiempo_fadein);
                     $("#btnFiltroRecomendados").fadeIn(tiempo_fadein);
@@ -551,6 +553,7 @@ $(document).ready(function() {
     $("#btnQuitarFiltro").click(function() {
         //Quitamos la asociación de eventos.
         $("#txtFiltro").off();
+        $(".tapa").off();
         //Limpiamos las variables de los filtros.
         texto_filtro = "";
         texto_filtro_NoAfectaLista = "";
@@ -587,12 +590,32 @@ $(document).ready(function() {
         $(".imagenes").fadeOut(tiempo_fadeout, function() {
             muestraAlbumes();
             $(".imagenes").fadeIn(tiempo_fadein);
-        });
+        })
         //si hay más de 12 albumes para mostrar, hacemos visible el botón de siguientes imágenes.
         if (id_album.length > 12) {
             $("#btnSiguiente").css("visibility", "visible");
-        };
-    });
+        }
+        //Asociamos los eventos de las tapas de los albumes.
+         $(".tapa").on("click", function() {
+            let id_album_seleccionado = $(this).attr("id");
+            if (id_album_seleccionado != ALBUM.id || filtro_activo) {
+                filtro_activo = false;
+                if (!media.paused && !media.ended) {
+                    fadeoutVolumen(id_album_seleccionado);
+                }else{
+                   cargarAlbumSeleccionado($(this).attr("id"));
+                   limpiarListaCanciones()
+                   mostrarListaCanciones();
+                   ALBUM.indice = 0;
+                   ALBUM.asignarCancion();
+                   $("#btnPlay_img").attr("src", "../imagenes/Botones/Play.png");
+                   $("#btnPlay_img").attr("alt", "Botón de play");
+                   $("#barra_tiempo").val(0);
+                }
+            }
+       });
+
+    })
     //Evento al cambiar el deslizador del volumen.
     $("#btnDeslizadorVolumen").change(function() {
         media.volume = $("#btnDeslizadorVolumen").val();
@@ -644,7 +667,10 @@ $(document).ready(function() {
 
 function buscarRecomendados() {
     //Buscamos los géneros de los favoritos del usuario.
-    let consulta = "SELECT gen_id" +
+    let id_generos = [];
+    let nombre_genero = [];
+    let imagen_genero = [];
+    let consulta = "SELECT gen_id, gen_nombre, gen_imagen" +
                    " FROM generos" +
                    " INNER JOIN canciones" +
                    " ON generos.gen_id = canciones.can_idgenero" +
@@ -652,20 +678,57 @@ function buscarRecomendados() {
                    " ON canciones.can_id = favoritas.fav_idcancion" +
                    " WHERE fav_idusuario = " + String(USUARIO.id) +
                    " GROUP BY gen_id";
-    //Buscamos las 5 canciones más marcadas como favoritas en dichos generos.
-    consulta = "SELECT count(*) AS cantidad, can_id, can_nombre, can_url, art_nombre" +
-               " FROM favoritas" +
-               " INNER JOIN canciones" +
-               " ON favoritas.fav_idcancion = canciones.can_id" +
-               " INNER JOIN canciones_artistas" +
-               " ON canciones.can_id = canciones_artistas.car_idcancion" +
-               " INNER JOIN artistas" +
-               " ON canciones_artistas.car_idartista = artistas.art_id" +
-               " WHERE can_idgenero = 1" +
-               " GROUP BY can_id" +
-               " ORDER BY cantidad DESC" +
-               " LIMIT 10;";
-    //Aramamos un album de sugeridos por cada género.
+    $.ajax({
+        url: "../php/cargaDatos.php",
+        type: "POST",
+        async: false,
+        data: {cadena:consulta},
+        success: function(respuesta) {
+            JSON.parse(respuesta, function(clave, valor) {
+                if (clave == "gen_id") {
+                    id_generos.push(valor);
+                }
+                if (clave == "gen_imagen") {
+                    imagen_genero.push(valor);
+                }
+                if (clave == "gen_nombre") {
+                    nombre_genero.push(valor);
+                }
+            })
+        }
+    })
+    //Mostramos las tapas de los favoritos de los generos preferidos del usuario.
+    $(".imagenes").fadeOut(tiempo_fadeout, function() {
+        mostrarTapasGeneros(id_generos, imagen_genero, nombre_genero);
+        $(".imagenes").fadeIn(tiempo_fadein);
+    });
+    //Desasociamos los eventos click de las imágenes.
+    $(".tapa").off();
+    //Nuevos eventosd click de las tapas del los albumes.
+     $(".tapa").click(function() {
+         let id_genero_seleccionado = $(this).attr("id");
+         if (id_genero_seleccionado != ALBUM.id || !filtro_activo) {
+             filtro_activo = true;
+             cargarAlbumSugerido(id_genero_seleccionado);
+         }
+    });
+}
+
+
+
+function cargarAlbumSugerido(_id_genero_seleccionado) {
+    let consulta = "SELECT count(*) AS cantidad, can_id, can_nombre, can_url, art_nombre" +
+                   " FROM favoritas" +
+                   " INNER JOIN canciones" +
+                   " ON favoritas.fav_idcancion = canciones.can_id" +
+                   " INNER JOIN canciones_artistas" +
+                   " ON canciones.can_id = canciones_artistas.car_idcancion" +
+                   " INNER JOIN artistas" +
+                   " ON canciones_artistas.car_idartista = artistas.art_id" +
+                   " WHERE can_idgenero = " + String(_id_genero_seleccionado) +
+                   " GROUP BY can_id" +
+                   " ORDER BY cantidad DESC" +
+                   " LIMIT 10;";
     //Cargamos la lista de canciones.
     //Arrays para los datos obtenidos.
     let id = [];
@@ -706,7 +769,7 @@ function buscarRecomendados() {
                 CANCION.artista = artista[i];
                 ALBUM.canciones.push(CANCION);
             }
-            Hacemos fade out al volumen y mostramos la lista de canciones.
+            //Hacemos fade out al volumen y mostramos la lista de canciones.
             let volumen = media.volume;
             let temporizador_volumen = setInterval(function() {
                 media.volume -= 0.1;
@@ -722,9 +785,33 @@ function buscarRecomendados() {
                     media.volume = volumen;
                     clearInterval(temporizador_volumen);
                 }
-            }, 50);
+            }, 50)
         }
     })
+}
+
+
+
+function mostrarTapasGeneros(_id_generos, _imagen_genero, _nombre_genero) {
+    //Limpiamos todas las imágenes.
+    let cadena = "";
+    for (let i = 0; i <= 12; i++) {
+        cadena = ".tapa" + String(i);
+        $(cadena).attr("src", "");
+        $(cadena).attr("alt", "");
+    }
+    //Cargamos las imágenes en los contenedores.
+    let tope = _id_generos.length;
+    if (tope > 12) {
+        tope = 12;
+    }
+    for (let i = 0; i < tope; i++) {
+        cadena = ".tapa" + String(i);
+        $(cadena).attr("id",_id_generos[i]);
+        $(cadena).attr("src", _imagen_genero[i]);
+        $(cadena).attr("alt", "Imágen de favoritos de" + _nombre_genero[i]);
+        indice_album++;
+    }
 }
 
 

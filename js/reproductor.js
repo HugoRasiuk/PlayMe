@@ -92,6 +92,14 @@ $(document).ready(function() {
                 $("#btnPlay_img").attr("alt", "Botón de pausa");
                 $("#" + String(ALBUM.indice)).css("color", "red");
                 $(".info__artista").text(ALBUM.canciones[ALBUM.indice].artista);
+                if (filtro_activo) {
+                    //Si el filtro está activo, mostramos los datos de la canción.
+                    $(".info__imagen").attr("src", ALBUM.canciones[ALBUM.indice].artista.foto);
+                    $(".info__imagen").attr("alt", "Imagén de" + ALBUM.canciones[ALBUM.indice].artista.nombre);
+                    $(".info__artista").text(ALBUM.canciones[ALBUM.indice].artista.nombre);
+                    $(".info__album").text(ALBUM.canciones[ALBUM.indice].nombre);
+                    $(".info__anio").text("");
+               }
             }
         }
      });
@@ -114,10 +122,18 @@ $(document).ready(function() {
                     $("#" + String(ALBUM.indice - 1)).css("color", "rgb(220, 220, 255)");
                 }else{
                     $("#" + String(ALBUM.indice - 1)).css("color", "rgb(150, 150, 255)");
-                };
+                }
                 $("#" + String(ALBUM.indice)).css("color", "red");
                 $(".info__artista").text(ALBUM.canciones[ALBUM.indice].artista);
-             }
+                if (filtro_activo) {
+                    //Si el filtro está activo, mostramos los datos de la canción.
+                    $(".info__imagen").attr("src", ALBUM.canciones[ALBUM.indice].artista.foto);
+                    $(".info__imagen").attr("alt", "Imagén de" + ALBUM.canciones[ALBUM.indice].artista.nombre);
+                    $(".info__artista").text(ALBUM.canciones[ALBUM.indice].artista.nombre);
+                    $(".info__album").text(ALBUM.canciones[ALBUM.indice].nombre);
+                    $(".info__anio").text("");
+                }
+            }
          }
     });
     $("#btnAnteriorReproductor").click(function() {
@@ -138,6 +154,15 @@ $(document).ready(function() {
                 };
                $("#" + String(ALBUM.indice)).css("color", "red");
                $(".info__artista").text(ALBUM.canciones[ALBUM.indice].artista);
+               if (filtro_activo) {
+                    //Si el filtro está activo, mostramos los datos de la canción.
+                    $(".info__imagen").attr("src", ALBUM.canciones[ALBUM.indice].artista.foto);
+                    $(".info__imagen").attr("alt", "Imagén de" + ALBUM.canciones[ALBUM.indice].artista.nombre);
+                    $(".info__artista").text(ALBUM.canciones[ALBUM.indice].artista.nombre);
+                    $(".info__album").text(ALBUM.canciones[ALBUM.indice].nombre);
+                    $(".info__anio").text("");
+               }
+    
             }
         }
     });
@@ -247,18 +272,18 @@ $(document).ready(function() {
                     $("#btnQuitarFiltro").css("visibility", "visible");
                     texto_filtro = $("#txtFiltro").val();
                     if (texto_filtro != "") {
-                        let consulta = "SELECT alb_id, alb_nombre, alb_foto, art_nombre " +
-                                       "FROM albumes " +
-                                       "INNER JOIN canciones_albumes " +
-                                       "ON albumes.alb_id = canciones_albumes.cal_idalbum " +
-                                       "INNER JOIN canciones " +
-                                       "ON canciones_albumes.cal_idcancion = canciones.can_id " +
-                                       "INNER JOIN CANCIONES_ARTISTAS " +
-                                       "ON canciones.can_id = canciones_artistas.car_idcancion " +
-                                       "INNER JOIN artistas " +
-                                       "ON canciones_artistas.car_idartista = artistas.art_id " +
-                                       "WHERE can_nombre like '%" + texto_filtro + "%'" +
-                                       "GROUP BY alb_id;";
+                        let consulta = "SELECT alb_id, alb_nombre, alb_foto, art_nombre" +
+                                       " FROM albumes" +
+                                       " INNER JOIN canciones_albumes" +
+                                       " ON albumes.alb_id = canciones_albumes.cal_idalbum" +
+                                       " INNER JOIN canciones" +
+                                       " ON canciones_albumes.cal_idcancion = canciones.can_id" +
+                                       " INNER JOIN CANCIONES_ARTISTAS" +
+                                       " ON canciones.can_id = canciones_artistas.car_idcancion" +
+                                       " INNER JOIN artistas" +
+                                       " ON canciones_artistas.car_idartista = artistas.art_id" +
+                                       " WHERE can_nombre like \"%" + texto_filtro + "%\"" +
+                                       " GROUP BY alb_id;";
                         cargaAlbumes(consulta);
                         $(".imagenes").fadeOut(tiempo_fadeout, function() {
                             muestraAlbumes();
@@ -316,7 +341,7 @@ $(document).ready(function() {
                                        "ON canciones.can_id = canciones_artistas.car_idcancion " +
                                        "INNER JOIN artistas " +
                                        "ON canciones_artistas.car_idartista = artistas.art_id " +
-                                       "WHERE art_nombre like '%" + texto_filtro_NoAfectaLista + "%'" +
+                                       "WHERE art_nombre like \"%" + texto_filtro_NoAfectaLista + "%\"" +
                                        "GROUP BY alb_id;";
                         cargaAlbumes(consulta);
                         $(".imagenes").fadeOut(tiempo_fadeout, function() {
@@ -375,7 +400,7 @@ $(document).ready(function() {
                                        " ON canciones.can_id = canciones_artistas.car_idcancion" +
                                        " INNER JOIN artistas" +
                                        " ON canciones_artistas.car_idartista = artistas.art_id" +
-                                       " WHERE alb_nombre like '%" + texto_filtro_NoAfectaLista + "%'" +
+                                       " WHERE alb_nombre like \"%" + texto_filtro_NoAfectaLista + "%\"" +
                                        " GROUP BY alb_id;";
                         cargaAlbumes(consulta);
                         $(".imagenes").fadeOut(tiempo_fadeout, function() {
@@ -513,9 +538,9 @@ $(document).ready(function() {
                                        "ON canciones.can_id = canciones_artistas.car_idcancion " +
                                        "INNER JOIN artistas " +
                                        "ON canciones_artistas.car_idartista = artistas.art_id " +
-                                       "WHERE alb_nombre like '%" + texto_filtro + "%' " +
-                                       "OR can_nombre like '%" + texto_filtro + "%' " +
-                                       "OR art_nombre like '%" + texto_filtro + "%' " +
+                                       "WHERE alb_nombre like \"%" + texto_filtro + "%\" " +
+                                       "OR can_nombre like \"%" + texto_filtro + "%\" " +
+                                       "OR art_nombre like \"%" + texto_filtro + "%\" " +
                                        "GROUP BY alb_id;";
                         cargaAlbumes(consulta);
                         $(".imagenes").fadeOut(tiempo_fadeout, function() {
@@ -637,6 +662,14 @@ $(document).ready(function() {
                 $("#" + String(ALBUM.indice - 1)).css("color", "rgb(150, 150, 255)");
             };
             $("#" + String(ALBUM.indice)).css("color", "red");
+            if (filtro_activo) {
+                //Si el filtro está activo, mostramos los datos de la canción.
+                $(".info__imagen").attr("src", ALBUM.canciones[ALBUM.indice].artista.foto);
+                $(".info__imagen").attr("alt", "Imagén de" + ALBUM.canciones[ALBUM.indice].artista.nombre);
+                $(".info__artista").text(ALBUM.canciones[ALBUM.indice].artista.nombre);
+                $(".info__album").text(ALBUM.canciones[ALBUM.indice].nombre);
+                $(".info__anio").text("");
+            }
         }
         
     })
@@ -717,7 +750,7 @@ function buscarRecomendados() {
 
 
 function cargarAlbumSugerido(_id_genero_seleccionado) {
-    let consulta = "SELECT count(*) AS cantidad, can_id, can_nombre, can_url, art_nombre" +
+    let consulta = "SELECT count(*) AS cantidad, can_id, can_nombre, can_url, art_nombre, art_foto" +
                    " FROM favoritas" +
                    " INNER JOIN canciones" +
                    " ON favoritas.fav_idcancion = canciones.can_id" +
@@ -735,6 +768,7 @@ function cargarAlbumSugerido(_id_genero_seleccionado) {
     let nombre = [];
     let url = [];
     let artista = [];
+    let foto_artista = [];
     $.ajax({
         url: "../php/cargaDatos.php",
         type: "POST",
@@ -746,13 +780,16 @@ function cargarAlbumSugerido(_id_genero_seleccionado) {
                     id.push(valor);
                 }
                 if (clave == "can_nombre") {
-                    nombre.push(valor);
+                    nombre.push(valor.slice(3));
                 }
                 if (clave == "can_url") {
                     url.push(valor);
                 }
                 if (clave == "art_nombre") {
                     artista.push(valor);
+                }
+                if (clave == "art_foto") {
+                    foto_artista.push(valor);
                 }
             })
             //Eliminamos de memoria todos los objetos cancion anteriores y vaciamos el array.
@@ -762,11 +799,14 @@ function cargarAlbumSugerido(_id_genero_seleccionado) {
             ALBUM.canciones = [];
             //Instanciamos los objetos cancion y los asignamos a la propiedad canciones del objeto album.
             for (let i = 0; i < nombre.length; i++) {
+                const ARTISTA = new Artista();
+                ARTISTA.nombre = artista[i];
+                ARTISTA.foto = foto_artista[i];
                 const CANCION = new Cancion();
                 CANCION.id = id[i];
                 CANCION.nombre = nombre[i];
                 CANCION.url = url[i];
-                CANCION.artista = artista[i];
+                CANCION.artista = ARTISTA;
                 ALBUM.canciones.push(CANCION);
             }
             //Hacemos fade out al volumen y mostramos la lista de canciones.
@@ -1073,6 +1113,14 @@ function  mostrarListaCanciones() {
         $(this).css("color", "red");
         $("#btnPlay_img").attr("src", "../imagenes/Botones/Pausa.png");
        $("#btnPlay_img").attr("alt", "Botón de pausa");
+       if (filtro_activo) {
+            //Si el filtro está activo, mostramos los datos de la canción.
+            $(".info__imagen").attr("src", ALBUM.canciones[ALBUM.indice].artista.foto);
+            $(".info__imagen").attr("alt", "Imagén de" + ALBUM.canciones[ALBUM.indice].artista.nombre);
+            $(".info__artista").text(ALBUM.canciones[ALBUM.indice].artista.nombre);
+            $(".info__album").text(ALBUM.canciones[ALBUM.indice].nombre);
+            $(".info__anio").text("");
+       }
     });
     //Temporizadores para mostrar la lista de canciones.
     let i = 0;

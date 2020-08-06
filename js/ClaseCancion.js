@@ -6,7 +6,7 @@ class Cancion {
         this._nombre = "";
         this._url = "";
         this._idgenero = 0;
-        this._artista = "";
+        this._artista = null;
         this._media = "";
     }
 

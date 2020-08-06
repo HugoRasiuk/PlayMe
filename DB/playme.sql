@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 02-08-2020 a las 04:50:34
+-- Tiempo de generación: 05-08-2020 a las 05:40:23
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.6
 
@@ -1578,7 +1578,9 @@ INSERT INTO `favoritas` (`fav_id`, `fav_idusuario`, `fav_idcancion`) VALUES
 (19, 15, 423),
 (20, 15, 425),
 (21, 15, 426),
-(23, 15, 139);
+(23, 15, 139),
+(24, 24, 139),
+(25, 24, 44);
 
 -- --------------------------------------------------------
 
@@ -1588,18 +1590,19 @@ INSERT INTO `favoritas` (`fav_id`, `fav_idusuario`, `fav_idcancion`) VALUES
 
 CREATE TABLE `generos` (
   `gen_id` int(11) NOT NULL,
-  `gen_nombre` varchar(30) DEFAULT ''
+  `gen_nombre` varchar(30) DEFAULT '',
+  `gen_imagen` varchar(200) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `generos`
 --
 
-INSERT INTO `generos` (`gen_id`, `gen_nombre`) VALUES
-(1, 'HardRock'),
-(2, 'Rock'),
-(3, 'Blues'),
-(4, 'HeavyMetal');
+INSERT INTO `generos` (`gen_id`, `gen_nombre`, `gen_imagen`) VALUES
+(1, 'HardRock', '../imagenes/Tapas/BestOfHardRock.png'),
+(2, 'Rock', '../imagenes/Tapas/BestOfRock.png'),
+(3, 'Blues', '../imagenes/Tapas/BestOfBlues.png'),
+(4, 'HeavyMetal', '../imagenes/Tapas/BestOfMetal.png');
 
 -- --------------------------------------------------------
 
@@ -1806,7 +1809,7 @@ ALTER TABLE `canciones_artistas`
 -- AUTO_INCREMENT de la tabla `favoritas`
 --
 ALTER TABLE `favoritas`
-  MODIFY `fav_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `fav_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT de la tabla `generos`

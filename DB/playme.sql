@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 05-08-2020 a las 05:40:23
+-- Tiempo de generación: 08-08-2020 a las 18:55:18
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.6
 
@@ -1580,7 +1580,11 @@ INSERT INTO `favoritas` (`fav_id`, `fav_idusuario`, `fav_idcancion`) VALUES
 (21, 15, 426),
 (23, 15, 139),
 (24, 24, 139),
-(25, 24, 44);
+(25, 24, 44),
+(26, 24, 449),
+(27, 24, 289),
+(28, 24, 292),
+(29, 24, 298);
 
 -- --------------------------------------------------------
 
@@ -1809,7 +1813,7 @@ ALTER TABLE `canciones_artistas`
 -- AUTO_INCREMENT de la tabla `favoritas`
 --
 ALTER TABLE `favoritas`
-  MODIFY `fav_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `fav_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT de la tabla `generos`

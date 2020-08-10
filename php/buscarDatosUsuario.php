@@ -5,7 +5,6 @@ include("conexion.php");
 
 //Variables
 $usuario = $_POST["usuario"];
-$mensaje = "";
 
 
 //Verificamos la conexión.

@@ -278,11 +278,11 @@ $(document).ready(function() {
                                        " ON albumes.alb_id = canciones_albumes.cal_idalbum" +
                                        " INNER JOIN canciones" +
                                        " ON canciones_albumes.cal_idcancion = canciones.can_id" +
-                                       " INNER JOIN CANCIONES_ARTISTAS" +
+                                       " INNER JOIN canciones_artistas" +
                                        " ON canciones.can_id = canciones_artistas.car_idcancion" +
                                        " INNER JOIN artistas" +
                                        " ON canciones_artistas.car_idartista = artistas.art_id" +
-                                       " WHERE can_nombre like \"%" + texto_filtro + "%\"" +
+                                       " WHERE can_nombre LIKE \"%" + texto_filtro + "%\"" +
                                        " GROUP BY alb_id;";
                         cargaAlbumes(consulta);
                         $(".imagenes").fadeOut(tiempo_fadeout, function() {
@@ -337,11 +337,11 @@ $(document).ready(function() {
                                        "ON albumes.alb_id = canciones_albumes.cal_idalbum " +
                                        "INNER JOIN canciones " +
                                        "ON canciones_albumes.cal_idcancion = canciones.can_id " +
-                                       "INNER JOIN CANCIONES_ARTISTAS " +
+                                       "INNER JOIN canciones_artistas " +
                                        "ON canciones.can_id = canciones_artistas.car_idcancion " +
                                        "INNER JOIN artistas " +
                                        "ON canciones_artistas.car_idartista = artistas.art_id " +
-                                       "WHERE art_nombre like \"%" + texto_filtro_NoAfectaLista + "%\"" +
+                                       "WHERE art_nombre LIKE \"%" + texto_filtro_NoAfectaLista + "%\"" +
                                        "GROUP BY alb_id;";
                         cargaAlbumes(consulta);
                         $(".imagenes").fadeOut(tiempo_fadeout, function() {
@@ -396,11 +396,11 @@ $(document).ready(function() {
                                        " ON albumes.alb_id = canciones_albumes.cal_idalbum" +
                                        " INNER JOIN canciones" +
                                        " ON canciones_albumes.cal_idcancion = canciones.can_id" +
-                                       " INNER JOIN CANCIONES_ARTISTAS" +
+                                       " INNER JOIN canciones_artistas" +
                                        " ON canciones.can_id = canciones_artistas.car_idcancion" +
                                        " INNER JOIN artistas" +
                                        " ON canciones_artistas.car_idartista = artistas.art_id" +
-                                       " WHERE alb_nombre like \"%" + texto_filtro_NoAfectaLista + "%\"" +
+                                       " WHERE alb_nombre LIKE \"%" + texto_filtro_NoAfectaLista + "%\"" +
                                        " GROUP BY alb_id;";
                         cargaAlbumes(consulta);
                         $(".imagenes").fadeOut(tiempo_fadeout, function() {
@@ -449,23 +449,23 @@ $(document).ready(function() {
                 if (tecla.which == "13") {
                     $("#btnQuitarFiltro").css("visibility", "visible");
                     texto_filtro_NoAfectaLista = $("#txtFiltro").val();
-                    let consulta = "SELECT alb_id, alb_nombre, alb_foto, art_nombre " +
-                                   "FROM albumes " +
-                                   "INNER JOIN canciones_albumes " +
-                                   "ON albumes.alb_id = canciones_albumes.cal_idalbum " +
-                                   "INNER JOIN canciones " +
-                                   "ON canciones_albumes.cal_idcancion = canciones.can_id " +
-                                   "INNER JOIN CANCIONES_ARTISTAS " +
-                                   "ON canciones.can_id = canciones_artistas.car_idcancion " +
-                                   "INNER JOIN artistas " +
-                                   "ON canciones_artistas.car_idartista = artistas.art_id " +
-                                   "INNER JOIN favoritas " +
-                                   "ON canciones.can_id = favoritas.fav_idcancion " +
-                                   "WHERE fav_idusuario = " + String(USUARIO.id);
+                    let consulta = "SELECT alb_id, alb_nombre, alb_foto, art_nombre" +
+                                   " FROM albumes" +
+                                   " INNER JOIN canciones_albumes" +
+                                   " ON albumes.alb_id = canciones_albumes.cal_idalbum" +
+                                   " INNER JOIN canciones" +
+                                   " ON canciones_albumes.cal_idcancion = canciones.can_id" +
+                                   " INNER JOIN canciones_artistas" +
+                                   " ON canciones.can_id = canciones_artistas.car_idcancion" +
+                                   " INNER JOIN artistas" +
+                                   " ON canciones_artistas.car_idartista = artistas.art_id" +
+                                   " INNER JOIN favoritas" +
+                                   " ON canciones.can_id = favoritas.fav_idcancion" +
+                                   " WHERE fav_idusuario = " + String(USUARIO.id);
                     if (texto_filtro_NoAfectaLista != "") {
-                        consulta = consulta + " AND alb_nombre like '%" + texto_filtro_NoAfectaLista + "%' " +
-                                              " OR can_nombre like '%" + texto_filtro_NoAfectaLista + "%' " +
-                                              " OR art_nombre like '%" + texto_filtro_NoAfectaLista + "%' ";
+                        consulta = consulta + " AND alb_nombre LIKE \"%" + texto_filtro_NoAfectaLista + "%\" " +
+                                              " OR can_nombre LIKE \"%" + texto_filtro_NoAfectaLista + "%\" " +
+                                              " OR art_nombre LIKE \"%" + texto_filtro_NoAfectaLista + "%\" ";
                     }
                     consulta = consulta +  " GROUP BY alb_id;";
                     cargaAlbumes(consulta);
@@ -528,20 +528,20 @@ $(document).ready(function() {
                     $("#btnQuitarFiltro").css("visibility", "visible");
                     texto_filtro = $("#txtFiltro").val();
                     if (texto_filtro != "") {
-                        let consulta = "SELECT alb_id, alb_nombre, alb_foto, art_nombre " +
-                                       "FROM albumes " +
-                                       "INNER JOIN canciones_albumes " +
-                                       "ON albumes.alb_id = canciones_albumes.cal_idalbum " +
-                                       "INNER JOIN canciones " +
-                                       "ON canciones_albumes.cal_idcancion = canciones.can_id " +
-                                       "INNER JOIN CANCIONES_ARTISTAS " +
-                                       "ON canciones.can_id = canciones_artistas.car_idcancion " +
-                                       "INNER JOIN artistas " +
-                                       "ON canciones_artistas.car_idartista = artistas.art_id " +
-                                       "WHERE alb_nombre like \"%" + texto_filtro + "%\" " +
-                                       "OR can_nombre like \"%" + texto_filtro + "%\" " +
-                                       "OR art_nombre like \"%" + texto_filtro + "%\" " +
-                                       "GROUP BY alb_id;";
+                        let consulta = "SELECT alb_id, alb_nombre, alb_foto, art_nombre" +
+                                       " FROM albumes" +
+                                       " INNER JOIN canciones_albumes" +
+                                       " ON albumes.alb_id = canciones_albumes.cal_idalbum" +
+                                       " INNER JOIN canciones" +
+                                       " ON canciones_albumes.cal_idcancion = canciones.can_id" +
+                                       " INNER JOIN canciones_artistas" +
+                                       " ON canciones.can_id = canciones_artistas.car_idcancion" +
+                                       " INNER JOIN artistas" +
+                                       " ON canciones_artistas.car_idartista = artistas.art_id" +
+                                       " WHERE alb_nombre LIKE \"%" + texto_filtro + "%\"" +
+                                       " OR can_nombre LIKE \"%" + texto_filtro + "%\"" +
+                                       " OR art_nombre LIKE \"%" + texto_filtro + "%\"" +
+                                       " GROUP BY alb_id;";
                         cargaAlbumes(consulta);
                         $(".imagenes").fadeOut(tiempo_fadeout, function() {
                             muestraAlbumes();

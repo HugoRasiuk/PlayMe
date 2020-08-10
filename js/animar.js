@@ -54,22 +54,33 @@ $(document).ready(function() {
         setTimeout(enfocaIngreso, 500);
     })
     $("#btnUsuarioSiguiente").click(function() {
-        var valido = verificarExistencia($("#txtUsuario").val());
-        if (valido == '"fallo"') {
-            $(".mensajeUsuario").fadeOut(500, mensajeUsuario);
-            $(".mensajeUsuario").fadeIn(500);
-        }else{
-            if (valido == '"nulo"') {
-                $(".mensajeUsuario").fadeOut(500, mensajeUsuarioInexistente);
-                $(".mensajeUsuario").fadeIn(500);
-            }else{
-                JSON.parse(valido, desempaquetarDatosUsuario);
-                $(".formularioContrasenia").css("visibility", "visible");
-                setTimeout(enfocaContrasenia, 500);
-                $(".banda").css("margin-left", "-50rem");
+        let nombre_usuario = $("#txtUsuario").val();
+        $.ajax({
+            url: "../hugo/php/buscarDatosUsuario.php",
+            type: "POST",
+            async: false,
+            data: {usuario:nombre_usuario},
+            success: function(respuesta) {
+                if (respuesta == '"fallo"') {
+                    $(".mensajeUsuario").fadeOut(500, mensajeUsuario);
+                    $(".mensajeUsuario").fadeIn(500);
+                }else{
+                    if (respuesta == '"nulo"') {
+                        $(".mensajeUsuario").fadeOut(500, mensajeUsuarioInexistente);
+                        $(".mensajeUsuario").fadeIn(500);
+                    }else{
+                        JSON.parse(respuesta, desempaquetarDatosUsuario);
+                        $(".formularioContrasenia").css("visibility", "visible");
+                        setTimeout(enfocaContrasenia, 500);
+                        $(".banda").css("margin-left", "-50rem");
+                    }
+                }
             }
-        }
+        })
+    
     })
+
+
     //Botones del formulario de contraseña al registrarse.
     $("#btnContraseniaRegistroAnterior").click(function() {
         $(".formularioUsuarioRegistro").css("visibility", "visible");
@@ -113,7 +124,7 @@ $(document).ready(function() {
         $(".banda").css("margin-left", "-50rem");
     })
     $("#btnRecuperarRegistroSiguiente").click(function() {
-        valido = validarOpciones();
+        let valido = validarOpciones();
         if (valido) {
             //Guardamos los datos y vamos a la aplicación
             guardarDatos();

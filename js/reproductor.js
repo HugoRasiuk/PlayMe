@@ -63,25 +63,21 @@ $(document).ready(function() {
     //Cargamos las animaciones.
     cargaAnimaciones();
     //Asociamos los eventos de las tapas de los albumes.
-     $(".tapa").click(function() {
-         let id_album_seleccionado = $(this).attr("id");
-         if (id_album_seleccionado != ALBUM.id) {
-             if (!media.paused && !media.ended) {
-                 fadeoutVolumen(id_album_seleccionado);
-             }else{
-                cargarAlbumSeleccionado($(this).attr("id"));
-                limpiarListaCanciones()
-                mostrarListaCanciones();
-                ALBUM.indice = 0;
-                ALBUM.asignarCancion();
-                $("#btnPlay_img").attr("src", "../imagenes/Botones/Play.png");
-                $("#btnPlay_img").attr("alt", "Botón de play");
-                $("#barra_tiempo").val(0);
-             }
-         }
+    $(".tapa").click(function() {
+        let id_album_seleccionado = $(this).attr("id");
+        if (id_album_seleccionado != ALBUM.id) {
+            cargarAlbumSeleccionado($(this).attr("id"));
+            limpiarListaCanciones()
+            mostrarListaCanciones();
+            ALBUM.indice = 0;
+            ALBUM.asignarCancion();
+            $("#btnPlay_img").attr("src", "../imagenes/Botones/Play.png");
+            $("#btnPlay_img").attr("alt", "Botón de play");
+            $("#barra_tiempo").val(0);
+        }
     });
-     $("#btnPlay").click(function() {
-         if (!media.paused && !media.ended) {
+    $("#btnPlay").click(function() {
+        if (!media.paused && !media.ended) {
             CANCION.pausar();
             $("#btnPlay_img").attr("src", "../imagenes/Botones/Play.png");
             $("#btnPlay_img").attr("alt", "Botón de play");
@@ -103,7 +99,7 @@ $(document).ready(function() {
             }
         }
      });
-     $("#btnParar").click(function() {
+    $("#btnParar").click(function() {
          CANCION.detenerCancion();
          $("#btnPlay_img").attr("src", "../imagenes/Botones/Play.png");
          $("#btnPlay_img").attr("alt", "Botón de play");
@@ -625,18 +621,14 @@ $(document).ready(function() {
             let id_album_seleccionado = $(this).attr("id");
             if (id_album_seleccionado != ALBUM.id || filtro_activo) {
                 filtro_activo = false;
-                if (!media.paused && !media.ended) {
-                    fadeoutVolumen(id_album_seleccionado);
-                }else{
-                   cargarAlbumSeleccionado($(this).attr("id"));
-                   limpiarListaCanciones()
-                   mostrarListaCanciones();
-                   ALBUM.indice = 0;
-                   ALBUM.asignarCancion();
-                   $("#btnPlay_img").attr("src", "../imagenes/Botones/Play.png");
-                   $("#btnPlay_img").attr("alt", "Botón de play");
-                   $("#barra_tiempo").val(0);
-                }
+                cargarAlbumSeleccionado($(this).attr("id"));
+                limpiarListaCanciones()
+                mostrarListaCanciones();
+                ALBUM.indice = 0;
+                ALBUM.asignarCancion();
+                $("#btnPlay_img").attr("src", "../imagenes/Botones/Play.png");
+                $("#btnPlay_img").attr("alt", "Botón de play");
+                $("#barra_tiempo").val(0);
             }
        });
 
@@ -811,21 +803,24 @@ function cargarAlbumSugerido(_id_genero_seleccionado) {
             }
             //Hacemos fade out al volumen y mostramos la lista de canciones.
             let volumen = media.volume;
-            let temporizador_volumen = setInterval(function() {
-                media.volume -= 0.1;
-                if (media.volume >= 0 && media.volume < 0.05) {
-                    media.load();
-                    limpiarListaCanciones()
-                    mostrarListaCanciones();
-                    ALBUM.indice = 0;
-                    ALBUM.asignarCancion();
-                    $("#btnPlay_img").attr("src", "../imagenes/Botones/Play.png");
-                    $("#btnPlay_img").attr("alt", "Botón de play");
-                    $("#barra_tiempo").val(0);
-                    media.volume = volumen;
-                    clearInterval(temporizador_volumen);
-                }
-            }, 50)
+            if (!media.paused && !media.ended) {
+                let temporizador_volumen = setInterval(function() {
+                    media.volume -= 0.1;
+                    if (media.volume < 0.05) {
+                        media.load();
+                        clearInterval(temporizador_volumen);
+                    }
+                }, 50)
+
+            }
+            limpiarListaCanciones()
+            mostrarListaCanciones();
+            ALBUM.indice = 0;
+            ALBUM.asignarCancion();
+            $("#btnPlay_img").attr("src", "../imagenes/Botones/Play.png");
+            $("#btnPlay_img").attr("alt", "Botón de play");
+            $("#barra_tiempo").val(0);
+            media.volume = volumen;
         }
     })
 }
@@ -833,9 +828,10 @@ function cargarAlbumSugerido(_id_genero_seleccionado) {
 
 
 function mostrarTapasGeneros(_id_generos, _imagen_genero, _nombre_genero) {
+    indice_album = 0;
     //Limpiamos todas las imágenes.
     let cadena = "";
-    for (let i = 0; i <= 12; i++) {
+    for (let i = 0; i < 12; i++) {
         cadena = ".tapa" + String(i);
         $(cadena).attr("src", "");
         $(cadena).attr("alt", "");
@@ -852,28 +848,6 @@ function mostrarTapasGeneros(_id_generos, _imagen_genero, _nombre_genero) {
         $(cadena).attr("alt", "Imágen de favoritos de" + _nombre_genero[i]);
         indice_album++;
     }
-}
-
-
-
-function fadeoutVolumen(_id_album_seleccionado) {
-    let volumen = media.volume;
-    let temporizador_volumen = setInterval(function() {
-        media.volume -= 0.1;
-        if (media.volume >= 0 && media.volume < 0.05) {
-            media.load();
-            cargarAlbumSeleccionado(_id_album_seleccionado);
-            limpiarListaCanciones()
-            mostrarListaCanciones();
-            ALBUM.indice = 0;
-            ALBUM.asignarCancion();
-            $("#btnPlay_img").attr("src", "../imagenes/Botones/Play.png");
-            $("#btnPlay_img").attr("alt", "Botón de play");
-            $("#barra_tiempo").val(0);
-            media.volume = volumen;
-            clearInterval(temporizador_volumen);
-        }
-    }, 50);
 }
 
 
@@ -1324,11 +1298,14 @@ function muestraAlbumes() {
         $(cadena).attr("alt", "");
     }
     //Cargamos las imágenes en los contenedores.
+    let cantidad_tapas = id_album.length;
     for (let i = 0; i < 12; i++) {
-        cadena = ".tapa" + String(i);
-        $(cadena).attr("id", id_album[indice_album]);
-        $(cadena).attr("src", foto_album[indice_album]);
-        $(cadena).attr("alt", artista_album[indice_album] + ", " + nombre_album[indice_album]);
+        if (i < cantidad_tapas) {
+            cadena = ".tapa" + String(i);
+            $(cadena).attr("id", id_album[indice_album]);
+            $(cadena).attr("src", foto_album[indice_album]);
+            $(cadena).attr("alt", artista_album[indice_album] + ", " + nombre_album[indice_album]);
+        }
         indice_album++;
     }
 }

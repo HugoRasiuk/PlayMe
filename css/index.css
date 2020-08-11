@@ -1,14 +1,10 @@
-/*Variables*/
-:root {
-    --color-fondo: rgba(70, 0, 100, 1);
-    --color-formulario: rgb(0, 0, 0);
-    --color-borde: rgb(255, 0, 0);
+*:focus {
+    outline: 0rem;
 }
-
 
 body {
     margin: 0rem;
-    background: var(--color-fondo);
+    background: rgb(70, 0, 100);
     background-image: url("../imagenes/FondoRock.png");
     background-size: contain;
 }
@@ -86,6 +82,12 @@ body {
     padding: 0rem;
 }
 
+.grafico img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
 .logo {
     background: red;
     width: 20rem;
@@ -94,6 +96,12 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.logo img {
+    width: 95%;
+    height: 90%;
+    object-fit: contain;
 }
 
 .botones {
@@ -127,8 +135,8 @@ body {
 /*formularioUsuario*/
 .formularioUsuario {
     padding: 0rem;
-    background: var(--color-formulario);
-    border: var(--color-borde) solid 1px;
+    background: rgb(0, 0, 0);
+    border: rgb(255, 0, 0) solid 1px;
     width: 25rem;
     height: 25rem;
     border-radius: 3rem;
@@ -219,8 +227,8 @@ h2 {
 /*formularioContraseña*/
 .formularioContrasenia {
     padding: 0rem;
-    background: var(--color-formulario);
-    border: var(--color-borde) solid 1px;
+    background: rgb(0, 0, 0);
+    border: rgb(255, 0, 0) solid 1px;
     width: 25rem;
     height: 25rem;
     border-radius: 3rem;
@@ -313,8 +321,8 @@ h2 {
 /*formularioRecuperar*/
 .formularioRecuperar {
     padding: 0rem;
-    background: var(--color-formulario);
-    border: var(--color-borde) solid 1px;
+    background: rgb(0, 0, 0);
+    border: rgb(255, 0, 0) solid 1px;
     width: 25rem;
     height: 25rem;
     border-radius: 3rem;
@@ -397,8 +405,8 @@ h3 {
 /*formularioUsuarioRegistro*/
 .formularioUsuarioRegistro {
     padding: 0rem;
-    background: var(--color-formulario);
-    border: var(--color-borde) solid 1px;
+    background: rgb(0, 0, 0);
+    border: rgb(255, 0, 0) solid 1px;
     width: 25rem;
     height: 25rem;
     border-radius: 3rem;
@@ -478,8 +486,8 @@ h3 {
 /*formularioContraseniaRegistro*/
 .formularioContraseniaRegistro {
     padding: 0rem;
-    background: var(--color-formulario);
-    border: var(--color-borde) solid 1px;
+    background: rgb(0, 0, 0);
+    border: rgb(255, 0, 0) solid 1px;
     width: 25rem;
     height: 25rem;
     border-radius: 3rem;
@@ -563,8 +571,8 @@ h3 {
 /*formularioRecuperarRegistro*/
 .formularioRecuperarRegistro {
     padding: 0rem;
-    background: var(--color-formulario);
-    border: var(--color-borde) solid 1px;
+    background: rgb(0, 0, 0);
+    border: rgb(255, 0, 0) solid 1px;
     width: 25rem;
     height: 25rem;
     border-radius: 3rem;
@@ -625,4 +633,19 @@ h3 {
     text-align: center;
     font-size: 0.7rem;
     color: rgb(200, 200, 200);
+}
+
+
+
+
+
+
+
+/*Cambios al llegar a los 1500 px*/
+@media screen and (max-width: 1500px) {
+
+    html {
+        font-size: 12px;
+    }
+
 }

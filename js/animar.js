@@ -56,7 +56,7 @@ $(document).ready(function() {
     $("#btnUsuarioSiguiente").click(function() {
         let nombre_usuario = $("#txtUsuario").val();
         $.ajax({
-            url: "../hugo/php/buscarDatosUsuario.php",
+            url: "php/buscarDatosUsuario.php",
             type: "POST",
             async: false,
             data: {usuario:nombre_usuario},

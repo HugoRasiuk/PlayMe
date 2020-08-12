@@ -1,10 +1,10 @@
 <?php
 //Módulo para la conexión a la base de datos.
 
-$host = "localhost";
-$user  = "escuel28_hugo";
-$password = "&Y[XX5(t]e0Y";
-$db = "escuel28_hugo";
+$host = "127.0.0.1";
+$user  = "root";
+$password = "";
+$db = "playme";
 
 $cnx = mysqli_connect($host, $user, $password, $db);
 //Establecemos la codificacion de caracteres para la conexión.

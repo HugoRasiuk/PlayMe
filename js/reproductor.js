@@ -65,12 +65,26 @@ $(document).ready(function() {
     //Asociamos los eventos de las tapas de los albumes.
     $(".tapa").click(function() {
         let id_album_seleccionado = $(this).attr("id");
-        if (id_album_seleccionado != ALBUM.id) {
+        if (id_album_seleccionado != ALBUM.id && id_album_seleccionado != 0) {
             cargarAlbumSeleccionado($(this).attr("id"));
+            ALBUM.indice = 0;
+            //Bajamos el volumen gradualmente.
+            if (!media.paused && !media.ended) {
+                let volumen = media.volume;
+                let temporizador_vol = setInterval(function() {
+                    media.volume -= 0.01;
+                    if (media.volume < 0.05) {
+                        media.load();
+                        media.volume = volumen;
+                        ALBUM.asignarCancion();
+                        clearInterval(temporizador_vol)
+                    }
+                }, 10)
+            }else{
+                ALBUM.asignarCancion();
+            }
             limpiarListaCanciones()
             mostrarListaCanciones();
-            ALBUM.indice = 0;
-            ALBUM.asignarCancion();
             $("#btnPlay_img").attr("src", "../imagenes/Botones/Play.png");
             $("#btnPlay_img").attr("alt", "Botón de play");
             $("#barra_tiempo").val(0);
@@ -285,6 +299,7 @@ $(document).ready(function() {
                             muestraAlbumes();
                             $(".imagenes").fadeIn(tiempo_fadein);
                         });
+                        $("#btnAnterior").css("visibility", "hidden");
                         if (id_album.length > 12) {
                             $("#btnSiguiente").css("visibility", "visible");
                         }else{
@@ -344,6 +359,7 @@ $(document).ready(function() {
                             muestraAlbumes();
                             $(".imagenes").fadeIn(tiempo_fadein);
                         });
+                        $("#btnAnterior").css("visibility", "hidden");
                         if (id_album.length > 12) {
                             $("#btnSiguiente").css("visibility", "visible");
                         }else{
@@ -403,6 +419,7 @@ $(document).ready(function() {
                             muestraAlbumes();
                             $(".imagenes").fadeIn(tiempo_fadein);
                         });
+                        $("#btnAnterior").css("visibility", "hidden");
                         if (id_album.length > 12) {
                             $("#btnSiguiente").css("visibility", "visible");
                         }else{
@@ -469,6 +486,7 @@ $(document).ready(function() {
                         muestraAlbumes();
                         $(".imagenes").fadeIn(tiempo_fadein);
                     });
+                    $("#btnAnterior").css("visibility", "hidden");
                     if (id_album.length > 12) {
                         $("#btnSiguiente").css("visibility", "visible");
                     }else{
@@ -543,6 +561,7 @@ $(document).ready(function() {
                             muestraAlbumes();
                             $(".imagenes").fadeIn(tiempo_fadein);
                         });
+                        $("#btnAnterior").css("visibility", "hidden");
                         if (id_album.length > 12) {
                             $("#btnSiguiente").css("visibility", "visible");
                         }else{
@@ -572,30 +591,6 @@ $(document).ready(function() {
     });
     //Acciones al hacer click en el botón de cerrar filtro.
     $("#btnQuitarFiltro").click(function() {
-        //Quitamos la asociación de eventos.
-        $("#txtFiltro").off();
-        $(".tapa").off();
-        //Limpiamos las variables de los filtros.
-        texto_filtro = "";
-        texto_filtro_NoAfectaLista = "";
-        $("#txtFiltro").val("");
-        //Quitamos lo relacionado al filtro.
-        $(".filtro__txt").css("display", "none");
-        $("#btnQuitarFiltro").css("visibility", "hidden");
-        //Eliminamos la clase de margen izquierdo.        
-        $("#btnFiltroCancion").removeClass("filtro_posicion_izquierda");
-        $("#btnFiltroArtista").removeClass("filtro_posicion_izquierda");
-        $("#btnFiltroAlbum").removeClass("filtro_posicion_izquierda");
-        $("#btnFiltroFavoritos").removeClass("filtro_posicion_izquierda");
-        $("#btnFiltroRecomendados").removeClass("filtro_posicion_izquierda");
-        $("#btnFiltroGeneral").removeClass("filtro_posicion_izquierda");
-        //Hacemos visibles los filtros.
-        $("#btnFiltroCancion").fadeIn(tiempo_fadein);
-        $("#btnFiltroArtista").fadeIn(tiempo_fadein);
-        $("#btnFiltroAlbum").fadeIn(tiempo_fadein);
-        $("#btnFiltroFavoritos").fadeIn(tiempo_fadein);
-        $("#btnFiltroRecomendados").fadeIn(tiempo_fadein);
-        $("#btnFiltroGeneral").fadeIn(tiempo_fadein);
         //Recargamos las tapas de los albumes.
         let consulta = "SELECT alb_id, alb_nombre, alb_foto, art_nombre FROM albumes" +
                        " INNER JOIN canciones_albumes" +
@@ -616,16 +611,55 @@ $(document).ready(function() {
         if (id_album.length > 12) {
             $("#btnSiguiente").css("visibility", "visible");
         }
+        //Quitamos la asociación de eventos.
+        $("#txtFiltro").off();
+        $(".tapa").off();
+        //Limpiamos las variables de los filtros.
+        texto_filtro = "";
+        texto_filtro_NoAfectaLista = "";
+        $("#txtFiltro").val("");
+        //Quitamos lo relacionado al filtro.
+        $(".filtro__txt").css("display", "none");
+        $("#btnQuitarFiltro").css("visibility", "hidden");
+        $("#btnAnterior").css("visibility", "hidden");
+        //Eliminamos la clase de margen izquierdo.        
+        $("#btnFiltroCancion").removeClass("filtro_posicion_izquierda");
+        $("#btnFiltroArtista").removeClass("filtro_posicion_izquierda");
+        $("#btnFiltroAlbum").removeClass("filtro_posicion_izquierda");
+        $("#btnFiltroFavoritos").removeClass("filtro_posicion_izquierda");
+        $("#btnFiltroRecomendados").removeClass("filtro_posicion_izquierda");
+        $("#btnFiltroGeneral").removeClass("filtro_posicion_izquierda");
+        //Hacemos visibles los filtros.
+        $("#btnFiltroCancion").fadeIn(tiempo_fadein);
+        $("#btnFiltroArtista").fadeIn(tiempo_fadein);
+        $("#btnFiltroAlbum").fadeIn(tiempo_fadein);
+        $("#btnFiltroFavoritos").fadeIn(tiempo_fadein);
+        $("#btnFiltroRecomendados").fadeIn(tiempo_fadein);
+        $("#btnFiltroGeneral").fadeIn(tiempo_fadein);
         //Asociamos los eventos de las tapas de los albumes.
          $(".tapa").on("click", function() {
             let id_album_seleccionado = $(this).attr("id");
-            if (id_album_seleccionado != ALBUM.id || filtro_activo) {
+            if (id_album_seleccionado != ALBUM.id && id_album_seleccionado != 0) {
                 filtro_activo = false;
                 cargarAlbumSeleccionado($(this).attr("id"));
+                ALBUM.indice = 0;
+                //Bajamos el volumen gradualmente.
+                if (!media.paused && !media.ended) {
+                    let volumen = media.volume;
+                    let temporizador_vol = setInterval(function() {
+                        media.volume -= 0.01;
+                        if (media.volume < 0.05) {
+                            media.load();
+                            media.volume = volumen;
+                            ALBUM.asignarCancion();
+                            clearInterval(temporizador_vol)
+                        }
+                    }, 10)
+                }else{
+                    ALBUM.asignarCancion();
+                }
                 limpiarListaCanciones()
                 mostrarListaCanciones();
-                ALBUM.indice = 0;
-                ALBUM.asignarCancion();
                 $("#btnPlay_img").attr("src", "../imagenes/Botones/Play.png");
                 $("#btnPlay_img").attr("alt", "Botón de play");
                 $("#barra_tiempo").val(0);
@@ -727,12 +761,16 @@ function buscarRecomendados() {
         mostrarTapasGeneros(id_generos, imagen_genero, nombre_genero);
         $(".imagenes").fadeIn(tiempo_fadein);
     });
+    //Quitamos los botones de siguiente y anteriorimagenes.
+    $("#btnAnterior").css("visibility", "hidden");
+    $("#btnSiguiente").css("visibility", "hidden");
+
     //Desasociamos los eventos click de las imágenes.
     $(".tapa").off();
     //Nuevos eventosd click de las tapas del los albumes.
-     $(".tapa").click(function() {
+     $(".tapa").on("click", function() {
          let id_genero_seleccionado = $(this).attr("id");
-         if (id_genero_seleccionado != ALBUM.id || !filtro_activo) {
+         if (id_genero_seleccionado != ALBUM.id && id_genero_seleccionado != 0) {
              filtro_activo = true;
              cargarAlbumSugerido(id_genero_seleccionado);
          }
@@ -829,23 +867,26 @@ function cargarAlbumSugerido(_id_genero_seleccionado) {
 
 function mostrarTapasGeneros(_id_generos, _imagen_genero, _nombre_genero) {
     indice_album = 0;
-    //Limpiamos todas las imágenes.
     let cadena = "";
+    //Limpiamos las imágenes de las tapas.
     for (let i = 0; i < 12; i++) {
         cadena = ".tapa" + String(i);
+        $(cadena).attr("id", "0");
         $(cadena).attr("src", "");
         $(cadena).attr("alt", "");
     }
     //Cargamos las imágenes en los contenedores.
-    let tope = _id_generos.length;
-    if (tope > 12) {
-        tope = 12;
-    }
-    for (let i = 0; i < tope; i++) {
+    let cantidad_elementos = _id_generos.length;
+    for (let i = 0; i < 12; i++) {
         cadena = ".tapa" + String(i);
-        $(cadena).attr("id",_id_generos[i]);
-        $(cadena).attr("src", _imagen_genero[i]);
-        $(cadena).attr("alt", "Imágen de favoritos de" + _nombre_genero[i]);
+        if (i < cantidad_elementos) {
+            $(cadena).css("visibility", "visible");
+            $(cadena).attr("id",_id_generos[i]);
+            $(cadena).attr("src", _imagen_genero[i]);
+            $(cadena).attr("alt", "Imágen de favoritos de" + _nombre_genero[i]);
+        }else{
+            $(cadena).css("visibility", "hidden");
+        }
         indice_album++;
     }
 }
@@ -1290,21 +1331,25 @@ function cargaAlbumes(_consulta) {
 
 //Mostramos en pantalla los albumes.
 function muestraAlbumes() {
-    //Limpiamos todas las imágenes.
+    //Limpiamos las imágenes de las tapas.
     let cadena = "";
-    for (let i = 0; i <= 12; i++) {
+    for (let i = 0; i < 12; i++) {
         cadena = ".tapa" + String(i);
+        $(cadena).attr("id", "0");
         $(cadena).attr("src", "");
         $(cadena).attr("alt", "");
     }
     //Cargamos las imágenes en los contenedores.
     let cantidad_tapas = id_album.length;
     for (let i = 0; i < 12; i++) {
+        cadena = ".tapa" + String(i);
         if (i < cantidad_tapas) {
-            cadena = ".tapa" + String(i);
+            $(cadena).css("visibility", "visible");
             $(cadena).attr("id", id_album[indice_album]);
             $(cadena).attr("src", foto_album[indice_album]);
             $(cadena).attr("alt", artista_album[indice_album] + ", " + nombre_album[indice_album]);
+        }else{
+            $(cadena).css("visibility", "hidden");
         }
         indice_album++;
     }

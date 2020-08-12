@@ -9,7 +9,7 @@ function validarUsuario(texto) {
         resultado = "corto";
     }else{
         $.ajax({
-            url: "../hugo/php/buscaUsuario.php",
+            url: "php/buscaUsuario.php",
             type: "POST",
             async: false,
             data: {usuario:texto},

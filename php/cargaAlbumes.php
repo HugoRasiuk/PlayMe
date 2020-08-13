@@ -13,7 +13,7 @@ if ($cnx) {
     $resultado = mysqli_query($cnx, $consulta);
     $datos = mysqli_fetch_all($resultado, MYSQLI_ASSOC);
 }else{
-    die("Falló la conexión con la base de datos");
+    $datos = "fallo";
 }
 
 mysqli_close($cnx);

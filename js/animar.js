@@ -27,7 +27,8 @@ $(document).ready(function() {
         setTimeout(enfocaIngreso, 500);
     })
     $("#btnUsuarioRegistroSiguiente").click(function() {
-        var valido = validarUsuario($("#txtUsuarioRegistro").val());
+        let valido = "";
+        valido = validarUsuario($("#txtUsuarioRegistro").val());
         if (valido == "corto") {
             $(".mensajeUsuarioRegistro").fadeOut(500, usuarioIncorrecto);
             $(".mensajeUsuarioRegistro").fadeIn(500);
@@ -36,13 +37,13 @@ $(document).ready(function() {
                 $(".mensajeUsuarioRegistro").fadeOut(500, usuarioExistente);
                 $(".mensajeUsuarioRegistro").fadeIn(500);
             }else{
-                if (valido == "fallo") {
-                    $(".mensajeUsuarioRegistro").fadeOut(500, errorConexion);
-                    $(".mensajeUsuarioRegistro").fadeIn(500);
-                }else{
+                if (valido == "ok") {
                     $(".formularioContraseniaRegistro").css("visibility", "visible");
                     setTimeout(enfocaContraseniaRegistro, 500);
                     $(".banda").css("margin-left", "-50rem");
+                }else{
+                    $(".mensajeUsuarioRegistro").fadeOut(500, errorConexion);
+                    $(".mensajeUsuarioRegistro").fadeIn(500);
                 }
             }
         }
@@ -79,8 +80,6 @@ $(document).ready(function() {
         })
     
     })
-
-
     //Botones del formulario de contraseña al registrarse.
     $("#btnContraseniaRegistroAnterior").click(function() {
         $(".formularioUsuarioRegistro").css("visibility", "visible");
@@ -88,7 +87,8 @@ $(document).ready(function() {
         $(".banda").css("margin-left", "-25rem");
     })
     $("#btnContraseniaRegistroSiguiente").click(function() {
-        var valido = validarContrasenia($("#txtContraseniaRegistro").val(), $("#txtContraseniaRegistroRepeticion").val());
+        let valido = "";
+        valido = validarContrasenia($("#txtContraseniaRegistro").val(), $("#txtContraseniaRegistroRepeticion").val());
         if (!valido) {
             $(".mensajeContraseniaRegistro").fadeOut(500, contraseniaIncorrecta);
             $(".mensajeContraseniaRegistro").fadeIn(500);
@@ -124,11 +124,14 @@ $(document).ready(function() {
         $(".banda").css("margin-left", "-50rem");
     })
     $("#btnRecuperarRegistroSiguiente").click(function() {
-        let valido = validarOpciones();
+        let valido = "";
+        valido = validarOpciones();
         if (valido) {
             //Guardamos los datos y vamos a la aplicación
             guardarDatos();
-            setTimeout(cerrar, 500);
+            if (msj == "La registraciónse realizó con éxito. Ingresando...") {
+                setTimeout(cerrar, 500);
+            }
         }else{
             $(".mensajeRecuperacionRegistro").fadeOut(500, opcionesIncorrectas);
             $(".mensajeRecuperacionRegistro").fadeIn(500);
@@ -142,9 +145,7 @@ $(document).ready(function() {
     })
     $("#btnRecuperarSiguiente").click(function() {
         if (verificarExistenciaRespuesta()) {
-            if (validarRespuesta()) {
-                
-            }
+            validarRespuesta();
         }else{
             $(".iniciorecuperacion").fadeOut(500, avisoFaltaOpcion);
             $(".iniciorecuperacion").fadeIn(500);
@@ -211,7 +212,6 @@ function chequearInput() {
         if ($(this).val().length == 0) {
             $(this).css({background:"rgb(50, 50, 60)",
                          color:"white"});
-
         }
     })
 }

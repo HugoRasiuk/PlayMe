@@ -374,17 +374,21 @@ $(document).ready(function() {
                     };
                 }
                 if (tecla.which == "27") {
-                    //Devolvemos los filtros a la pantalla
-                    $(".filtro__txt").css("display", "none");
-                    $("#btnFiltroArtista").removeClass("filtro_posicion_izquierda");
-                    if ($("#btnFiltroAlbum").hasClass("filtro__album_nueva_posicion")) {
-                        $("#btnFiltroArtista").addClass("filtro__artista_nueva_posicion");
+                    if (filtro_activo) {
+                        quitarFiltro();
+                    }else{
+                        //Devolvemos los filtros a la pantalla
+                        $(".filtro__txt").css("display", "none");
+                        $("#btnFiltroArtista").removeClass("filtro_posicion_izquierda");
+                        if ($("#btnFiltroAlbum").hasClass("filtro__album_nueva_posicion")) {
+                            $("#btnFiltroArtista").addClass("filtro__artista_nueva_posicion");
+                        }
+                        $("#btnFiltroCancion").fadeIn(tiempo_fadein);
+                        $("#btnFiltroAlbum").fadeIn(tiempo_fadein);
+                        $("#btnFiltroFavoritos").fadeIn(tiempo_fadein);
+                        $("#btnFiltroRecomendados").fadeIn(tiempo_fadein);
+                        $("#btnFiltroGeneral").fadeIn(tiempo_fadein);
                     }
-                    $("#btnFiltroCancion").fadeIn(tiempo_fadein);
-                    $("#btnFiltroAlbum").fadeIn(tiempo_fadein);
-                    $("#btnFiltroFavoritos").fadeIn(tiempo_fadein);
-                    $("#btnFiltroRecomendados").fadeIn(tiempo_fadein);
-                    $("#btnFiltroGeneral").fadeIn(tiempo_fadein);
                 }
             });
         }, 1000);
@@ -435,17 +439,21 @@ $(document).ready(function() {
                     };
                 }
                 if (tecla.which == "27") {
-                    //Devolvemos los filtros a la pantalla
-                    $(".filtro__txt").css("display", "none");
-                    $("#btnFiltroAlbum").removeClass("filtro_posicion_izquierda");
-                    if ($("#btnFiltroArtista").hasClass("filtro__artista_nueva_posicion")) {
-                        $("#btnFiltroAlbum").addClass("filtro__album_nueva_posicion");
+                    if (filtro_activo) {
+                        quitarFiltro();
+                    }else{
+                        //Devolvemos los filtros a la pantalla
+                        $(".filtro__txt").css("display", "none");
+                        $("#btnFiltroAlbum").removeClass("filtro_posicion_izquierda");
+                        if ($("#btnFiltroArtista").hasClass("filtro__artista_nueva_posicion")) {
+                            $("#btnFiltroAlbum").addClass("filtro__album_nueva_posicion");
+                        }
+                        $("#btnFiltroCancion").fadeIn(tiempo_fadein);
+                        $("#btnFiltroArtista").fadeIn(tiempo_fadein);
+                        $("#btnFiltroFavoritos").fadeIn(tiempo_fadein);
+                        $("#btnFiltroRecomendados").fadeIn(tiempo_fadein);
+                        $("#btnFiltroGeneral").fadeIn(tiempo_fadein);
                     }
-                    $("#btnFiltroCancion").fadeIn(tiempo_fadein);
-                    $("#btnFiltroArtista").fadeIn(tiempo_fadein);
-                    $("#btnFiltroFavoritos").fadeIn(tiempo_fadein);
-                    $("#btnFiltroRecomendados").fadeIn(tiempo_fadein);
-                    $("#btnFiltroGeneral").fadeIn(tiempo_fadein);
                 }
             // });
             });
@@ -502,17 +510,21 @@ $(document).ready(function() {
                     }
                 }
                 if (tecla.which == "27") {
-                    //Devolvemos los filtros a la pantalla
-                    $(".filtro__txt").css("display", "none");
-                    $("#btnFiltroFavoritos").removeClass("filtro_posicion_izquierda");
-                    if ($("#btnFiltroAlbum").hasClass("filtro__album_nueva_posicion")) {
-                        $("#btnFiltroFavoritos").addClass("filtro__favoritos_nueva_posicion");
+                    if (filtro_activo) {
+                        quitarFiltro();
+                    }else{
+                        //Devolvemos los filtros a la pantalla
+                        $(".filtro__txt").css("display", "none");
+                        $("#btnFiltroFavoritos").removeClass("filtro_posicion_izquierda");
+                        if ($("#btnFiltroAlbum").hasClass("filtro__album_nueva_posicion")) {
+                            $("#btnFiltroFavoritos").addClass("filtro__favoritos_nueva_posicion");
+                        }
+                        $("#btnFiltroCancion").fadeIn(tiempo_fadein);
+                        $("#btnFiltroArtista").fadeIn(tiempo_fadein);
+                        $("#btnFiltroAlbum").fadeIn(tiempo_fadein);
+                        $("#btnFiltroRecomendados").fadeIn(tiempo_fadein);
+                        $("#btnFiltroGeneral").fadeIn(tiempo_fadein);
                     }
-                    $("#btnFiltroCancion").fadeIn(tiempo_fadein);
-                    $("#btnFiltroArtista").fadeIn(tiempo_fadein);
-                    $("#btnFiltroAlbum").fadeIn(tiempo_fadein);
-                    $("#btnFiltroRecomendados").fadeIn(tiempo_fadein);
-                    $("#btnFiltroGeneral").fadeIn(tiempo_fadein);
                 }
             });
         }, 1000);
@@ -580,17 +592,21 @@ $(document).ready(function() {
                     };
                 }
                 if (tecla.which == "27") {
-                    //Devolvemos los filtros a la pantalla
-                    $(".filtro__txt").css("display", "none");
-                    $("#btnFiltroGeneral").removeClass("filtro_posicion_izquierda");
-                    if ($("#btnFiltroAlbum").hasClass("filtro__album_nueva_posicion")) {
-                        $("#btnFiltroGeneral").addClass("filtro__filtro_nueva_posicion");
+                    if (filtro_activo) {
+                        quitarFiltro();
+                    }else{
+                        //Devolvemos los filtros a la pantalla
+                        $(".filtro__txt").css("display", "none");
+                        $("#btnFiltroGeneral").removeClass("filtro_posicion_izquierda");
+                        if ($("#btnFiltroAlbum").hasClass("filtro__album_nueva_posicion")) {
+                            $("#btnFiltroGeneral").addClass("filtro__filtro_nueva_posicion");
+                        }
+                        $("#btnFiltroCancion").fadeIn(tiempo_fadein);
+                        $("#btnFiltroArtista").fadeIn(tiempo_fadein);
+                        $("#btnFiltroAlbum").fadeIn(tiempo_fadein);
+                        $("#btnFiltroFavoritos").fadeIn(tiempo_fadein);
+                        $("#btnFiltroRecomendados").fadeIn(tiempo_fadein);
                     }
-                    $("#btnFiltroCancion").fadeIn(tiempo_fadein);
-                    $("#btnFiltroArtista").fadeIn(tiempo_fadein);
-                    $("#btnFiltroAlbum").fadeIn(tiempo_fadein);
-                    $("#btnFiltroFavoritos").fadeIn(tiempo_fadein);
-                    $("#btnFiltroRecomendados").fadeIn(tiempo_fadein);
                 }
             });
         }, 1000);
@@ -766,17 +782,21 @@ function buscarRecomendados() {
         async: false,
         data: {cadena:consulta},
         success: function(respuesta) {
-            JSON.parse(respuesta, function(clave, valor) {
-                if (clave == "gen_id") {
-                    id_generos.push(valor);
-                }
-                if (clave == "gen_imagen") {
-                    imagen_genero.push(valor);
-                }
-                if (clave == "gen_nombre") {
-                    nombre_genero.push(valor);
-                }
-            })
+            if (respuesta != "fallo") {
+                JSON.parse(respuesta, function(clave, valor) {
+                    if (clave == "gen_id") {
+                        id_generos.push(valor);
+                    }
+                    if (clave == "gen_imagen") {
+                        imagen_genero.push(valor);
+                    }
+                    if (clave == "gen_nombre") {
+                        nombre_genero.push(valor);
+                    }
+                })
+            }else{
+                //Mensaje de fallo de datos.
+            }
         }
     })
     //Mostramos las tapas de los favoritos de los generos preferidos del usuario.
@@ -828,63 +848,66 @@ function cargarAlbumSugerido(_id_genero_seleccionado) {
         async: false,
         data: {cadena:consulta},
         success: function(respuesta) {
-            JSON.parse(respuesta, function(clave, valor) {
-                if (clave == "can_id") {
-                    id.push(valor);
-                }
-                if (clave == "can_nombre") {
-                    nombre.push(valor.slice(3));
-                }
-                if (clave == "can_url") {
-                    url.push(valor);
-                }
-                if (clave == "art_nombre") {
-                    artista.push(valor);
-                }
-                if (clave == "art_foto") {
-                    foto_artista.push(valor);
-                }
-            })
-            //Eliminamos de memoria todos los objetos cancion anteriores y vaciamos el array.
-            for (let i = 0; i < ALBUM.canciones.length; i++) {
-                delete ALBUM.canciones[i];
-            }
-            ALBUM.canciones = [];
-            //Instanciamos los objetos cancion y los asignamos a la propiedad canciones del objeto album.
-            for (let i = 0; i < nombre.length; i++) {
-                const ARTISTA = new Artista();
-                ARTISTA.nombre = artista[i];
-                ARTISTA.foto = foto_artista[i];
-                const CANCION = new Cancion();
-                CANCION.id = id[i];
-                CANCION.nombre = nombre[i];
-                CANCION.url = url[i];
-                CANCION.artista = ARTISTA;
-                ALBUM.canciones.push(CANCION);
-            }
-            //Hacemos fade out al volumen y mostramos la lista de canciones.
-            limpiarListaCanciones()
-            mostrarListaCanciones();
-            ALBUM.indice = 0;
-            let volumen = media.volume;
-            if (!media.paused && !media.ended) {
-                let temporizador_volumen = setInterval(function() {
-                    media.volume -= 0.1;
-                    if (media.volume < 0.05) {
-                        media.load();
-                        media.volume = volumen;
-                        ALBUM.asignarCancion();
-                        clearInterval(temporizador_volumen);
+            if (respuesta != "fallo") {
+                JSON.parse(respuesta, function(clave, valor) {
+                    if (clave == "can_id") {
+                        id.push(valor);
                     }
-                }, 50)
-
+                    if (clave == "can_nombre") {
+                        nombre.push(valor.slice(3));
+                    }
+                    if (clave == "can_url") {
+                        url.push(valor);
+                    }
+                    if (clave == "art_nombre") {
+                        artista.push(valor);
+                    }
+                    if (clave == "art_foto") {
+                        foto_artista.push(valor);
+                    }
+                })
+                //Eliminamos de memoria todos los objetos cancion anteriores y vaciamos el array.
+                for (let i = 0; i < ALBUM.canciones.length; i++) {
+                    delete ALBUM.canciones[i];
+                }
+                ALBUM.canciones = [];
+                //Instanciamos los objetos cancion y los asignamos a la propiedad canciones del objeto album.
+                for (let i = 0; i < nombre.length; i++) {
+                    const ARTISTA = new Artista();
+                    ARTISTA.nombre = artista[i];
+                    ARTISTA.foto = foto_artista[i];
+                    const CANCION = new Cancion();
+                    CANCION.id = id[i];
+                    CANCION.nombre = nombre[i];
+                    CANCION.url = url[i];
+                    CANCION.artista = ARTISTA;
+                    ALBUM.canciones.push(CANCION);
+                }
+                //Hacemos fade out al volumen y mostramos la lista de canciones.
+                limpiarListaCanciones()
+                mostrarListaCanciones();
+                ALBUM.indice = 0;
+                let volumen = media.volume;
+                if (!media.paused && !media.ended) {
+                    let temporizador_volumen = setInterval(function() {
+                        media.volume -= 0.1;
+                        if (media.volume < 0.05) {
+                            media.load();
+                            media.volume = volumen;
+                            ALBUM.asignarCancion();
+                            clearInterval(temporizador_volumen);
+                        }
+                    }, 50)
+    
+                }else{
+                    ALBUM.asignarCancion();
+                }
+                $("#btnPlay_img").attr("src", "../imagenes/Botones/Play.png");
+                $("#btnPlay_img").attr("alt", "Botón de play");
+                $("#barra_tiempo").val(0);
             }else{
-                ALBUM.asignarCancion();
+                //Mensaje de fallo de datos.
             }
-            $("#btnPlay_img").attr("src", "../imagenes/Botones/Play.png");
-            $("#btnPlay_img").attr("alt", "Botón de play");
-            $("#barra_tiempo").val(0);
-            media.volume = volumen;
         }
     })
 }
@@ -1335,20 +1358,24 @@ function cargaAlbumes(_consulta) {
         async: false,
         data: {cadena:_consulta},
         success: function(respuesta) {
-            JSON.parse(respuesta, function(clave, valor) {
-                if (clave == "alb_id") {
-                    id_album.push(valor);
-                }
-                if (clave == "alb_nombre") {
-                    nombre_album.push(valor);
-                }
-                if (clave == "alb_foto") {
-                    foto_album.push(valor);
-                }
-                if (clave == "art_nombre") {
-                    artista_album.push(valor);
-                }
-            });
+            if (respuesta != "fallo") {
+                JSON.parse(respuesta, function(clave, valor) {
+                    if (clave == "alb_id") {
+                        id_album.push(valor);
+                    }
+                    if (clave == "alb_nombre") {
+                        nombre_album.push(valor);
+                    }
+                    if (clave == "alb_foto") {
+                        foto_album.push(valor);
+                    }
+                    if (clave == "art_nombre") {
+                        artista_album.push(valor);
+                    }
+                });
+            }else{
+                //Mensaje de fallo de datos.
+            }
         }
     });
 };

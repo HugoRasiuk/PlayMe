@@ -22,6 +22,8 @@ if ($cnx) {
         }else{
             $mensaje = "La respuesta ingresada no coincide";
         }
+    }else{
+        $mensaje = "La respuesta no es correcta";
     }
 }else{
     $mensaje = "Error en la conexión con la base de datos";

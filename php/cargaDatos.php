@@ -10,9 +10,13 @@ include("conexion.php");
 
 if ($cnx) {
     $resultado = mysqli_query($cnx, $consulta);
-    $datos = mysqli_fetch_all($resultado, MYSQLI_ASSOC);
+    if ($resultado) {
+        $datos = mysqli_fetch_all($resultado, MYSQLI_ASSOC);
+    }else{
+        $datos = "fallo";
+    }
 }else{
-    die("Fallo en la conexión");
+    $datos = "fallo";
 }
 
 

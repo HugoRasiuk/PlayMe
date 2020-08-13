@@ -122,7 +122,6 @@ function cambiarContrasenia() {
         if (validarContrasenia(textoA, textoB)) {
             //Reemplazamos la contraseña por la nueva.
             reemplazarContrasenia();
-
         }else{
             $(".mensajeContraseniaRegistro").fadeOut(500, contraseniaIncorrecta);
             $(".mensajeContraseniaRegistro").fadeIn(500);

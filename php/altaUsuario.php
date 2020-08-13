@@ -30,10 +30,10 @@ if ($cnx) {
          }
          $mensaje = "La registraciónse realizó con éxito. Ingresando...";
     }else{
-        $mensaje = "_Error al guardar los datos";
+        $mensaje = "Error al guardar los datos";
     }
 }else{
-    die("Error al establecer la conexión con la base de datos");
+   $mensaje = "Error en la conexión";
 }
 
 
@@ -43,8 +43,8 @@ mysqli_close($cnx);
 
 //Preparamos los datos para ser enviados.
 $datosEnvio = [];
-$datosEnvio[2] = $mensaje;
 $datosEnvio[1] = $id_usuario;
+$datosEnvio[2] = $mensaje;
 
 echo json_encode($datosEnvio);
 

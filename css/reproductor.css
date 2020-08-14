@@ -196,6 +196,13 @@ body {
     margin-top: 0rem;
     margin-bottom: 0px;
 }
+.listas__mensaje {
+    color: rgb(220, 220, 255);
+    font-size: 1.5rem;
+    margin-top: 8rem;
+    text-align: center;
+    font-style: italic;
+}
 .listas__canciones {
     padding-left: 0.625rem;
     padding-right: 0.3125rem;

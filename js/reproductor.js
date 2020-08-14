@@ -83,8 +83,10 @@ $(document).ready(function() {
             }else{
                 ALBUM.asignarCancion();
             }
-            limpiarListaCanciones()
-            mostrarListaCanciones();
+            $(".listas__mensaje").fadeOut(300, function() {
+                limpiarListaCanciones()
+                mostrarListaCanciones();
+            })
             $("#btnPlay_img").attr("src", "../imagenes/Botones/Play.png");
             $("#btnPlay_img").attr("alt", "Botón de play");
             $("#barra_tiempo").val(0);
@@ -752,8 +754,10 @@ function quitarFiltro() {
             }else{
                 ALBUM.asignarCancion();
             }
-            limpiarListaCanciones()
-            mostrarListaCanciones();
+            $(".listas__mensaje").fadeOut(300, function() {
+                limpiarListaCanciones()
+                mostrarListaCanciones();
+            })
             $("#btnPlay_img").attr("src", "../imagenes/Botones/Play.png");
             $("#btnPlay_img").attr("alt", "Botón de play");
             $("#barra_tiempo").val(0);
@@ -884,8 +888,10 @@ function cargarAlbumSugerido(_id_genero_seleccionado) {
                     ALBUM.canciones.push(CANCION);
                 }
                 //Hacemos fade out al volumen y mostramos la lista de canciones.
-                limpiarListaCanciones()
-                mostrarListaCanciones();
+                $(".listas__mensaje").fadeOut(300, function() {
+                    limpiarListaCanciones()
+                    mostrarListaCanciones();
+                })
                 ALBUM.indice = 0;
                 let volumen = media.volume;
                 if (!media.paused && !media.ended) {

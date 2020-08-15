@@ -56,7 +56,8 @@ $(document).ready(function() {
     cargaAlbumes(consulta);
     muestraAlbumes();
     $(".imagenes > div").css("opacity", "1");
-    //si hay más de 12 albumes para mostrar, hacemos visible el botón de siguientes imágenes.
+    $(".listas__mensaje").fadeIn(3000);
+        //si hay más de 12 albumes para mostrar, hacemos visible el botón de siguientes imágenes.
     if (id_album.length > 12) {
         $("#btnSiguiente").css("visibility", "visible");
     };

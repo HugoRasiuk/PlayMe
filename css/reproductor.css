@@ -44,25 +44,32 @@ body {
 
 
 
-.datos {
-    grid-column: 2 / 4;
+.datos__usuario {
+    grid-column: 3 / 4;
     grid-row: 1 / 2;
-    background: black;
-    background-size: contain;
-
-}
-.datos__opaca {
+    background: rgb(50, 50, 70);
     width: 100%;
     height: 100%;
-    background: rgb(50, 50, 70);
     display: flex;
-    align-items: center;
     justify-content: flex-end;
+    align-items: center;
 }
 .datos__nombre_usuario {
     color: rgb(150, 150, 255);
     font-size: 2rem;
     margin-right: 1.25rem;
+}
+.datos__mensaje {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    color: rgb(50, 50, 70);
+    background: rgb(50, 50, 70);
+    font-size: 1.2rem;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-style: italic;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .datos__foto {
     width: 3.125rem;
@@ -563,7 +570,7 @@ body {
 
     .contenedor {
         grid-template-columns: minmax(25rem, 1fr) minmax(40rem, 2fr);
-        grid-template-rows: 1fr 0.5fr 5fr 1fr 1fr;
+        grid-template-rows: 1fr 0.5fr 0.5fr 5fr 1fr 1fr;
     }
 
     .logo {
@@ -571,40 +578,46 @@ body {
         grid-row: 1 / 2;
     }
 
-    .datos {
-        grid-column: 2 / 3;
+    .datos__usuario {
+        grid-column: 2 / 4;
         grid-row: 1 / 2;
+    }
+
+    .datos__mensaje {
+        grid-column: 1 / 4;
+        grid-row: 2 / 3;
+        font-size: 2rem;
     }
 
     .filtro {
         grid-column: 1 / 3;
-        grid-row: 2 / 3;
+        grid-row: 3 / 4;
     }
 
     .listas {
         grid-column: 1 / 2;
-        grid-row: 3 / 4;
+        grid-row: 4 / 5;
     }
 
     .imagenes {
         grid-column: 2 / 3;
-        grid-row: 3 / 4;
+        grid-row: 4 / 5;
     }
 
     .reproductor {
         grid-column: 1 / 2;
-        grid-row: 4 / 5;
+        grid-row: 5 / 6;
     }
 
     .info {
         grid-column: 2 / 3;
-        grid-row: 4 / 5;
+        grid-row: 5 / 6;
         justify-content: flex-end;
     }
 
     .barra {
         grid-column: 1 / 3;
-        grid-row: 5 / 6;
+        grid-row: 6 / 7;
     }
 
     .listas__mensaje {

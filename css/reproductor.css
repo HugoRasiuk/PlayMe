@@ -71,6 +71,9 @@ body {
     justify-content: center;
     align-items: center;
 }
+.lblMensajeError {
+    transition: color 1.5s;
+}
 .datos__foto {
     width: 3.125rem;
     height: 3.125rem;
@@ -730,7 +733,7 @@ body {
     }
 
     .listas__mensaje {
-        margin-top: 12rem;
+        margin-top: 11rem;
     }
     
     .filtro__limpiar {

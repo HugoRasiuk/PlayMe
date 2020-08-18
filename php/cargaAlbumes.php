@@ -11,7 +11,11 @@ $consulta = $_POST["cadena"];
 //Verificamos si se establece la conexión.
 if ($cnx) {
     $resultado = mysqli_query($cnx, $consulta);
-    $datos = mysqli_fetch_all($resultado, MYSQLI_ASSOC);
+    if ($resultado) {
+        $datos = mysqli_fetch_all($resultado, MYSQLI_ASSOC);
+    }else{
+        $datos = "fallo";
+    }
 }else{
     $datos = "fallo";
 }

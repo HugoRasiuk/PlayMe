@@ -787,7 +787,7 @@ function buscarRecomendados() {
         async: false,
         data: {cadena:consulta},
         success: function(respuesta) {
-            if (respuesta != "fallo") {
+            if (respuesta != '"fallo"') {
                 JSON.parse(respuesta, function(clave, valor) {
                     if (clave == "gen_id") {
                         id_generos.push(valor);
@@ -801,6 +801,7 @@ function buscarRecomendados() {
                 })
             }else{
                 //Mensaje de fallo de datos.
+                mensajeError("Error al intentar obtener los datos");
             }
         }
     })
@@ -853,7 +854,7 @@ function cargarAlbumSugerido(_id_genero_seleccionado) {
         async: false,
         data: {cadena:consulta},
         success: function(respuesta) {
-            if (respuesta != "fallo") {
+            if (respuesta != '"fallo"') {
                 JSON.parse(respuesta, function(clave, valor) {
                     if (clave == "can_id") {
                         id.push(valor);
@@ -914,6 +915,7 @@ function cargarAlbumSugerido(_id_genero_seleccionado) {
                 $("#barra_tiempo").val(0);
             }else{
                 //Mensaje de fallo de datos.
+                mensajeError("Error al intentar obtener los datos");
             }
         }
     })
@@ -1365,7 +1367,7 @@ function cargaAlbumes(_consulta) {
         async: false,
         data: {cadena:_consulta},
         success: function(respuesta) {
-            if (respuesta != "fallo") {
+            if (respuesta != '"fallo"') {
                 JSON.parse(respuesta, function(clave, valor) {
                     if (clave == "alb_id") {
                         id_album.push(valor);
@@ -1382,10 +1384,25 @@ function cargaAlbumes(_consulta) {
                 });
             }else{
                 //Mensaje de fallo de datos.
+                mensajeError("Error al intentar obtener los datos");
             }
         }
     });
 };
+
+
+
+//Función para mostrar los mensajes de error.
+function mensajeError(mensaje) {
+    $("#lblMensajeError").text(mensaje);
+    $("#lblMensajeError").css("color", "white");
+    setTimeout(function() {
+        $("#lblMensajeError").css("color", "rgb(50, 50, 70)");
+    } , 5000)
+    setTimeout(function() {
+        $("#lblMensajeError").text("");
+    }, 6500)
+}
 
 
 

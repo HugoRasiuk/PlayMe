@@ -104,9 +104,8 @@ body {
 .filtro__boton_dif img {
     width: 100%;
     height: 100%;
-    -o-object-fit: contain;
-       object-fit: cover;
-    }
+    object-fit: contain;
+}
 .filtro__boton {
     padding: 0px;
     height: 3rem;
@@ -196,6 +195,7 @@ body {
     font-size: 1rem;
     margin-bottom: 1%;
     padding-left: 1rem;
+    overflow: hidden;
 }
 .listas__titulo { 
     background: rgb(50, 50, 70);
@@ -212,7 +212,7 @@ body {
     padding-right: 0.3125rem;
     background: black;
     height: 90%;
-    overflow-y: scroll;
+    overflow: scroll;
 }
 .listas__mensaje {
     display: none;
@@ -302,10 +302,11 @@ body {
 
 /*reproductor.*/
 .reproductor {
+    font-size: 16px;
     background: rgb(50, 50, 70);
     grid-column: 1 / 2;
     grid-row: 4 / 5;
-    padding: 1.25rem;
+    padding: 1.25em;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -314,25 +315,25 @@ body {
 .reproductor__botones_reproductor {
     background: black;
     padding-left: 0px;
-    padding-right: 0.1875rem;
-    width: 18.75rem;
-    height:  2.5rem;
-    border-radius: 1.25rem;
+    padding-right: 0.1875em;
+    width: 18.75em;
+    height:  2.5em;
+    border-radius: 1.25em;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 .reproductor__botones {
-    width: 1.875rem;
-    height: 1.875rem;
+    width: 1.875em;
+    height: 1.875em;
     border: none;
     background:none;
     padding: 0px;
 }
 .reproductor__btnPlay {
-    width: 3.75rem;
-    height: 3.75rem;
-    margin-left: -0.1875rem;
+    width: 3.75em;
+    height: 3.75em;
+    margin-left: -0.1875em;
 }
 .reproductor__btnAnterior {
     margin-right: -5%;
@@ -347,29 +348,29 @@ body {
        object-fit: contain;
 }
 .reproductor__botones_adicionales {
-    width: 18.75rem;
-    height: 1.875rem;
-    margin-top: 1.25rem;
+    width: 18.75em;
+    height: 1.875em;
+    margin-top: 1.25em;
     padding: 0px;
     text-align: right;
 }
 .reproductor__btnAdicional {
     background: rgb(120, 40, 40);
-    width: 2.5rem;
-    height: 1.875rem;
+    width: 2.5em;
+    height: 1.875em;
 }
 #btnLoop {
     position: absolute;
-    margin-left: 16.25rem;
-    margin-top: 0rem;
+    margin-left: 16.25em;
+    margin-top: 0em;
 }
 #btnMute {
     position: absolute;
-    margin-left: 13rem;
+    margin-left: 13em;
 }
 .btnLoop {
     position: absolute;
-    margin-left: 13rem;
+    margin-left: 13em;
 }
 .reproductor__botones_adicionales img {
     width: 100%;
@@ -379,13 +380,13 @@ body {
 }
 .reproductor__volumen {
     position: absolute;
-    margin-left: 0rem;
-    margin-top: 0.3rem;
+    margin-left: 0em;
+    margin-top: 0.3em;
 }
 .btnDeslizdorVolumen {
-    height: 1rem;
+    height: 1em;
     margin: 0px;
-    width: 12rem;
+    width: 12em;
     background: transparent;
     -webkit-appearance: none;
 }
@@ -393,24 +394,24 @@ body {
 .btnDeslizdorVolumen::-moz-range-track {
     background: red;
     width: 100%;
-    height: 0.3rem;
+    height: 0.3em;
 }
 .btnDeslizdorVolumen::-webkit-slider-runnable-track {
     background: red;
     width: 100%;
-    height: 0.3rem;
+    height: 0.3em;
 }
 .btnDeslizdorVolumen::-ms-track {
     background: red;
     width: 100%;
-    height: 0.3rem;
+    height: 0.3em;
 }
 /*Thumb.*/
 .btnDeslizdorVolumen::-moz-range-thumb {
-    height: 1.5rem;
-    width: 1.5rem;
+    height: 1.5em;
+    width: 1.5em;
     background: black;
-    border-radius: 0.5rem;
+    border-radius: 0.5em;
     border: white solid 1px;
 }
 .btnDeslizdorVolumen::-moz-range-thumb:hover {
@@ -421,19 +422,19 @@ body {
 }
 .btnDeslizdorVolumen::-webkit-slider-thumb {
     -webkit-appearance: none;
-    height: 1.5rem;
-    width: 1.5rem;
+    height: 1.5em;
+    width: 1.5em;
     background: black;
-    border-radius: 0.5rem;
+    border-radius: 0.5em;
     border: white solid 1px;
     cursor: pointer;
-    margin-top: -0.5rem;
+    margin-top: -0.5em;
 }
 .btnDeslizdorVolumen::-ms-thumb {
-    height: 1.5rem;
-    width: 1.5rem;
+    height: 1.5em;
+    width: 1.5em;
     background: black;
-    border-radius: 0.5rem;
+    border-radius: 0.5em;
     border: white solid 1px;
     cursor: pointer;
 }
@@ -441,9 +442,7 @@ body {
 .btnDeslizdorVolumen::-moz-range-progress {
     background: red;
 }
-.btnDeslizdorVolumen::-ms-fill-lower {
-    background: red;
-}
+
 
 
 
@@ -565,6 +564,10 @@ body {
 
 
 
+
+
+
+
 /*Cambios al llegar a los 1000 px*/
 @media screen and (max-width: 1000px) {
 
@@ -579,12 +582,12 @@ body {
     }
 
     .datos__usuario {
-        grid-column: 2 / 4;
+        grid-column: 2 / 3;
         grid-row: 1 / 2;
     }
 
     .datos__mensaje {
-        grid-column: 1 / 4;
+        grid-column: 1 / 3;
         grid-row: 2 / 3;
         font-size: 2rem;
     }
@@ -624,4 +627,107 @@ body {
         margin-top: 23rem;
     }
     
+}
+
+
+
+
+
+
+
+@media screen and (max-width: 720px) {
+
+    .contenedor {
+        grid-template-columns: minmax(40rem, 1fr) minmax(20rem, 1fr);
+        grid-template-rows: 1fr 0.5fr 0.5fr 5fr 1fr 1fr;
+    }
+
+    .filtro {
+        grid-column: 1 / 3;
+    }
+
+    .filtro__boton {
+        margin-left: 13.5rem;
+    }
+    .filtro__contenedor {
+        width: 30rem;
+    }
+    .filtro__canciones_nueva_posicion {
+        margin-left: 0rem;
+    }
+    .filtro__artista_nueva_posicion {
+        margin-left:  5.4rem;
+    }
+    .filtro__album_nueva_posicion {
+        margin-left: 10.8rem;
+    }
+    .filtro__favoritos_nueva_posicion {
+        margin-left: 16.2rem;
+    }
+    .filtro__sugeridos_nueva_posicion {
+        margin-left: 21.6rem;
+    }
+    .filtro__filtro_nueva_posicion {
+        margin-left: 27rem;
+    }
+
+    .filtro_posicion_izquierda {
+        margin-left: 0rem;
+    }
+    
+    .filtro__txt {
+        width: 25rem;
+    }
+
+}
+
+
+
+
+
+@media screen and (max-width: 600px) {
+    
+    
+    .contenedor {
+        grid-template-columns: minmax(20rem, 1fr) minmax(20rem, 1fr);
+        grid-template-rows: 1fr 0.5fr 0.5fr 3fr 3fr 1fr 1fr 1fr;
+        max-height: 150vh;
+    }
+    
+    .imagenes {
+        grid-column: 1 / 3;
+        grid-row: 4 / 5;
+    }
+
+    .listas {
+        grid-column: 1 / 3;
+        grid-row: 5 / 6;
+    }
+
+    .reproductor {
+        grid-column: 1 / 3;
+        grid-row: 6 / 7;
+    }
+
+    .barra {
+        grid-column: 1 / 3;
+        grid-row: 7 / 8;
+    }
+
+    .info {
+        grid-column: 1 / 3;
+        grid-row: 8 / 9;
+        justify-content: flex-start;
+    }
+
+    .imagenes div {
+        width: 12rem;
+        height: 12rem;
+    }
+
+    .listas__canciones_tabla td {
+        font-size: 1.5rem;
+    }
+    
+
 }

@@ -728,6 +728,14 @@ body {
     .listas__canciones_tabla td {
         font-size: 1.5rem;
     }
+
+    .listas__mensaje {
+        margin-top: 12rem;
+    }
     
+    .filtro__limpiar {
+        margin-left: 29.5rem;
+        margin-top: -0.75rem;
+    }
 
 }

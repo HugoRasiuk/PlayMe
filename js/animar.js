@@ -251,7 +251,7 @@ function mensajeUsuario() {
 }
 
 function mensajeUsuarioInexistente() {
-    $(".mensajeUsuario").text("El usuario ingresado es indexistente");
+    $(".mensajeUsuario").text("El usuario ingresado es inexistente");
 }
 
 function desempaquetarDatosUsuario(clave, dato_usuario) {

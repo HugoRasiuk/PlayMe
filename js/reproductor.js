@@ -674,7 +674,14 @@ $(document).ready(function() {
     //Evento al cambiar el deslizador del tiempo de reproducción.
     $("#barra_tiempo").change(function() {
         media.currentTime = $("#barra_tiempo").val();
-    });
+    })
+    //Eventos de la imágen y el menu del usuario.
+    $("#foto_usuario").on("mouseenter", function() {
+        $(".contenedor_general_opciones_usuario").fadeIn(500);
+    })
+    $("#btnCerrarMenu").on("click", function() {
+        $(".contenedor_general_opciones_usuario").fadeOut(500);
+    })
 })
 
 

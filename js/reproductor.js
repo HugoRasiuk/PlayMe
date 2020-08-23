@@ -679,8 +679,15 @@ $(document).ready(function() {
     $("#foto_usuario").on("mouseenter", function() {
         $(".contenedor_general_opciones_usuario").fadeIn(500);
     })
-    $("#btnCerrarMenu").on("click", function() {
-        $(".contenedor_general_opciones_usuario").fadeOut(500);
+    $("#foto_usuario").on("mouseleave", function() {
+        if (!$(".contenedor_general_opciones_usuario").is(":hover")) {
+            $(".contenedor_general_opciones_usuario").fadeOut(500);
+        }
+    })
+    $(".contenedor_general_opciones_usuario").on("mouseleave", function() {
+        if (!$("#foto_usuario").is(":hover")) {
+            $(".contenedor_general_opciones_usuario").fadeOut(500);
+        }
     })
     $("#btnCambiarContrasenia").on("click", function() {
         $("#foto_usuario").off();
@@ -698,7 +705,39 @@ $(document).ready(function() {
     $("#btnGuardarCambioContrasenia").on("click",function() {
         let contrasenia_actual = $("#txtContraseniaUsuario").val();
         if (contrasenia_actual == USUARIO.contrasenia) {
-            alert();
+            //Validamos la nueva contraseña ingresada.
+            let validado = false;
+            if (validado) {
+                //Guardamos la nueva contraseña.
+            }else{
+                if ($("#lblMensajeCambioContrasenia").text() == "") {
+                    $("#lblMensajeCambioContrasenia").text("Las contraseñas no coinciden o no son válidas");
+                    $("#lblMensajeCambioContrasenia").fadeIn(500);
+                    setTimeout(function() {
+                        $("#lblMensajeCambioContrasenia").fadeOut(500, function() {
+                            $("#lblMensajeCambioContrasenia").text("La contraseña debe tener 8 caractéres,una mayúscula y un número");
+                            $("#lblMensajeCambioContrasenia").fadeIn(500);
+                        });
+                    }, 3000)
+                }else{
+                    $("#lblMensajeCambioContrasenia").fadeOut(500, function() {
+                        $("#lblMensajeCambioContrasenia").text("Las contraseñas no coinciden o no son válidas");
+                        $("#lblMensajeCambioContrasenia").fadeIn(500);
+                        setTimeout(function() {
+                            $("#lblMensajeCambioContrasenia").fadeOut(500, function() {
+                                $("#lblMensajeCambioContrasenia").text("La contraseña debe tener 8 caractéres,una mayúscula y un número");
+                                $("#lblMensajeCambioContrasenia").fadeIn(500);
+                            });
+                        }, 3000)
+                    });
+                }
+            }
+        }else{
+            $("#lblMensajeCambioContrasenia").text("La contraseña actual es incorrecta");
+            $("#lblMensajeCambioContrasenia").fadeIn(500);
+            setTimeout(function() {
+                $("#lblMensajeCambioContrasenia").fadeOut(500);
+            }, 3000)
         }
     })
 })

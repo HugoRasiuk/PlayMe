@@ -88,11 +88,10 @@ body {
 }
 .contenedor_general_opciones_usuario {
     display: none;
+    margin-left: -8rem;
+    margin-top:  -1rem;
 }
 .contenedor_botones_opciones_usuario {
-    position: absolute;
-    margin-left: -9rem;
-    margin-top:  -1rem;
     display: flex;
     flex-direction: column;
 }
@@ -111,7 +110,7 @@ body {
     display: none;
     position: absolute;
     width: 25rem;
-    height: 18rem;
+    height: 21rem;
     background: rgb(180, 180, 200);
     border-radius: 1rem;
     margin-top: -2rem;
@@ -132,9 +131,20 @@ body {
     margin-left: 2.5rem;
     margin-bottom: 0.2rem;
 }
+.contenedorMensajeCambioContrasenia {
+    margin-top: 1.5rem;
+    margin-left: 2.5rem;
+    width: 20rem;
+    height: 1.2rem;
+}
+#lblMensajeCambioContrasenia {
+    margin-left: 0rem;
+    text-align: center;
+    display: none;
+}
 .contenedor_botones_cambioContrasenia {
     margin-left: 2.5rem;
-    margin-top: 2rem;
+    margin-top: 2.2rem;
     width: 20rem;
     display: flex;
     justify-content: space-between;
@@ -146,6 +156,7 @@ body {
     height: 2rem;
     border-radius: 1rem;
     border: none;
+    margin-left: 0.5rem;
 }
 .contenedor_botones_cambioContrasenia button:hover {
     background: rgb(50, 50, 200);

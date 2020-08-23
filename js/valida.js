@@ -27,17 +27,18 @@ function validarUsuario(texto) {
 
 //Validamos la contraseña.
 function validarContrasenia(texto, texto_repetido) {
+    let resultado = false;
     //Vemos si son iguales.
     if (texto === texto_repetido) {
         //Vemos si tiene más de 7 caracteres.
        if (texto.length > 7) {
             //Vemos si tiene una mayúscula y una minúscula.
-            var mayus = false;
-            var minus = false;
-            for (var indice = 0; indice < texto.length; indice++) {
-                var letra = texto.charAt(indice);
+            let mayus = false;
+            let minus = false;
+            for (let indice = 0; indice < texto.length; indice++) {
+                let letra = texto.charAt(indice);
                 if (letra === letra.toLowerCase() && isNaN(letra)) {
-                    minus = true
+                    minus = true;
                 }
                 if (letra === letra.toUpperCase() && isNaN(letra)) {
                     mayus = true;
@@ -45,20 +46,14 @@ function validarContrasenia(texto, texto_repetido) {
             }
             if (mayus && minus) {
                 //Verificamos si hay un número en la cadena.
-                for (indice = 0; indice < texto.length; indice++) {
-                    letra = texto.charAt(indice);
+                for (let indice = 0; indice < texto.length; indice++) {
+                    let letra = texto.charAt(indice);
                     if (!isNaN(letra)) {
                         resultado = true;
                     }
                 }
-            }else{
-                resultado = false;
             }
-        }else{
-            resultado = false;
         }
-    }else{
-        resultado = false;
     }
     return resultado;
 }

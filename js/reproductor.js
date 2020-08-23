@@ -706,9 +706,30 @@ $(document).ready(function() {
         let contrasenia_actual = $("#txtContraseniaUsuario").val();
         if (contrasenia_actual == USUARIO.contrasenia) {
             //Validamos la nueva contraseña ingresada.
-            let validado = false;
-            if (validado) {
+            let contrasenia = $("#txtNuevaContraseniaUsuario").val();
+            let repeticionContrasenia = $("#txtRepetirContraseniaUsuario").val();
+            if (validarContrasenia(contrasenia, repeticionContrasenia)) {
                 //Guardamos la nueva contraseña.
+                if (!cambiarContrasenia(USUARIO.id, contrasenia)) {
+                    $("#lblMensajeCambioContrasenia").fadeOut(500, function() {
+                        $("#lblMensajeCambioContrasenia").text("Error al intentar guardar la contraseña");
+                        $("#lblMensajeCambioContrasenia").fadeIn(500);
+                        setTimeout(function() {
+                            $("#lblMensajeCambioContrasenia").fadeOut(500, function() {
+                            });
+                        }, 3000)
+                    });
+                }else{
+                    USUARIO.contrasenia = contrasenia;
+                    $(".contenedor_cambioContrasenia").fadeOut(500, function() {
+                        $("#txtContraseniaUsuario").val("");
+                        $("#txtNuevaContraseniaUsuario").val("");
+                        $("#txtRepetirContraseniaUsuario").val("");
+                    });
+                    $("#foto_usuario").on("mouseenter", function() {
+                        $(".contenedor_general_opciones_usuario").fadeIn(500);
+                    })
+                }
             }else{
                 if ($("#lblMensajeCambioContrasenia").text() == "") {
                     $("#lblMensajeCambioContrasenia").text("Las contraseñas no coinciden o no son válidas");
@@ -741,6 +762,24 @@ $(document).ready(function() {
         }
     })
 })
+
+
+
+function cambiarContrasenia(id_usuario, nueva_contrasenia) {
+    let contestacion = false;
+    $.ajax({
+        url: "../php/cambiaContrasenia.php",
+        type: "POST",
+        async: false,
+        data: {id:id_usuario, contrasenia:nueva_contrasenia},
+        success: function(respuesta) {
+            if (respuesta == "ok") {
+                contestacion = true;
+            }
+        }
+    })
+    return contestacion;
+}
 
 
 

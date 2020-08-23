@@ -78,7 +78,7 @@ body {
     width: 3.125rem;
     height: 3.125rem;
     border-radius: 1.5625rem;
-    background: rgb(180, 180, 180);
+    background: rgb(180, 180, 200);
     margin-right: 3.125rem;
 }
 .foto_usuario {
@@ -101,10 +101,54 @@ body {
     border: none;
     padding-top: 0.2rem;
     padding-bottom: 0.2rem;
+    background: rgb(180, 180, 200);
 }
 .boton_opcion_usuario:hover {
-    background: black;
+    background: rgb(100, 100, 120);
     color: white;
+}
+.contenedor_cambioContrasenia {
+    display: none;
+    position: absolute;
+    width: 25rem;
+    height: 18rem;
+    background: rgb(180, 180, 200);
+    border-radius: 1rem;
+    margin-top: -2rem;
+    margin-left: -25rem;
+    z-index: 1;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+.contenedor_cambioContrasenia h3 {
+    text-align: center;
+}
+.contenedor_cambioContrasenia input {
+    width: 20rem;
+    margin-left: 2.5rem;
+    margin-top: -1rem;
+    border: none;
+}
+.contenedor_cambioContrasenia p {
+    margin-left: 2.5rem;
+    margin-bottom: 0.2rem;
+}
+.contenedor_botones_cambioContrasenia {
+    margin-left: 2.5rem;
+    margin-top: 2rem;
+    width: 20rem;
+    display: flex;
+    justify-content: space-between;
+}
+.contenedor_botones_cambioContrasenia button {
+    background: rgb(100, 100, 120);
+    color: white;
+    width: 6rem;
+    height: 2rem;
+    border-radius: 1rem;
+    border: none;
+}
+.contenedor_botones_cambioContrasenia button:hover {
+    background: rgb(50, 50, 200);
 }
 
 
@@ -310,6 +354,9 @@ body {
     width: 100%;
     height: 100%;
     object-fit: contain;
+}
+.tapa:hover {
+    cursor: pointer;
 }
 .giro {
     animation: giro 0.5s;

@@ -682,6 +682,25 @@ $(document).ready(function() {
     $("#btnCerrarMenu").on("click", function() {
         $(".contenedor_general_opciones_usuario").fadeOut(500);
     })
+    $("#btnCambiarContrasenia").on("click", function() {
+        $("#foto_usuario").off();
+        $(".contenedor_general_opciones_usuario").fadeOut(500);
+        $(".contenedor_cambioContrasenia").fadeIn(500);
+        $("#txtContraseniaUsuario").focus();
+    })
+    //Eventos de la ventana de cambio de contraseña.
+    $("#btnCancelarCambioContrasenia").on("click", function() {
+        $(".contenedor_cambioContrasenia").fadeOut(500);
+        $("#foto_usuario").on("mouseenter", function() {
+            $(".contenedor_general_opciones_usuario").fadeIn(500);
+        })
+    })
+    $("#btnGuardarCambioContrasenia").on("click",function() {
+        let contrasenia_actual = $("#txtContraseniaUsuario").val();
+        if (contrasenia_actual == USUARIO.contrasenia) {
+            alert();
+        }
+    })
 })
 
 
@@ -1352,6 +1371,9 @@ function extraerDatosCookie() {
         }
         if (clave == "usuario") {
             USUARIO.usuario = valor;
+        }
+        if (clave == "contrasenia") {
+            USUARIO.contrasenia = valor;
         }
     }
 }

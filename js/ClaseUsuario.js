@@ -5,6 +5,7 @@ class Usuario {
     constructor() {
         this._id = 0;
         this._usuario = "";
+        this._contrasenia = "";
     }
     //Get y Set.
     get usuario() {
@@ -19,6 +20,13 @@ class Usuario {
     }
     set usuario(param) {
         this._usuario = param;
+    }
+
+    get contrasenia() {
+        return this._contrasenia;
+    }
+    set contrasenia(param) {
+        this._contrasenia = param;
     }
 }
 

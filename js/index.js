@@ -68,5 +68,6 @@ function cerrar() {
 function ingresar() {
     document.cookie = "id=" + miUsuarioId + ";" + "path=../html";
     document.cookie = "usuario=" + miUsuarioUsuario + ";" + "path=../html";
+    document.cookie = "contrasenia=" +miUsuarioContrasenia + ";" + "path=../html";
     window.location="html/reproductor.html";
 }

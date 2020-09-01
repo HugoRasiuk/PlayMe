@@ -85,6 +85,8 @@ body {
     width: 100%;
     height: 100%;
     object-fit: contain;
+    border-radius: 50%;
+    overflow: hidden;
 }
 .contenedor_general_opciones_usuario {
     display: none;
@@ -161,6 +163,66 @@ body {
 .contenedor_botones_cambioContrasenia button:hover {
     background: rgb(50, 50, 200);
 }
+.contenedor_cambioFoto {
+    display: none;
+    position: absolute;
+    width: 25rem;
+    height: 21rem;
+    background: rgb(180, 180, 200);
+    border-radius: 1rem;
+    margin-top: -2rem;
+    margin-left: -25rem;
+    z-index: 1;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+.contenedorMensajeCambioFoto {
+    margin-top: 1.5rem;
+    margin-left: 2.5rem;
+    width: 20rem;
+    height: 1.2rem;
+}
+#lblMensajeCambioFoto {
+    margin-left: 0rem;
+    text-align: center;
+    display: none;
+}
+.contenedor_botones_cambioFoto {
+    margin-left: 2.5rem;
+    margin-top: 2.2rem;
+    width: 20rem;
+    display: flex;
+    justify-content: space-between;
+}
+.contenedor_botones_cambioFoto button {
+    background: rgb(100, 100, 120);
+    color: white;
+    width: 6rem;
+    height: 2rem;
+    border-radius: 1rem;
+    border: none;
+    margin-left: 0.5rem;
+}
+.contenedor_botones_cambioFoto button:hover {
+    background: rgb(50, 50, 200);
+}
+.contenedor_imgFotoUsuario {
+    width: 10rem;
+    height: 10rem;
+    border-radius: 5rem;
+    margin-top: 0.8rem;
+    margin-left: 7.5rem;
+    background: black;
+    overflow: hidden;
+}
+.imgFotoUsuario {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+.contenedor_fileInput {
+    margin-top: 0.8rem;
+}
+
 
 
 

@@ -6,6 +6,7 @@ class Usuario {
         this._id = 0;
         this._usuario = "";
         this._contrasenia = "";
+        this._foto = "";
     }
     //Get y Set.
     get usuario() {
@@ -27,6 +28,13 @@ class Usuario {
     }
     set contrasenia(param) {
         this._contrasenia = param;
+    }
+
+    get foto() {
+        return this._foto;
+    }
+    set foto(param) {
+        this._foto = param;
     }
 }
 

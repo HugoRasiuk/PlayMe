@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 08-08-2020 a las 18:55:18
+-- Tiempo de generación: 27-08-2020 a las 02:37:31
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.6
 
@@ -1584,7 +1584,10 @@ INSERT INTO `favoritas` (`fav_id`, `fav_idusuario`, `fav_idcancion`) VALUES
 (26, 24, 449),
 (27, 24, 289),
 (28, 24, 292),
-(29, 24, 298);
+(29, 24, 298),
+(30, 24, 344),
+(31, 24, 335),
+(32, 15, 348);
 
 -- --------------------------------------------------------
 
@@ -1684,30 +1687,31 @@ INSERT INTO `respuestas` (`res_id`, `res_idpregunta`, `res_texto`, `res_idusuari
 CREATE TABLE `usuarios` (
   `usu_id` int(11) NOT NULL,
   `usu_usuario` varchar(30) DEFAULT '',
-  `usu_contrasenia` varchar(40) DEFAULT ''
+  `usu_contrasenia` varchar(40) DEFAULT '',
+  `usu_foto` varchar(200) DEFAULT ''
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`usu_id`, `usu_usuario`, `usu_contrasenia`) VALUES
-(15, 'Hugo', 'aaaaaaA1'),
-(16, 'Lala', 'bbbbbbB1'),
-(17, 'Roberto', 'aaaaaaA1'),
-(18, 'Paola', 'aaaaaaA1'),
-(19, 'Ruben', 'eeeeeeE1'),
-(20, 'Nino', 'aaaaaaA1'),
-(21, 'Leo3', 'aaaaaaA1'),
-(22, 'Leo', 'aaaaaaA1'),
-(23, 'Pablo', 'aaaaaaA1'),
-(24, 'a', 'aaaaaaA1'),
-(25, 'b', 'aaaaaaA1'),
-(26, 'c', 'aaaaaaA1'),
-(27, 'd', 'aaaaaaA1'),
-(28, 'e', 'aaaaaaA1'),
-(29, 'f', 'aaaaaaA1'),
-(30, 'g', 'aaaaaaA1');
+INSERT INTO `usuarios` (`usu_id`, `usu_usuario`, `usu_contrasenia`, `usu_foto`) VALUES
+(15, 'Hugo', 'aaaaaaA1', ''),
+(16, 'Lala', 'bbbbbbB1', ''),
+(17, 'Roberto', 'aaaaaaA1', ''),
+(18, 'Paola', 'aaaaaaA1', ''),
+(19, 'Ruben', 'eeeeeeE1', ''),
+(20, 'Nino', 'aaaaaaA1', ''),
+(21, 'Leo3', 'aaaaaaA1', ''),
+(22, 'Leo', 'aaaaaaA1', ''),
+(23, 'Pablo', 'aaaaaaA1', ''),
+(24, 'a', 'aaaaaaA1', ''),
+(25, 'b', 'aaaaaaA1', ''),
+(26, 'c', 'aaaaaaA1', ''),
+(27, 'd', 'aaaaaaA1', ''),
+(28, 'e', 'aaaaaaA1', ''),
+(29, 'f', 'aaaaaaA1', ''),
+(30, 'g', 'aaaaaaA1', '');
 
 --
 -- Índices para tablas volcadas
@@ -1813,7 +1817,7 @@ ALTER TABLE `canciones_artistas`
 -- AUTO_INCREMENT de la tabla `favoritas`
 --
 ALTER TABLE `favoritas`
-  MODIFY `fav_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `fav_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT de la tabla `generos`

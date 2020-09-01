@@ -42,6 +42,11 @@ $(document).ready(function() {
     //obtenemos los datos de la cookie y los mostramos.
     extraerDatosCookie();
     mostrarDatosUsuario();
+    buscarFotoUsuario();
+    //Visualizamos la foto.
+    if (USUARIO.foto != "") {
+        $("#foto_usuario").attr("src", USUARIO.foto);
+    }
     //cadena para la consulta de los datos.
     let consulta = "SELECT alb_id, alb_nombre, alb_foto, art_nombre FROM albumes " +
                     "INNER JOIN canciones_albumes " +
@@ -691,9 +696,10 @@ $(document).ready(function() {
     })
     $("#btnCambiarContrasenia").on("click", function() {
         $("#foto_usuario").off();
-        $(".contenedor_general_opciones_usuario").fadeOut(500);
-        $(".contenedor_cambioContrasenia").fadeIn(500);
-        $("#txtContraseniaUsuario").focus();
+        $(".contenedor_general_opciones_usuario").fadeOut(500, function() {
+            $(".contenedor_cambioContrasenia").fadeIn(500);
+            $("#txtContraseniaUsuario").focus();
+        });
     })
     //Eventos de la ventana de cambio de contraseña.
     $("#btnCancelarCambioContrasenia").on("click", function() {
@@ -760,6 +766,24 @@ $(document).ready(function() {
                 $("#lblMensajeCambioContrasenia").fadeOut(500);
             }, 3000)
         }
+    })
+    //Eventos de la ventana del cambio de foto.
+    $("#btnCambiarFoto").on("click", function() {
+        $("#foto_usuario").off();
+        $(".contenedor_general_opciones_usuario").fadeOut(500, function() {
+            $(".contenedor_cambioFoto").fadeIn(500);
+            //Si hay una foto, la cargamos.
+            if (USUARIO.foto != "") {
+                $(".imgFotoUsuario").attr("src", USUARIO.foto);
+            }
+    
+        })
+    })
+    $("#btnCancelarCambioFoto").on("click", function() {
+        $(".contenedor_cambioFoto").fadeOut(500);
+        $("#foto_usuario").on("mouseenter", function() {
+            $(".contenedor_general_opciones_usuario").fadeIn(500);
+        })
     })
 })
 
@@ -1457,6 +1481,31 @@ function extraerDatosCookie() {
 }
 function mostrarDatosUsuario() {
     $("#datos__nombre_usuario").text(USUARIO.usuario);
+}
+
+
+
+//Buscamos la foto del usuario.
+function buscarFotoUsuario() {
+    $.ajax({
+        url: "../php/buscaFoto.php",
+        type: "POST",
+        async: false,
+        data: {id:USUARIO.id},
+        success: function(respuesta) {
+            if (respuesta == '"fallo"') {
+                mensajeError("Error al intentar obtener los datos");
+            }else{
+                if (respuesta != '"nulo"') {
+                    JSON.parse(respuesta, function(clave, valor) {
+                        if (clave == "usu_foto") {
+                            USUARIO.foto = valor;
+                        }
+                    })
+                }
+            }
+        }
+    })
 }
 
 

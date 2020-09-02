@@ -167,7 +167,7 @@ body {
     display: none;
     position: absolute;
     width: 25rem;
-    height: 21rem;
+    height: 25em;
     background: rgb(180, 180, 200);
     border-radius: 1rem;
     margin-top: -2rem;
@@ -176,20 +176,20 @@ body {
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 .contenedorMensajeCambioFoto {
-    margin-top: 1.5rem;
-    margin-left: 2.5rem;
-    width: 20rem;
-    height: 1.2rem;
+    margin-top: 3rem;
+    margin-left: 1rem;
+    width: 23rem;
+    height: 2.5rem;
 }
 #lblMensajeCambioFoto {
     margin-left: 0rem;
     text-align: center;
-    display: none;
+    color: black;
 }
 .contenedor_botones_cambioFoto {
-    margin-left: 2.5rem;
-    margin-top: 2.2rem;
-    width: 20rem;
+    margin-left: 1rem;
+    margin-top: 1rem;
+    width: 23rem;
     display: flex;
     justify-content: space-between;
 }
@@ -219,9 +219,30 @@ body {
     height: 100%;
     object-fit: contain;
 }
-.contenedor_fileInput {
-    margin-top: 0.8rem;
+.inputfileFoto {
+    display: none;
 }
+.contenedor_inputfile {
+    width: 23rem;
+    height: 3rem;
+    margin-left: 1rem;
+    margin-top: 1rem;
+    text-align: center;
+}
+.btnInputfileFoto {
+    margin-top: 1.2rem;
+    display: inline-block;
+    background: rgb(100, 100, 120);
+    color: white;
+    height: 3rem;
+    border-radius: 1.5rem;
+    line-height: 3rem;
+    width: 10rem;
+}
+.btnInputfileFoto:hover {
+    background: rgb(50, 50, 200);
+}
+
 
 
 
@@ -339,12 +360,12 @@ body {
     grid-row: 2 / 4;
     font-size: 1rem;
     margin-bottom: 1%;
-    padding-left: 1rem;
     overflow: hidden;
 }
 .listas__titulo { 
     background: rgb(50, 50, 70);
     padding: 1rem;
+    padding-left: 2rem;
     color: white;
     font-size: 2rem;
     font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -353,7 +374,7 @@ body {
     margin-bottom: 0px;
 }
 .listas__canciones {
-    padding-left: 0.625rem;
+    padding-left: 1rem;
     padding-right: 0.3125rem;
     background: black;
     height: 90%;

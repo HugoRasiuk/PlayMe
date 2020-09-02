@@ -785,6 +785,9 @@ $(document).ready(function() {
             $(".contenedor_general_opciones_usuario").fadeIn(500);
         })
     })
+    $("#btnGuardarCambioFoto").on("click", function() {
+        //Acciones al presionar el botón guardar foto.
+    })
 })
 
 

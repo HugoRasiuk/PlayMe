@@ -768,6 +768,10 @@ $(document).ready(function() {
         }
     })
     //Eventos de la ventana del cambio de foto.
+    $("#inputfileFoto").on("change", function(evento) {
+        let foto = URL.createObjectURL(evento.target.files[0]);
+        $(".imgFotoUsuario").attr("src", foto);
+    })
     $("#btnCambiarFoto").on("click", function() {
         $("#foto_usuario").off();
         $(".contenedor_general_opciones_usuario").fadeOut(500, function() {

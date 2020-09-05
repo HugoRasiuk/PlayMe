@@ -1,7 +1,7 @@
 "use strict";
 //Reproductor del sitio.
 
-//Instanciamos los objetos.
+//Creamos las instancias de los objetos.
 const USUARIO = new Usuario();
 const ALBUM = new Album();
 const ARTISTA = new Artista();
@@ -9,6 +9,8 @@ const CANCION = new Cancion();
 
 
 //Variables globales.
+var tamanio_bytes_foto = 0;
+var cambio_foto = false;
 var bucle = false;
 var id_album = [];
 var nombre_album = [];
@@ -770,7 +772,19 @@ $(document).ready(function() {
     //Eventos de la ventana del cambio de foto.
     $("#inputfileFoto").on("change", function(evento) {
         let foto = URL.createObjectURL(evento.target.files[0]);
-        $(".imgFotoUsuario").attr("src", foto);
+        tamanio_bytes_foto = this.files[0].size;
+        if (tamanio_bytes_foto <= 100000) {
+            $(".imgFotoUsuario").attr("src", foto);
+            $("#lblMensajeCambioFoto").fadeOut(500, function() {
+                $("#lblMensajeCambioFoto").text("La imágen es correcta");
+                $("#lblMensajeCambioFoto").fadeIn(500);
+            })
+        }else{
+            $("#lblMensajeCambioFoto").fadeOut(500, function() {
+                $("#lblMensajeCambioFoto").text("La imágen excede el tamaño máximo permitido");
+                $("#lblMensajeCambioFoto").fadeIn(500);
+            })
+        }
     })
     $("#btnCambiarFoto").on("click", function() {
         $("#foto_usuario").off();
@@ -780,17 +794,38 @@ $(document).ready(function() {
             if (USUARIO.foto != "") {
                 $(".imgFotoUsuario").attr("src", USUARIO.foto);
             }
-    
         })
     })
+    $(".btnInputfileFoto").on("click", function() {
+        cambio_foto = true;
+    })
     $("#btnCancelarCambioFoto").on("click", function() {
-        $(".contenedor_cambioFoto").fadeOut(500);
+        cambio_foto = false;
+        $(".contenedor_cambioFoto").fadeOut(500, function() {
+            $("#lblMensajeCambioFoto").text("La imágen no debe ser mayor a 100 Kb");
+        });
         $("#foto_usuario").on("mouseenter", function() {
             $(".contenedor_general_opciones_usuario").fadeIn(500);
         })
     })
+    //Acciones al presionar el botón guardar foto.
     $("#btnGuardarCambioFoto").on("click", function() {
-        //Acciones al presionar el botón guardar foto.
+        if (cambio_foto) {
+            if (tamanio_bytes_foto <= 100000) {
+                cambio_foto = false;
+                $(".contenedor_cambioFoto").fadeOut(500, function() {
+                    $("#lblMensajeCambioFoto").text("La imágen no debe ser mayor a 100 Kb");
+                });
+                $("#foto_usuario").on("mouseenter", function() {
+                    $(".contenedor_general_opciones_usuario").fadeIn(500);
+                })
+            }
+        }else{
+            $("#lblMensajeCambioFoto").fadeOut(500, function() {
+                $("#lblMensajeCambioFoto").text("Debe seleccionar una nueva imágen");
+                $("#lblMensajeCambioFoto").fadeIn(500);
+            })
+        }
     })
 })
 

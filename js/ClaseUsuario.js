@@ -7,20 +7,21 @@ class Usuario {
         this._usuario = "";
         this._contrasenia = "";
         this._foto = "";
+        this._foto_cambio = false;
     }
     //Get y Set.
     get usuario() {
         return this._usuario;
     }
-    set id(param) {
-        this._id = param;
+    set usuario(param) {
+        this._usuario = param;
     }
 
     get id() {
         return this._id;
     }
-    set usuario(param) {
-        this._usuario = param;
+    set id(param) {
+        this._id = param;
     }
 
     get contrasenia() {
@@ -36,6 +37,34 @@ class Usuario {
     set foto(param) {
         this._foto = param;
     }
+
+    get foto_cambio() {
+        return this._foto_cambio;
+    }
+    set foto_cambio(param) {
+        this._foto_cambio = param;
+    }
+
+
+    guardarFoto(parFoto) {
+        $.ajax({
+            url: "../php/guardaFoto.php",
+            type: "POST",
+            data: parFoto,
+            contentType: false,
+            processData: false,
+            async: false,
+            success: function(respuesta) {
+                if (respuesta == "ok") {
+                    return true;
+                }else{
+                    return false;
+                }
+            }
+        })
+    }
 }
+
+
 
 

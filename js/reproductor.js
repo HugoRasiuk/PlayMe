@@ -9,6 +9,7 @@ const CANCION = new Cancion();
 
 
 //Variables globales.
+var foto = "";
 var tamanio_bytes_foto = 0;
 var cambio_foto = false;
 var bucle = false;
@@ -771,10 +772,10 @@ $(document).ready(function() {
     })
     //Eventos de la ventana del cambio de foto.
     $("#inputfileFoto").on("change", function(evento) {
-        let foto = URL.createObjectURL(evento.target.files[0]);
+        let objFoto = URL.createObjectURL(evento.target.files[0]);
         tamanio_bytes_foto = this.files[0].size;
         if (tamanio_bytes_foto <= 100000) {
-            $(".imgFotoUsuario").attr("src", foto);
+            $(".imgFotoUsuario").attr("src", objFoto);
             $("#lblMensajeCambioFoto").fadeOut(500, function() {
                 $("#lblMensajeCambioFoto").text("La imágen es correcta");
                 $("#lblMensajeCambioFoto").fadeIn(500);
@@ -808,11 +809,17 @@ $(document).ready(function() {
             $(".contenedor_general_opciones_usuario").fadeIn(500);
         })
     })
-    //Acciones al presionar el botón guardar foto.
+    //Acciones al presionar el botón guardar foto
     $("#btnGuardarCambioFoto").on("click", function() {
         if (cambio_foto) {
             if (tamanio_bytes_foto <= 100000) {
                 cambio_foto = false;
+                let formData = new FormData();
+                let archivo = $("#inputfileFoto")[0].files[0];
+                formData.append("foto", archivo);
+                formData.append("usuario", USUARIO.usuario);
+                formData.append("id", USUARIO.id);
+                USUARIO.guardarFoto(formData);
                 $(".contenedor_cambioFoto").fadeOut(500, function() {
                     $("#lblMensajeCambioFoto").text("La imágen no debe ser mayor a 100 Kb");
                 });

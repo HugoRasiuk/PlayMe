@@ -56,9 +56,9 @@ class Usuario {
             async: false,
             success: function(respuesta) {
                 if (respuesta == "ok") {
-                    return true;
+                    //return true;
                 }else{
-                    return false;
+                    //return false;
                 }
             }
         })

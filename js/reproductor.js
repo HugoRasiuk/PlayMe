@@ -11,6 +11,7 @@ const CANCION = new Cancion();
 //Variables globales.
 var foto = "";
 var tamanio_bytes_foto = 0;
+var extension_foto = "";
 var cambio_foto = false;
 var bucle = false;
 var id_album = [];
@@ -774,12 +775,20 @@ $(document).ready(function() {
     $("#inputfileFoto").on("change", function(evento) {
         let objFoto = URL.createObjectURL(evento.target.files[0]);
         tamanio_bytes_foto = this.files[0].size;
+        extension_foto = this.files[0].name.split(".").pop();
         if (tamanio_bytes_foto <= 100000) {
-            $(".imgFotoUsuario").attr("src", objFoto);
-            $("#lblMensajeCambioFoto").fadeOut(500, function() {
-                $("#lblMensajeCambioFoto").text("La imágen es correcta");
-                $("#lblMensajeCambioFoto").fadeIn(500);
-            })
+            if (extension_foto == "png" || extension_foto == "jpg") {
+                $(".imgFotoUsuario").attr("src", objFoto);
+                $("#lblMensajeCambioFoto").fadeOut(500, function() {
+                    $("#lblMensajeCambioFoto").text("La imágen es correcta");
+                    $("#lblMensajeCambioFoto").fadeIn(500);
+                })
+            }else{
+                $("#lblMensajeCambioFoto").fadeOut(500, function() {
+                    $("#lblMensajeCambioFoto").text("El formato de la imágen no está aceptado, debe ser png o jpg");
+                    $("#lblMensajeCambioFoto").fadeIn(500);
+                })
+            }
         }else{
             $("#lblMensajeCambioFoto").fadeOut(500, function() {
                 $("#lblMensajeCambioFoto").text("La imágen excede el tamaño máximo permitido");
@@ -812,7 +821,7 @@ $(document).ready(function() {
     //Acciones al presionar el botón guardar foto
     $("#btnGuardarCambioFoto").on("click", function() {
         if (cambio_foto) {
-            if (tamanio_bytes_foto <= 100000) {
+            if (tamanio_bytes_foto <= 100000 && (extension_foto == "png" || extension_foto == "jpg")) {
                 cambio_foto = false;
                 let formData = new FormData();
                 let archivo = $("#inputfileFoto")[0].files[0];
@@ -820,8 +829,13 @@ $(document).ready(function() {
                 formData.append("usuario", USUARIO.usuario);
                 formData.append("id", USUARIO.id);
                 USUARIO.guardarFoto(formData);
+                //Visualizamos la foto.
+                setTimeout(function() {
+                    USUARIO.foto = USUARIO.foto + "?1";
+                    $("#foto_usuario").attr("src", USUARIO.foto);
+                }, 3000)
                 $(".contenedor_cambioFoto").fadeOut(500, function() {
-                    $("#lblMensajeCambioFoto").text("La imágen no debe ser mayor a 100 Kb");
+                    $("#lblMensajeCambioFoto").text("La imágen debe ser jpg o png y no mayor a 100 Kb");
                 });
                 $("#foto_usuario").on("mouseenter", function() {
                     $(".contenedor_general_opciones_usuario").fadeIn(500);

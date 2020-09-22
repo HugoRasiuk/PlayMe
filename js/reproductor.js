@@ -833,7 +833,12 @@ $(document).ready(function() {
                 setTimeout(function() {
                     USUARIO.foto = USUARIO.foto + "?1";
                     $("#foto_usuario").attr("src", USUARIO.foto);
-                }, 3000)
+                }, 2000)
+                if (USUARIO.foto_cambio) {
+                    mensajeError("La foto fue cambiada exitosamente");
+                }else{
+                    mensajeError("Error al intentar cambiar la foto");
+                }
                 $(".contenedor_cambioFoto").fadeOut(500, function() {
                     $("#lblMensajeCambioFoto").text("La imágen debe ser jpg o png y no mayor a 100 Kb");
                 });

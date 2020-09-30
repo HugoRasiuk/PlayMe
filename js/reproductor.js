@@ -829,13 +829,13 @@ $(document).ready(function() {
                 formData.append("usuario", USUARIO.usuario);
                 formData.append("id", USUARIO.id);
                 USUARIO.guardarFoto(formData);
-                //Visualizamos la foto.
-                setTimeout(function() {
-                    USUARIO.foto = USUARIO.foto + "?1";
-                    $("#foto_usuario").attr("src", USUARIO.foto);
-                }, 2000)
                 if (USUARIO.foto_cambio) {
                     mensajeError("La foto fue cambiada exitosamente");
+                    //Visualizamos la foto.
+                    setTimeout(function() {
+                        USUARIO.foto = USUARIO.foto + "?1";
+                        $("#foto_usuario").attr("src", USUARIO.foto);
+                    }, 2000)
                 }else{
                     mensajeError("Error al intentar cambiar la foto");
                 }

@@ -8,14 +8,12 @@ html {
 
 body {
     margin: 0rem;
-    background: rgb(70, 0, 100);
-    background-image: url("../imagenes/FondoRock.png");
-    background-size: contain;
+    background: rgb(225, 250, 255);
 }
 
 .soporte {
     min-height: 100vh;
-    background: rgba(0, 0, 0, 0.3);
+    background: rgba(0, 0, 0, 0);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -65,7 +63,7 @@ body {
     height: 25rem;
     margin-top: 0rem;
     margin-left: 0rem;
-    background: black;
+    background: rgb(200, 200, 200);
     border-radius: 3rem;
     border: red solid 1px;
     display: flex;
@@ -76,7 +74,7 @@ body {
 .grafico {
     width: 10rem;
     height: 10rem;
-    background: black;
+    background: white;
     border: red solid 0.2rem;
     border-radius: 50%;
     margin-top: 2rem;
@@ -93,7 +91,7 @@ body {
 }
 
 .logo {
-    background: red;
+    background: rgb(250, 0, 0);
     width: 20rem;
     height: 5rem;
     border-radius: 2.5rem;
@@ -116,18 +114,19 @@ body {
 }
 
 .botones button {
-    background: rgba(130, 130, 150, 1);
-    color: white;
+    background: white;
+    color: black;
     border: none;
     height: 3rem;
     width: 8rem;
-    border-radius: 50%;
-    font-size: 1.2rem;
-    transition: background 1s;
+    border-radius: 1.5rem;
+    font-size: 1rem;
+    transition: background 1s, color 1s;
 }
 
 .botones button:hover {
-    background: red;
+    background: rgb(250, 0,  0);
+    color: white;
 }
 
 
@@ -139,7 +138,7 @@ body {
 /*formularioUsuario*/
 .formularioUsuario {
     padding: 0rem;
-    background: rgb(0, 0, 0);
+    background: rgb(200, 200, 200);
     border: rgb(255, 0, 0) solid 1px;
     width: 25rem;
     height: 25rem;
@@ -160,7 +159,7 @@ h2 {
     width: 20rem;
     text-align: center;
     font-size: 2rem;
-    color: red;
+    color: rgb(200, 0, 0);
     font-style: italic;
 }
 
@@ -175,7 +174,7 @@ h2 {
 }
 
 .formularioUsuario input {
-    background: rgb(220, 220, 220);
+    background: rgb(255, 255, 255);
     color: black;
     border: none;
     width: 20rem;
@@ -183,7 +182,7 @@ h2 {
 }
 
 .formularioUsuario label {
-    color: white;
+    color: black;
     font-size: 1rem;
 }
 
@@ -194,7 +193,7 @@ h2 {
     width: 20rem;
     height: 2rem;
     font-size: 0.7rem;
-    color: rgb(200, 200, 200);
+    color: black;
     text-align: center;
 }
 
@@ -231,7 +230,7 @@ h2 {
 /*formularioContraseña*/
 .formularioContrasenia {
     padding: 0rem;
-    background: rgb(0, 0, 0);
+    background: rgb(200, 200, 200);
     border: rgb(255, 0, 0) solid 1px;
     width: 25rem;
     height: 25rem;
@@ -256,7 +255,7 @@ h2 {
 }
 
 .formularioContrasenia input {
-    background: rgb(220, 220, 220);
+    background: rgb(255, 255, 255);
     color: black;
     border: none;
     width: 20rem;
@@ -264,7 +263,7 @@ h2 {
 }
 
 .formularioContrasenia label {
-    color: white;
+    color: black;
     font-size: 1rem;
 }
 
@@ -275,7 +274,7 @@ h2 {
     width: 20rem;
     height: 2rem;
     font-size: 0.7rem;
-    color: rgb(200, 200, 200);
+    color: black;
     text-align: center;
 }
 
@@ -325,7 +324,7 @@ h2 {
 /*formularioRecuperar*/
 .formularioRecuperar {
     padding: 0rem;
-    background: rgb(0, 0, 0);
+    background: rgb(200, 200, 200);
     border: rgb(255, 0, 0) solid 1px;
     width: 25rem;
     height: 25rem;
@@ -346,7 +345,7 @@ h3 {
     width: 20rem;
     text-align: center;
     font-size: 1rem;
-    color: red;
+    color: rgb(200, 0, 0);
     font-style: italic;
 }
 
@@ -360,7 +359,7 @@ h3 {
 }
 
 .opciones input {
-    background: rgb(50, 50, 60);
+    background: rgb(100, 100, 110);
     color: white;
     font-size: 0.7rem;
     width: 22rem;
@@ -397,7 +396,7 @@ h3 {
     padding-right: 0.5rem;
     text-align: center;
     font-size: 0.7rem;
-    color: rgb(200, 200, 200);
+    color: black;
 }
 
 
@@ -409,7 +408,7 @@ h3 {
 /*formularioUsuarioRegistro*/
 .formularioUsuarioRegistro {
     padding: 0rem;
-    background: rgb(0, 0, 0);
+    background: rgb(200, 200, 200);
     border: rgb(255, 0, 0) solid 1px;
     width: 25rem;
     height: 25rem;
@@ -434,7 +433,7 @@ h3 {
 }
 
 .formularioUsuarioRegistro input {
-    background: rgb(220, 220, 220);
+    background: white;
     color: black;
     border: none;
     width: 20rem;
@@ -442,7 +441,7 @@ h3 {
 }
 
 .formularioUsuarioRegistro label {
-    color: white;
+    color: black;
     font-size: 1rem;
 }
 
@@ -453,7 +452,7 @@ h3 {
     width: 20rem;
     height: 2rem;
     font-size: 0.7rem;
-    color: rgb(200, 200, 200);
+    color: black;
     text-align: center;
 }
 
@@ -490,7 +489,7 @@ h3 {
 /*formularioContraseniaRegistro*/
 .formularioContraseniaRegistro {
     padding: 0rem;
-    background: rgb(0, 0, 0);
+    background: rgb(200, 200, 200);
     border: rgb(255, 0, 0) solid 1px;
     width: 25rem;
     height: 25rem;
@@ -515,7 +514,7 @@ h3 {
 }
 
 .formularioContraseniaRegistro input {
-    background: rgb(220, 220, 220);
+    background: white
     color: black;
     border: none;
     width: 20rem;
@@ -523,7 +522,7 @@ h3 {
 }
 
 .formularioContraseniaRegistro label {
-    color: white;
+    color: black;
     font-size: 1rem;
 }
 
@@ -538,7 +537,7 @@ h3 {
     width: 20rem;
     height: 2rem;
     font-size: 0.7rem;
-    color: rgb(200, 200, 200);
+    color: black;
     text-align: center;
 }
 
@@ -575,7 +574,7 @@ h3 {
 /*formularioRecuperarRegistro*/
 .formularioRecuperarRegistro {
     padding: 0rem;
-    background: rgb(0, 0, 0);
+    background: rgb(200, 200, 200);
     border: rgb(255, 0, 0) solid 1px;
     width: 25rem;
     height: 25rem;
@@ -599,7 +598,7 @@ h3 {
 }
 
 .opcionesRegistro input {
-    background: rgb(50, 50, 60);
+    background: rgb(100, 100, 110);
     color: white;
     font-size: 0.7rem;
     width: 22rem;
@@ -636,7 +635,7 @@ h3 {
     padding-right: 0.5rem;
     text-align: center;
     font-size: 0.7rem;
-    color: rgb(200, 200, 200);
+    color: black;
 }
 
 

@@ -154,13 +154,13 @@ $(document).ready(function() {
     //Input del formulario de recuperación al ingresar.
     $(".opciones input").focus(function() {
         limpiaInput();
-        $(this).css({background:"rgb(220, 220, 220)",
+        $(this).css({background:"rgb(255, 255, 255)",
                      color:"black"});
     })
     //Input del formulario de recuperación al registrarse.
     $(".opcionesRegistro input").focus(function() {
         chequearInput();
-        $(this).css({background:"rgb(220, 220, 220)",
+        $(this).css({background:"rgb(255, 255, 255)",
                      color:"black"});
     })
 })
@@ -210,7 +210,7 @@ function enfocaRecuperarRegistro() {
 function chequearInput() {
     $(".opcionesRegistro").find("input").each(function() {
         if ($(this).val().length == 0) {
-            $(this).css({background:"rgb(50, 50, 60)",
+            $(this).css({background:"rgb(100, 100, 110)",
                          color:"white"});
         }
     })
@@ -219,7 +219,7 @@ function chequearInput() {
 function limpiaInput() {
     $(".opciones").find("input").each(function() {
         $(this).val("");
-        $(this).css({background:"rgb(50, 50, 60)",
+        $(this).css({background:"rgb(100, 100, 110)",
                          color:"white"});
     })
 }

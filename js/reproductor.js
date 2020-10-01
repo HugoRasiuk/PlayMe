@@ -112,7 +112,7 @@ $(document).ready(function() {
                 CANCION.reproducir();
                 $("#btnPlay_img").attr("src", "../imagenes/Botones/Pausa.png");
                 $("#btnPlay_img").attr("alt", "Botón de pausa");
-                $("#" + String(ALBUM.indice)).css("color", "red");
+                $("#" + String(ALBUM.indice)).css("color", "blue");
                 $(".info__artista").text(ALBUM.canciones[ALBUM.indice].artista);
                 if (filtro_activo) {
                     //Si el filtro está activo, mostramos los datos de la canción.
@@ -141,11 +141,11 @@ $(document).ready(function() {
                 texto_td = texto_td.toLowerCase();
                 texto_filtro = texto_filtro.toLowerCase();
                 if (texto_td.indexOf(texto_filtro) == -1 || texto_filtro == "") {
-                    $("#" + String(ALBUM.indice - 1)).css("color", "rgb(220, 220, 255)");
+                    $("#" + String(ALBUM.indice - 1)).css("color", "Black");
                 }else{
-                    $("#" + String(ALBUM.indice - 1)).css("color", "rgb(150, 150, 255)");
+                    $("#" + String(ALBUM.indice - 1)).css("color", "Black");
                 }
-                $("#" + String(ALBUM.indice)).css("color", "red");
+                $("#" + String(ALBUM.indice)).css("color", "Blue");
                 $(".info__artista").text(ALBUM.canciones[ALBUM.indice].artista);
                 if (filtro_activo) {
                     //Si el filtro está activo, mostramos los datos de la canción.
@@ -164,17 +164,17 @@ $(document).ready(function() {
                 CANCION.reproducir();
                $("#btnPlay_img").attr("src", "../imagenes/Botones/Pausa.png");
                $("#btnPlay_img").attr("alt", "Botón de pausa");
-                $("#" + String(ALBUM.indice)).css("color", "red");
+                $("#" + String(ALBUM.indice)).css("color", "Blue");
                 //Si hay un filtro, lo detectamos y le cambiamos el color de la canción coincidente con el filtro.
                 let texto_td = $("#" + String(ALBUM.indice + 1)).text();
                 texto_td = texto_td.toLowerCase();
                 texto_filtro = texto_filtro.toLowerCase();
                 if (texto_td.indexOf(texto_filtro) == -1 || texto_filtro == "") {
-                    $("#" + String(ALBUM.indice + 1)).css("color", "rgb(220, 220, 255)");
+                    $("#" + String(ALBUM.indice + 1)).css("color", "Black");
                 }else{
-                    $("#" + String(ALBUM.indice + 1)).css("color", "rgb(150, 150, 255)");
+                    $("#" + String(ALBUM.indice + 1)).css("color", "Blue");
                 };
-               $("#" + String(ALBUM.indice)).css("color", "red");
+               $("#" + String(ALBUM.indice)).css("color", "Blue");
                $(".info__artista").text(ALBUM.canciones[ALBUM.indice].artista);
                if (filtro_activo) {
                     //Si el filtro está activo, mostramos los datos de la canción.
@@ -643,15 +643,16 @@ $(document).ready(function() {
         }else{
             CANCION.reproducir();
             //Si hay un filtro, lo detectamos y le cambiamos el color de la canción coincidente con el filtro.
+            //Rasiuk
             let texto_td = $("#" + String(ALBUM.indice - 1)).text();
             texto_td = texto_td.toLowerCase();
             texto_filtro = texto_filtro.toLowerCase();
             if (texto_td.indexOf(texto_filtro) == -1 || texto_filtro == "") {
-                $("#" + String(ALBUM.indice - 1)).css("color", "rgb(220, 220, 255)");
+                $("#" + String(ALBUM.indice - 1)).css("color", "Black");
             }else{
-                $("#" + String(ALBUM.indice - 1)).css("color", "rgb(150, 150, 255)");
+                $("#" + String(ALBUM.indice - 1)).css("color", "Blue");
             };
-            $("#" + String(ALBUM.indice)).css("color", "red");
+            $("#" + String(ALBUM.indice)).css("color", "Blue");
             if (filtro_activo) {
                 //Si el filtro está activo, mostramos los datos de la canción.
                 $(".info__imagen").attr("src", ALBUM.canciones[ALBUM.indice].artista.foto);
@@ -1375,11 +1376,11 @@ function  mostrarListaCanciones() {
     });
     //Asignamos las funciones al hacer click sobre la canción.
     $(".cancion").click(function() {
-        $("#" + ALBUM.indice).css("color", "rgb(220, 220, 255)");
+        $("#" + ALBUM.indice).css("color", "Black");
         ALBUM.indice = $(this).attr("id");
         ALBUM.asignarCancion();
         CANCION.reproducir();
-        $(this).css("color", "red");
+        $(this).css("color", "Blue");
         $("#btnPlay_img").attr("src", "../imagenes/Botones/Pausa.png");
        $("#btnPlay_img").attr("alt", "Botón de pausa");
        if (filtro_activo) {
@@ -1402,9 +1403,9 @@ function  mostrarListaCanciones() {
             texto_td = texto_td.toLowerCase();
             texto_filtro = texto_filtro.toLowerCase();
             if (texto_td.indexOf(texto_filtro) == -1 || texto_filtro == "") {
-                $("#" + String(i)).css("color", "rgb(220, 220, 255)");
+                $("#" + String(i)).css("color", "Black");
             }else{
-                $("#" + String(i)).css("color", "rgb(150, 150, 255)");
+                $("#" + String(i)).css("color", "Blue");
             };
             i++;
         }
@@ -1619,9 +1620,9 @@ function cargaAlbumes(_consulta) {
 //Función para mostrar los mensajes de error.
 function mensajeError(mensaje) {
     $("#lblMensajeError").text(mensaje);
-    $("#lblMensajeError").css("color", "white");
+    $("#lblMensajeError").css("color", "black");
     setTimeout(function() {
-        $("#lblMensajeError").css("color", "rgb(50, 50, 70)");
+        $("#lblMensajeError").css("color", "rgb(200, 200, 200)");
     } , 5000)
     setTimeout(function() {
         $("#lblMensajeError").text("");

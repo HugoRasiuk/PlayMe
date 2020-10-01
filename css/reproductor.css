@@ -8,7 +8,7 @@ html {
 
 body {
     margin: 0rem;
-    background: rgb(0, 0, 0);
+    background: rgb(255, 255, 255);
 }
 
 
@@ -31,7 +31,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: rgb(50, 50, 70);
+    background: rgb(200, 200, 200);
 }
 .logo__imagen {
     background: red;
@@ -47,7 +47,7 @@ body {
 .datos__usuario {
     grid-column: 3 / 4;
     grid-row: 1 / 2;
-    background: rgb(50, 50, 70);
+    background: rgb(200, 200, 200);
     width: 100%;
     height: 100%;
     display: flex;
@@ -55,15 +55,15 @@ body {
     align-items: center;
 }
 .datos__nombre_usuario {
-    color: rgb(150, 150, 255);
+    color: black;
     font-size: 2rem;
     margin-right: 1.25rem;
 }
 .datos__mensaje {
     grid-column: 2 / 3;
     grid-row: 1 / 2;
-    color: rgb(50, 50, 70);
-    background: rgb(50, 50, 70);
+    color: black;
+    background: rgb(200, 200, 200);
     font-size: 1.2rem;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-style: italic;
@@ -78,7 +78,7 @@ body {
     width: 3.125rem;
     height: 3.125rem;
     border-radius: 1.5625rem;
-    background: rgb(180, 180, 200);
+    background: white;
     margin-right: 3.125rem;
 }
 .foto_usuario {
@@ -251,7 +251,7 @@ body {
 .filtro {
     grid-column: 2 / 5;
     grid-row: 2 / 3;
-    background: rgb(50, 50, 70);
+    background: rgb(200, 200, 200);
     padding-left: 1.25rem;
     padding-right: 1.25rem;
     display: flex;
@@ -260,7 +260,7 @@ body {
     margin: 0px;
 }
 .filtro__boton_dif {
-    background: rgb(50, 50, 70);
+    background: rgb(200, 200, 200);
     border: none;
     width: 3.125rem;
     height: 3.125rem;
@@ -292,7 +292,7 @@ body {
     padding-left: 0.125rem;
     height: 3rem;
     width: 45rem;
-    background: black;
+    background: white;
     overflow: hidden;
 }
 .filtro__canciones_nueva_posicion {
@@ -328,8 +328,8 @@ body {
     height: 2rem;
     width: 100%;
     font-size: 1.5rem;
-    background: black;
-    color: white;
+    background: white;
+    color: black;
     border: none;
     outline: none;
 }
@@ -355,7 +355,7 @@ body {
 
 
 .listas {
-    background: black;
+    background: white;
     grid-column: 1 / 2;
     grid-row: 2 / 4;
     font-size: 1rem;
@@ -363,10 +363,10 @@ body {
     overflow: hidden;
 }
 .listas__titulo { 
-    background: rgb(50, 50, 70);
+    background: rgb(200, 200, 200);
     padding: 1rem;
     padding-left: 2rem;
-    color: white;
+    color: rgb(100, 100, 100);
     font-size: 2rem;
     font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-style: italic;
@@ -376,13 +376,13 @@ body {
 .listas__canciones {
     padding-left: 1rem;
     padding-right: 0.3125rem;
-    background: black;
+    background: white;
     height: 90%;
     overflow: scroll;
 }
 .listas__mensaje {
     display: none;
-    color: rgb(220, 220, 255);
+    color: rgb(100, 100, 100);
     font-size: 1.5rem;
     text-align: center;
     font-style: italic;
@@ -390,10 +390,10 @@ body {
 }
 .listas__canciones::-webkit-scrollbar {
     width: 1rem;;
-    background: black;
+    background: rgb(200, 200, 200);
 }
 .listas__canciones::-webkit-scrollbar-thumb {
-    background: rgb(50, 50, 70);
+    background: rgb(200, 200, 200);
 }
 .listas__canciones_tabla td {
     padding: 0.3rem;
@@ -409,7 +409,7 @@ body {
     cursor: default;
 }
 .cancion {
-    color: black;
+    color: white;
     transition: color 0.5s;
 }
 
@@ -418,7 +418,7 @@ body {
 
 
 .imagenes {
-    background: black;
+    background: white;
     grid-column: 2 / 4;
     grid-row: 3 / 4;
     display: flex;
@@ -431,16 +431,16 @@ body {
 }
 .imagenes::-webkit-scrollbar {
     width: 1rem;;
-    background: black;
+    background: white;
 }
 .imagenes::-webkit-scrollbar-thumb {
-    background: rgb(50, 50, 70);
+    background: rgb(100, 100, 100);
 }
 .imagenes div {
     width: 18.75rem;
     height: 18.75rem;
     margin: 0.625rem;
-    background: black;
+    background: white;
     opacity: 0;
     transition: transform 0.5s, opacity 1.5s;
 }
@@ -472,7 +472,7 @@ body {
 /*reproductor.*/
 .reproductor {
     font-size: 16px;
-    background: rgb(50, 50, 70);
+    background: rgb(200, 200, 200);
     grid-column: 1 / 2;
     grid-row: 4 / 5;
     padding: 1.25em;
@@ -482,7 +482,7 @@ body {
     flex-wrap: wrap;
 }
 .reproductor__botones_reproductor {
-    background: black;
+    background: white;
     padding-left: 0px;
     padding-right: 0.1875em;
     width: 18.75em;
@@ -524,7 +524,7 @@ body {
     text-align: right;
 }
 .reproductor__btnAdicional {
-    background: rgb(120, 40, 40);
+    background: rgb(200, 200, 200);
     width: 2.5em;
     height: 1.875em;
 }
@@ -561,17 +561,17 @@ body {
 }
 /*Track del deslizador.*/
 .btnDeslizdorVolumen::-moz-range-track {
-    background: red;
+    background: white;
     width: 100%;
     height: 0.3em;
 }
 .btnDeslizdorVolumen::-webkit-slider-runnable-track {
-    background: red;
+    background: white;
     width: 100%;
     height: 0.3em;
 }
 .btnDeslizdorVolumen::-ms-track {
-    background: red;
+    background: white;
     width: 100%;
     height: 0.3em;
 }
@@ -579,9 +579,9 @@ body {
 .btnDeslizdorVolumen::-moz-range-thumb {
     height: 1.5em;
     width: 1.5em;
-    background: black;
+    background: rgb(100, 100, 100);
     border-radius: 0.5em;
-    border: white solid 1px;
+    border: none;
 }
 .btnDeslizdorVolumen::-moz-range-thumb:hover {
     cursor: pointer;
@@ -593,7 +593,7 @@ body {
     -webkit-appearance: none;
     height: 1.5em;
     width: 1.5em;
-    background: black;
+    background: white;
     border-radius: 0.5em;
     border: white solid 1px;
     cursor: pointer;
@@ -602,14 +602,14 @@ body {
 .btnDeslizdorVolumen::-ms-thumb {
     height: 1.5em;
     width: 1.5em;
-    background: black;
+    background: white;
     border-radius: 0.5em;
     border: white solid 1px;
     cursor: pointer;
 }
 /*Fill lower.*/
 .btnDeslizdorVolumen::-moz-range-progress {
-    background: red;
+    background: black;
 }
 
 
@@ -619,7 +619,7 @@ body {
 .barra {
     grid-column: 2 / 3;
     grid-row: 4 / 5;
-    background:  rgb(50, 50, 70);
+    background:  rgb(200, 200, 200);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -641,18 +641,18 @@ body {
     height: 0.3rem;
 }
 .barra_tiempo::-moz-range-thumb {
-    background: black;
-    border: white solid 1px;
+    background: rgb(100, 100, 100);
+    border: none;
 }
 .barra_tiempo::-moz-range-thumb:hover {
     cursor: pointer;
 }
 .barra_tiempo::-moz-range-progress {
-    background: red;
+    background: rgb(50, 50, 50);
     height: 0.3rem;
 }
 .barra_tiempo::-webkit-slider-runnable-track {
-    background: red;
+    background: white;
     width: 100%;
     height: 0.3rem;
 }
@@ -660,9 +660,9 @@ body {
     -webkit-appearance: none;
     height: 1rem;
     width: 1rem;
-    background: black;
+    background: rgb(100, 100, 100);
     border-radius: 0.5rem;
-    border: white solid 1px;
+    border: none;
     cursor: pointer;
     margin-top: -0.25rem;
 -}
@@ -672,8 +672,8 @@ body {
     padding-top: 0.25rem;
     border-radius: 0.75rem;
     font-size: 1rem;
-    background: black;
-    color: rgb(255, 0, 0);
+    background: white;
+    color: black;
     text-align: center;
 }
 
@@ -685,7 +685,7 @@ body {
 .info {
     grid-column: 3 / 4;
     grid-row: 4 / 5;
-    background: rgb(50, 50, 70);
+    background: rgb(200, 200, 200);
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -695,12 +695,12 @@ body {
 .info__imagen {
     width: 5rem;
     height: 5rem;
-    background: rgb(50, 50, 70);
+    background: rgb(200, 200, 200);
     -o-object-fit: contain;
        object-fit: contain;
 }
 .info__data {
-    color: white;
+    color: black;
     margin-right: 1.8rem;
     margin-left: 1rem;
 }

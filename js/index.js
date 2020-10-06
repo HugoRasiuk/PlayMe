@@ -60,14 +60,20 @@ function desempaqueta(indice, valor) {
 
 
 
-function cerrar() {
+function cerrar(nuevo=false) {
     $(".soporte").addClass("soporte_transparente");
-    $(".ventana").fadeOut(2000, ingresar);
+    $(".ventana").fadeOut(2000, function() {
+        document.cookie = "id=" + miUsuarioId + ";" + "path=../html";
+        document.cookie = "usuario=" + miUsuarioUsuario + ";" + "path=../html";
+        document.cookie = "contrasenia=" + miUsuarioContrasenia + ";" + "path=../html";
+        if (nuevo) {
+            document.cookie = "nuevo=si;path=../html";
+        }else{
+            document.cookie = "nuevo=no;path=../html";
+        }
+        window.location="html/reproductor.html";
+    });
 }
 
 function ingresar() {
-    document.cookie = "id=" + miUsuarioId + ";" + "path=../html";
-    document.cookie = "usuario=" + miUsuarioUsuario + ";" + "path=../html";
-    document.cookie = "contrasenia=" + miUsuarioContrasenia + ";" + "path=../html";
-    window.location="html/reproductor.html";
 }

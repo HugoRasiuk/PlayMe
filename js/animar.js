@@ -130,7 +130,7 @@ $(document).ready(function() {
             //Guardamos los datos y vamos a la aplicación
             guardarDatos();
             if (msj == "La registraciónse realizó con éxito. Ingresando...") {
-                setTimeout(cerrar, 500);
+                setTimeout(cerrar, 500, true);
             }
         }else{
             $(".mensajeRecuperacionRegistro").fadeOut(500, opcionesIncorrectas);

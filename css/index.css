@@ -124,8 +124,14 @@ body {
     transition: background 1s, color 1s;
 }
 
+.botones button img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
 .botones button:hover {
-    background: rgb(250, 0,  0);
+    background: rgb(100, 100, 100);
     color: white;
 }
 
@@ -213,8 +219,13 @@ h2 {
     border: none;
     border-radius: 1.5rem;
     background: rgba(130, 130, 150, 1);
-    color: white;
     transition: background 1s;
+}
+
+.botones_formulario button img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 
 .botones_formulario button:hover {
@@ -311,6 +322,13 @@ h2 {
     transition: background 1s;
 }
 
+.botones_contrasenia button:nth-child(1) img,
+.botones_contrasenia button:nth-child(3) img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
 .botones_contrasenia button:hover {
     background: red;
 }
@@ -387,11 +405,18 @@ h3 {
     transition: background 1s;
 }
 
+.botonesRecuperacion button img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
 .botonesRecuperacion button:hover {
     background: red;
 }
 
 .botonesRecuperacion p {
+    width: 12rem;
     padding-left: 0.5rem;
     padding-right: 0.5rem;
     text-align: center;
@@ -472,8 +497,13 @@ h3 {
     border: none;
     border-radius: 1.5rem;
     background: rgba(130, 130, 150, 1);
-    color: white;
     transition: background 1s;
+}
+
+.botones_formularioRegistro button img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 
 .botones_formularioRegistro button:hover {
@@ -561,6 +591,12 @@ h3 {
     transition: background 1s;
 }
 
+.botones_contraseniaRegistro button img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
 .botones_contraseniaRegistro button:hover {
     background: red;
 }
@@ -626,11 +662,18 @@ h3 {
     transition: background 1s;
 }
 
+.botonesRecuperacionRegistro button img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
 .botonesRecuperacionRegistro button:hover {
     background: red;
 }
 
 .botonesRecuperacionRegistro p {
+    width: 12rem;
     padding-left: 0.5rem;
     padding-right: 0.5rem;
     text-align: center;

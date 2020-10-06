@@ -12,6 +12,20 @@
 
 <body>
     <main class="contenedor">
+        <section class="recorrido recorrido_general">
+            <h3 class="recorrido_titulo">¡Hola!</h3>
+
+            <p class="recorrido_texto">
+                ¿Te gustaría un recorrido por las principales funcionalidades de la aplicación?
+            </p>
+
+            <div class="recorrido_botones">
+                <button class="recorrido_btn">Si</button>
+
+                <button class="recorrido_btn">No</button>
+            </div>
+        </section>
+
         <header class="logo">
             <img src="../imagenes/PlayMe.png" alt="Logo de PlayMe" class="logo__imagen">
         </header>
@@ -79,32 +93,32 @@
         </section>
 
         <section class="filtro">
-            <button id="btnAnterior" class="filtro__btnAnterior filtro__boton_dif">
+            <button id="btnAnterior" class="filtro__btnAnterior filtro__boton_dif" title="Álbumes anteriores">
                 <img src="../imagenes/Anterior.png" alt="Botón de imagenes anteriores">
             </button>
 
             <section class="filtro__contenedor">
-                <div class="filtro__canciones filtro__boton" id="btnFiltroCancion">
+                <div class="filtro__canciones filtro__boton" id="btnFiltroCancion" title="Filtro por canción">
                     <img src="../imagenes/Filtros/Canciones.png" alt="Botón de filtrado por canción">
                 </div>
 
-                <div class="filtro__artista filtro__boton" id="btnFiltroArtista">
+                <div class="filtro__artista filtro__boton" id="btnFiltroArtista" title="Filtro por artista">
                     <img src="../imagenes/Filtros/Artista.png" alt="Botón de filtrado por artista">
                 </div>
 
-                <div class="filtro__album filtro__boton" id="btnFiltroAlbum">
+                <div class="filtro__album filtro__boton" id="btnFiltroAlbum" title="Filtro por álbum">
                     <img src="../imagenes/Filtros/Album.png" alt="Botón de filtrado por album">
                 </div>
 
-                <div class="filtro__favoritos filtro__boton" id="btnFiltroFavoritos">
+                <div class="filtro__favoritos filtro__boton" id="btnFiltroFavoritos" title="Filtro de favoritos">
                     <img src="../imagenes/Filtros/Favoritos.png" alt="Botón de favoritos">
                 </div>
 
-                <div class="filtro__sugeridos filtro__boton" id="btnFiltroRecomendados">
+                <div class="filtro__sugeridos filtro__boton" id="btnFiltroRecomendados" title="Sugeridos">
                     <img src="../imagenes/Filtros/Recomendados.png" alt="Botón de sugeridos">
                 </div>
 
-                <div class="filtro__filtro filtro__boton" id="btnFiltroGeneral">
+                <div class="filtro__filtro filtro__boton" id="btnFiltroGeneral" title="Filtro general">
                     <img src="../imagenes/Filtros/Filtrar.png" alt="Botón de búsqueda">
                 </div>
 
@@ -112,20 +126,20 @@
                     <input type="text" class="filtro__txt_input" id="txtFiltro" placeholder="Enter para buscar o  Escape para cancelar">
                 </div>
 
-                <div class="filtro__limpiar" id="btnQuitarFiltro">
+                <div class="filtro__limpiar" id="btnQuitarFiltro" title="Quitar filtro">
                     <img src="../imagenes/Cruz.png" alt="Botón para quitar el filtro" class="filtro__quitar">
                 </div>
             </section>
 
 
-            <button id="btnSiguiente" class="filtro__btnSiguiente filtro__boton_dif">
+            <button id="btnSiguiente" class="filtro__btnSiguiente filtro__boton_dif" title="Álbumes siguientes">
                 <img src="../imagenes/Siguiente.png" alt="Botón de imagenes siguientes">
             </button>
         </section>
 
-        <section class="listas">
-            <h3 class="listas__titulo">Canciones</h3>
+        <h3 class="listas__titulo">Canciones</h3>
 
+        <section class="listas">
             <section class="listas__canciones">
                 <table id="tabla_canciones" class="listas__canciones_tabla">
                 </table>

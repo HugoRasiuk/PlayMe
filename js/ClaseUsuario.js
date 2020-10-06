@@ -8,6 +8,7 @@ class Usuario {
         this._contrasenia = "";
         this._foto = "";
         this._foto_cambio = false;
+        this._nuevo = false;
     }
     //Get y Set.
     get usuario() {
@@ -43,6 +44,13 @@ class Usuario {
     }
     set foto_cambio(param) {
         this._foto_cambio = param;
+    }
+
+    get nuevo() {
+        return this._nuevo;
+    }
+    set nuevo(param) {
+        this._nuevo = param;
     }
 
 

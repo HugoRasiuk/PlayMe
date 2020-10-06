@@ -854,7 +854,16 @@ $(document).ready(function() {
             })
         }
     })
+    if (USUARIO.nuevo == "si") {
+        recorrido();
+    }
 })
+
+
+
+function recorrido() {
+    $(".recorrido_general").fadeIn(1000);
+}
 
 
 
@@ -1545,6 +1554,9 @@ function extraerDatosCookie() {
         }
         if (clave == "contrasenia") {
             USUARIO.contrasenia = valor;
+        }
+        if (clave == "nuevo") {
+            USUARIO.nuevo = valor;
         }
     }
 }

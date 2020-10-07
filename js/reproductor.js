@@ -862,6 +862,24 @@ $(document).ready(function() {
 
 
 function recorrido() {
+    //Funcionalidades de los botones del recorrido.
+    $("#btnRecorridoNo").on("click", function() {
+        $(".recorrido_general").fadeOut(1000);
+    })
+    $("#btnRecorridoSi").on("click", function() {
+        $(".recorrido_general").fadeOut(1000);
+        $(".recorrido_albumes").fadeIn(1000);
+    })
+    $("#btnSiguienteAlbumes").on("click", function() {
+        $(".recorrido_albumes").fadeOut(1000);
+        $(".recorrido_canciones").fadeIn(1000);
+    })
+    $("#btnCancelarAlbumes").on("click", function() {
+        $(".recorrido_albumes").fadeOut(1000);
+    })
+    $("#btnCancelarCanciones").on("click", function() {
+        $(".recorrido_canciones").fadeOut(1000);
+    })
     $(".recorrido_general").fadeIn(1000);
 }
 

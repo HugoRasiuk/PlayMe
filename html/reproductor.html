@@ -20,9 +20,9 @@
             </p>
 
             <div class="recorrido_botones">
-                <button class="recorrido_btn">Si</button>
+                <button id="btnRecorridoSi" class="recorrido_btn">Si</button>
 
-                <button class="recorrido_btn">No</button>
+                <button id="btnRecorridoNo" class="recorrido_btn">No</button>
             </div>
         </section>
 
@@ -140,6 +140,21 @@
         <h3 class="listas__titulo">Canciones</h3>
 
         <section class="listas">
+            <section class="recorrido_canciones">
+                <h3 class="titulo_albumes">Canciones</h3>
+    
+                <p class="recorrido_texto">
+                    Acá aparecerá la lista de las canciones que contenga el álbum
+                    que hayas elegido, haciendo click sobre una canción determinada, la
+                    misma se reproducirá, o pulsando play en el reproductor, comenzará
+                    la reproducción desde la primer canción del álbum.
+                </p>
+    
+                <section class="recorrido_botones_canciones">
+                    <button id="btnSiguienteCanciones" class="recorrido_btn">Siguiente</button>
+                    <button id="btnCancelarCanciones" class="recorrido_btn">Cancelar</section>
+            </section>
+
             <section class="listas__canciones">
                 <table id="tabla_canciones" class="listas__canciones_tabla">
                 </table>
@@ -152,6 +167,21 @@
         </section>
 
         <section class="imagenes">
+            <section class="recorrido_albumes">
+                <h3 class="titulo_albumes">Álbumes</h3>
+    
+                <p class="recorrido_texto">
+                    En esta sección se encuentran las tapas de los álbumes, al hacer click
+                    sobre cualquiera de ellos, accederás a la lista de las canciones que contiene
+                    y las podrás reproducir.
+                </p>
+    
+                <section class="recorrido_botones_albumes">
+                    <button id="btnSiguienteAlbumes" class="recorrido_btn">Siguiente</button>
+                    <button id="btnCancelarAlbumes" class="recorrido_btn">Cancelar</button>
+                </section>
+            </section>
+
             <div id="contenedor_tapa0">
                 <img class="tapa0 tapa">
             </div>

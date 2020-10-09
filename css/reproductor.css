@@ -53,7 +53,7 @@ body {
     height: 50%;
     top: 25%;
     left: 25%;
-    background: rgb(150, 150, 200);
+    background: rgb(180, 180, 180);
     color: white;
     border-radius: 3rem;
     padding-left: 2rem;
@@ -66,6 +66,10 @@ body {
 }
 .recorrido_texto {
     font-size: 1.2rem;
+    margin-top: -2rem;
+}
+.recorrido_texto_canciones {
+    margin-top: 4rem;
 }
 .recorrido_botones {
     margin-left: 35%;
@@ -91,25 +95,28 @@ body {
     display: flex;
     justify-content: space-between;
 }
+.recorrido_botones_filtros {
+    margin-top: 3rem;
+}
 .recorrido_btn {
     width: 6rem;
     height: 3rem;
     border-radius: 1.5rem;
     border: none;
-    background: rgb(120, 120, 250);
+    background: rgb(120, 120, 120);
     color: white;
     transition: background 1s;
 }
 .recorrido_btn:hover {
-    background: blue;
+    background: red;
 }
 .recorrido_albumes {
     display: none;
     z-index: 10;
     position: absolute;
     width: 30%;
-    height: 50%;
-    background: rgb(150, 150, 200);
+    height: 45%;
+    background: rgb(180, 180, 180);
     color: white;
     border-radius: 3rem;
     padding-left: 2rem;
@@ -124,7 +131,7 @@ body {
     position: absolute;
     width: 18%;
     height: 55%;
-    background: rgb(150, 150, 200);
+    background: rgb(180, 180, 180);
     color: white;
     border-radius: 3rem;
     padding-left: 1rem;
@@ -140,7 +147,7 @@ body {
     position: absolute;
     width: 30%;
     height: 30%;
-    background: rgb(150, 150, 200);
+    background: rgb(180, 180, 180);
     color: white;
     border-radius: 3rem;
     padding-left: 2rem;
@@ -163,20 +170,23 @@ body {
     display: none;
     z-index: 10;
     position: absolute;
-    width: 32%;
+    width: 35%;
     height: 15%;
     top: 45%;
     left: 35%;
-    background: rgb(150, 150, 200);
+    background: black;
     color: white;
     border-radius: 3rem;
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
 }
 .contenedor_general_saludo {
+    width: 100%;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: 3rem;
 }
 .contenedor_imagen_saludo {
     width: 4rem;
@@ -191,6 +201,10 @@ body {
 }
 .texto_saludo {
     font-size: 3rem;
+}
+.separador {
+    width: 2rem;
+    height: 4rem;
 }
 
 
@@ -891,21 +905,32 @@ body {
     }
 
     .recorrido {
-        height: 40%;
+        height: 30%;
+        top: 30%;
+    }
+
+    .recorrido_botones {
+        margin-top: 5rem;
     }
 
     .recorrido_albumes {
-        height: 35%;
+        height: 30%;
+        margin-top: 5%;
     }
 
     .recorrido_botones_albumes {
         width: 98%;
         margin-left: 1%;
+        margin-top: 5rem;
     }
 
     .titulo_albumes {
         font-size: 3rem;
         margin-top: 6rem;
+    }
+
+    .recorrido_texto_albumes {
+        margin-top: 4rem;
     }
 
     .recorrido_canciones {
@@ -915,6 +940,10 @@ body {
    .titulo_canciones {
        font-size: 2rem;
    } 
+
+   .recorrido_botones_canciones {
+       margin-top: 5rem;
+   }
 
    .recorrido_filtros {
        height: 20%;
@@ -996,6 +1025,11 @@ body {
         margin-top: 23rem;
     }
 
+    .recorrido {
+        height: 35%;
+        top: 32%;
+    }
+
     .recorrido_botones {
         margin-left: 20%;
         width: 60%;
@@ -1011,6 +1045,14 @@ body {
         margin-top: 3rem;
     }
 
+    .recorrido_texto_canciones {
+        margin-top: 5rem;
+    }
+
+    .recorrido_botones_canciones {
+        margin-top: 8rem;
+    }
+
     .recorrido_texto {
         margin-top: 4rem;
     }
@@ -1018,6 +1060,11 @@ body {
     .recorrido_filtros {
         height: 25%;
         margin-left: 55%;
+    }
+
+    .saludo {
+        width: 50%;
+        left: 25%;
     }
     
 }
@@ -1072,6 +1119,10 @@ body {
         width: 25rem;
     }
 
+    .recorrido_albumes {
+        height: 35%;
+    }
+
     .recorrido_canciones {
         width: 80%;
         height: 30%;
@@ -1087,6 +1138,11 @@ body {
 
     .recorrido_botones_filtros {
         margin-top: 4rem;
+    }
+
+    .saludo {
+        width: 80%;
+        left: 10%;
     }
 
 }
@@ -1156,6 +1212,10 @@ body {
 
     .recorrido_botones {
         margin-top: 30%;
+    }
+
+    .recorrido_botones_filtros {
+        margin-top: 2rem;
     }
 
 }

@@ -869,10 +869,12 @@ function recorrido() {
     $("#btnRecorridoSi").on("click", function() {
         $(".recorrido_general").fadeOut(1000);
         $(".recorrido_albumes").fadeIn(1000);
+        location = "#recorrido_albumes";
     })
     $("#btnSiguienteAlbumes").on("click", function() {
         $(".recorrido_albumes").fadeOut(1000);
         $(".recorrido_canciones").fadeIn(1000);
+        location = "#recorrido_canciones";
     })
     $("#btnCancelarAlbumes").on("click", function() {
         $(".recorrido_albumes").fadeOut(1000);
@@ -883,14 +885,19 @@ function recorrido() {
     $("#btnSiguienteCanciones").on("click", function() {
         $(".recorrido_canciones").fadeOut(1000);
         $(".recorrido_filtros").fadeIn(1000);
+        location = "#recorrido_filtros";
     })
     $("#btnCancelarFiltros").on("click", function() {
         $(".recorrido_filtros").fadeOut(1000);
         $(".saludo").fadeIn(1000, function() {
-            // $(".saludo").fadeOut(3000);
+            location = "#saludo";
+            setTimeout(function() {
+                $(".saludo").fadeOut(1000);
+            }, 1000)
         });
     })
     $(".recorrido_general").fadeIn(1000);
+    location = "#recorrido_canciones";
 }
 
 

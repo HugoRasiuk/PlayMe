@@ -880,6 +880,16 @@ function recorrido() {
     $("#btnCancelarCanciones").on("click", function() {
         $(".recorrido_canciones").fadeOut(1000);
     })
+    $("#btnSiguienteCanciones").on("click", function() {
+        $(".recorrido_canciones").fadeOut(1000);
+        $(".recorrido_filtros").fadeIn(1000);
+    })
+    $("#btnCancelarFiltros").on("click", function() {
+        $(".recorrido_filtros").fadeOut(1000);
+        $(".saludo").fadeIn(1000, function() {
+            // $(".saludo").fadeOut(3000);
+        });
+    })
     $(".recorrido_general").fadeIn(1000);
 }
 

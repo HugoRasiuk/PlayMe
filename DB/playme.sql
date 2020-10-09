@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 4.9.5
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 27-08-2020 a las 02:37:31
--- Versión del servidor: 10.4.11-MariaDB
--- Versión de PHP: 7.4.6
+-- Servidor: localhost:3306
+-- Tiempo de generación: 07-10-2020 a las 20:28:59
+-- Versión del servidor: 10.3.24-MariaDB-cll-lve
+-- Versión de PHP: 7.3.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -18,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `playme`
+-- Base de datos: `escuel28_hugo`
 --
 
 -- --------------------------------------------------------
@@ -1585,9 +1586,15 @@ INSERT INTO `favoritas` (`fav_id`, `fav_idusuario`, `fav_idcancion`) VALUES
 (27, 24, 289),
 (28, 24, 292),
 (29, 24, 298),
-(30, 24, 344),
-(31, 24, 335),
-(32, 15, 348);
+(30, 31, 222),
+(31, 32, 341),
+(32, 33, 30),
+(33, 24, 20),
+(34, 36, 412),
+(35, 36, 370),
+(36, 36, 375),
+(37, 36, 388),
+(38, 36, 352);
 
 -- --------------------------------------------------------
 
@@ -1676,7 +1683,29 @@ INSERT INTO `respuestas` (`res_id`, `res_idpregunta`, `res_texto`, `res_idusuari
 (88, 3, 'a', 29),
 (89, 1, 'a', 30),
 (90, 2, 'a', 30),
-(91, 3, 'a', 30);
+(91, 3, 'a', 30),
+(92, 1, 'Pizza', 31),
+(93, 2, 'Tita', 31),
+(94, 3, 'The Beatles', 31),
+(95, 1, 'Torta', 32),
+(96, 2, 'Tino', 32),
+(97, 4, 'el árbol', 32),
+(98, 1, 'Sopa', 33),
+(99, 3, 'Marilion', 33),
+(100, 4, 'Naufrago', 33),
+(101, 1, 'Tarta', 34),
+(102, 2, 'Rocky', 34),
+(103, 4, 'Titanic', 34),
+(104, 1, 'Torta', 35),
+(105, 2, 'Ripol', 35),
+(106, 3, 'Megadeth', 35),
+(107, 1, 'Canelones de Espinaca', 36),
+(108, 2, 'Pi y Okami', 36),
+(109, 3, 'The Beatles', 36),
+(110, 1, 'Fideos', 37),
+(111, 2, 'Benjamin', 37),
+(112, 6, 'Nogoya', 37),
+(113, 7, 'Normal', 37);
 
 -- --------------------------------------------------------
 
@@ -1696,7 +1725,7 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`usu_id`, `usu_usuario`, `usu_contrasenia`, `usu_foto`) VALUES
-(15, 'Hugo', 'aaaaaaA1', ''),
+(15, 'Hugo', 'ddddddD1', '../imagenes/fotos/Hugo.jpg'),
 (16, 'Lala', 'bbbbbbB1', ''),
 (17, 'Roberto', 'aaaaaaA1', ''),
 (18, 'Paola', 'aaaaaaA1', ''),
@@ -1711,7 +1740,14 @@ INSERT INTO `usuarios` (`usu_id`, `usu_usuario`, `usu_contrasenia`, `usu_foto`) 
 (27, 'd', 'aaaaaaA1', ''),
 (28, 'e', 'aaaaaaA1', ''),
 (29, 'f', 'aaaaaaA1', ''),
-(30, 'g', 'aaaaaaA1', '');
+(30, 'g', 'aaaaaaA1', ''),
+(31, 'Pedro', 'aaaaaaA1', ''),
+(32, 'Rita', 'aaaaaaA1', ''),
+(33, 'Armajedón', 'aaaaaaA1', ''),
+(34, 'Ramón', 'aaaaaaA1', ''),
+(35, 'Lady', 'zzzzzzZ1', ''),
+(36, 'LalaYupii', 'Lala0718', ''),
+(37, 'emilianodaian', 'Admin123', '');
 
 --
 -- Índices para tablas volcadas
@@ -1817,7 +1853,7 @@ ALTER TABLE `canciones_artistas`
 -- AUTO_INCREMENT de la tabla `favoritas`
 --
 ALTER TABLE `favoritas`
-  MODIFY `fav_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `fav_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT de la tabla `generos`
@@ -1829,13 +1865,13 @@ ALTER TABLE `generos`
 -- AUTO_INCREMENT de la tabla `respuestas`
 --
 ALTER TABLE `respuestas`
-  MODIFY `res_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=92;
+  MODIFY `res_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=114;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `usu_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `usu_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- Restricciones para tablas volcadas

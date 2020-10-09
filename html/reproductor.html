@@ -12,6 +12,16 @@
 
 <body>
     <main class="contenedor">
+        <section class="saludo">
+            <div class="contenedor_general_saludo">
+                <div class="contenedor_imagen_saludo">
+                    <img class="imagen_saludo" src="../imagenes/CaritaFeliz.png" alt="">
+                </div>
+    
+                <p class="texto_saludo">Que la disfrutes!!!</p>
+            </div>
+        </section>
+
         <section class="recorrido recorrido_general">
             <h3 class="recorrido_titulo">¡Hola!</h3>
 
@@ -93,6 +103,20 @@
         </section>
 
         <section class="filtro">
+            <section class="recorrido_filtros">
+                <h3 class="titulo_filtros">Filtros</h3>
+    
+                <p class="recorrido_texto">
+                    Al llevar el mouse sobre el icono de la lupa, se desplegarán
+                    los distintos filtros que podrás aplicar para encontrar las
+                    canciones que más te gustan, tus artistas favoritos o los
+                    álbumes que quieras escuchar.
+                </p>
+    
+                <section class="recorrido_botones_filtros">
+                    <button id="btnCancelarFiltros" class="recorrido_btn">Cerrar</section>
+            </section>
+
             <button id="btnAnterior" class="filtro__btnAnterior filtro__boton_dif" title="Álbumes anteriores">
                 <img src="../imagenes/Anterior.png" alt="Botón de imagenes anteriores">
             </button>
@@ -141,7 +165,7 @@
 
         <section class="listas">
             <section class="recorrido_canciones">
-                <h3 class="titulo_albumes">Canciones</h3>
+                <h3 class="titulo_canciones">Canciones</h3>
     
                 <p class="recorrido_texto">
                     Acá aparecerá la lista de las canciones que contenga el álbum
@@ -172,7 +196,7 @@
     
                 <p class="recorrido_texto">
                     En esta sección se encuentran las tapas de los álbumes, al hacer click
-                    sobre cualquiera de ellos, accederás a la lista de las canciones que contiene
+                    sobre cualquiera de ellas, accederás a la lista de las canciones que contiene
                     y las podrás reproducir.
                 </p>
     

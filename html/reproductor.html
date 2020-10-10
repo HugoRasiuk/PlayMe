@@ -15,27 +15,35 @@
         <section id="saludo" class="saludo">
             <div class="contenedor_general_saludo">
                 <div class="contenedor_imagen_saludo">
-                    <img class="imagen_saludo" src="../imagenes/CaritaFeliz.png" alt="">
+                    <img class="imagen_saludo" src="../imagenes/CaritaFeliz.png" alt="Carita felíz">
                 </div>
 
                 <div class="separador">                    
                 </div>
-    
-                <p class="texto_saludo">Que la disfrutes!!!</p>
+                
+                <div>
+                    <p class="texto_saludo">Que la disfrutes!!!</p>
+                </div>
             </div>
         </section>
 
         <section id="recorrido_general" class="recorrido recorrido_general">
-            <h3 class="recorrido_titulo">¡Hola!</h3>
-
-            <p class="recorrido_texto">
-                ¿Te gustaría un recorrido por las principales funcionalidades de la aplicación?
-            </p>
-
-            <div class="recorrido_botones">
-                <button id="btnRecorridoSi" class="recorrido_btn">Si</button>
-
-                <button id="btnRecorridoNo" class="recorrido_btn">No</button>
+            <div class="recorrido_general_contenedor">
+                <div>
+                    <h3 class="recorrido_titulo">¡Hola!</h3>
+                </div>
+    
+                <div>
+                    <p class="recorrido_texto">
+                        ¿Te gustaría un recorrido por las principales funcionalidades de la aplicación?
+                    </p>
+                </div>
+    
+                <div class="recorrido_botones">
+                    <button id="btnRecorridoSi" class="recorrido_btn">Si</button>
+    
+                    <button id="btnRecorridoNo" class="recorrido_btn">No</button>
+                </div>
             </div>
         </section>
 
@@ -107,17 +115,24 @@
 
         <section class="filtro">
             <section id="recorrido_filtros" class="recorrido_filtros">
-                <h3 class="titulo_filtros">Filtros</h3>
+                <div class="recorrido_filtros_contenedor">
+                    <div>
+                        <h3 class="titulo_filtros">Filtros</h3>
+                    </div>
     
-                <p class="recorrido_texto">
-                    Al llevar el mouse sobre el icono de la lupa, se desplegarán
-                    los distintos filtros que podrás aplicar para encontrar las
-                    canciones que más te gustan, tus artistas favoritos o los
-                    álbumes que quieras escuchar.
-                </p>
-    
-                <section class="recorrido_botones_filtros">
-                    <button id="btnCancelarFiltros" class="recorrido_btn">Cerrar</section>
+                    <div>
+                        <p class="recorrido_texto">
+                            Al llevar el mouse sobre el icono de la lupa, se desplegarán
+                            los distintos filtros que podrás aplicar para encontrar las
+                            canciones que más te gustan, tus artistas favoritos o los
+                            álbumes que quieras escuchar.
+                        </p>
+                    </div>
+        
+                    <section class="recorrido_botones_filtros">
+                        <button id="btnCancelarFiltros" class="recorrido_btn">Cerrar</button>
+                    </section>
+                </div>
             </section>
 
             <button id="btnAnterior" class="filtro__btnAnterior filtro__boton_dif" title="Álbumes anteriores">
@@ -168,18 +183,25 @@
 
         <section class="listas">
             <section id="recorrido_canciones" class="recorrido_canciones">
-                <h3 class="titulo_canciones">Canciones</h3>
+                <div class="recorrido_canciones_contenedor">
+                    <section>
+                        <h3 class="titulo_canciones">Canciones</h3>
+                    </section>
     
-                <p class="recorrido_texto recorrido_texto_canciones">
-                    Acá aparecerá la lista de las canciones que contenga el álbum
-                    que hayas elegido, haciendo click sobre una canción determinada, la
-                    misma se reproducirá, o pulsando play en el reproductor, comenzará
-                    la reproducción desde la primer canción del álbum.
-                </p>
-    
-                <section class="recorrido_botones_canciones">
-                    <button id="btnSiguienteCanciones" class="recorrido_btn">Siguiente</button>
-                    <button id="btnCancelarCanciones" class="recorrido_btn">Cancelar</section>
+                    <section>
+                        <p class="recorrido_texto recorrido_texto_canciones">
+                            Acá aparecerá la lista de las canciones que contenga el álbum
+                            que hayas elegido, haciendo click sobre una canción determinada, la
+                            misma se reproducirá, o pulsando play en el reproductor, comenzará
+                            la reproducción desde la primer canción del álbum.
+                        </p>
+                    </section>
+        
+                    <section class="recorrido_botones_canciones">
+                        <button id="btnSiguienteCanciones" class="recorrido_btn">Siguiente</button>
+                        <button id="btnCancelarCanciones" class="recorrido_btn">Cancelar</button>
+                    </section>
+                </div>
             </section>
 
             <section class="listas__canciones">
@@ -195,17 +217,23 @@
 
         <section class="imagenes">
             <section id="recorrido_albumes" class="recorrido_albumes">
-                <h3 class="titulo_albumes">Álbumes</h3>
+                <section class="recorrido_albumes_contenedor">
+                    <section>
+                        <h3 class="titulo_albumes">Álbumes</h3>
+                    </section>
     
-                <p class="recorrido_texto recorrido_texto_albumes">
-                    En esta sección se encuentran las tapas de los álbumes, al hacer click
-                    sobre cualquiera de ellas, accederás a la lista de las canciones que contiene
-                    y las podrás reproducir.
-                </p>
-    
-                <section class="recorrido_botones_albumes">
-                    <button id="btnSiguienteAlbumes" class="recorrido_btn">Siguiente</button>
-                    <button id="btnCancelarAlbumes" class="recorrido_btn">Cancelar</button>
+                    <section>
+                        <p class="recorrido_texto recorrido_texto_albumes">
+                            En esta sección se encuentran las tapas de los álbumes, al hacer click
+                            sobre cualquiera de ellas, accederás a la lista de las canciones que contiene
+                            y las podrás reproducir.
+                        </p>
+                    </section>
+        
+                    <section class="recorrido_botones_albumes">
+                        <button id="btnSiguienteAlbumes" class="recorrido_btn">Siguiente</button>
+                        <button id="btnCancelarAlbumes" class="recorrido_btn">Cancelar</button>
+                    </section>
                 </section>
             </section>
 

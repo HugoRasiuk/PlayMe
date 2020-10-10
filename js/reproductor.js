@@ -897,7 +897,7 @@ function recorrido() {
         });
     })
     $(".recorrido_general").fadeIn(1000);
-    location = "#recorrido_canciones";
+    location = "#recorrido_general";
 }
 
 

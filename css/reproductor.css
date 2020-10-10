@@ -49,54 +49,35 @@ body {
     display: none;
     z-index: 10;
     position: absolute;
-    width: 50%;
-    height: 50%;
-    top: 25%;
-    left: 25%;
+    width: 40rem;
+    top: 30%;
+    left: 33%;
     background: rgb(180, 180, 180);
     color: white;
     border-radius: 3rem;
     padding-left: 2rem;
-    padding-right: 4rem;
+    padding-right: 2rem;
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
+    padding-bottom: 2rem;
+}
+.recorrido_general_contenedor {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 .recorrido_titulo {
-    font-size: 6rem;
+    font-size: 4rem;
 }
 .recorrido_texto {
     font-size: 1.2rem;
-    margin-top: -2rem;
-}
-.recorrido_texto_canciones {
-    margin-top: 4rem;
 }
 .recorrido_botones {
-    margin-left: 35%;
-    margin-top: 10%;
-    width: 30%;
-    height: 3rem;
-    display: flex;
-    justify-content: space-between;
-}
-.recorrido_botones_albumes {
-    margin-left: 25%;
-    margin-top: 20%;
-    width: 50%;
-    height: 3rem;
-    display: flex;
-    justify-content: space-between;
-}
-.recorrido_botones_canciones {
-    margin-left: 10%;
-    margin-top: 40%;
     width: 80%;
     height: 3rem;
     display: flex;
     justify-content: space-between;
-}
-.recorrido_botones_filtros {
-    margin-top: 3rem;
 }
 .recorrido_btn {
     width: 6rem;
@@ -110,43 +91,14 @@ body {
 .recorrido_btn:hover {
     background: red;
 }
+
+
 .recorrido_albumes {
     display: none;
     z-index: 10;
     position: absolute;
-    width: 30%;
-    height: 45%;
-    background: rgb(180, 180, 180);
-    color: white;
-    border-radius: 3rem;
-    padding-left: 2rem;
-    padding-right: 4rem;
-    text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
-    margin-top: 4%;
-}
-.recorrido_canciones {
-    display: none;
-    z-index: 10;
-    position: absolute;
-    width: 18%;
-    height: 55%;
-    background: rgb(180, 180, 180);
-    color: white;
-    border-radius: 3rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
-    margin-top: 2%;
-    margin-left: 2%;
-}
-.recorrido_filtros {
-    display: none;
-    z-index: 10;
-    position: absolute;
-    width: 30%;
-    height: 30%;
+    top: 30%;
+    width: 40rem;
     background: rgb(180, 180, 180);
     color: white;
     border-radius: 3rem;
@@ -154,24 +106,92 @@ body {
     padding-right: 2rem;
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
-    margin-top: 2%;
-    margin-left: 40%;
+    padding-bottom: 2rem;
+}
+.recorrido_albumes_contenedor {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 .titulo_albumes {
     font-size: 4rem;
 }
+.recorrido_botones_albumes {
+    width: 80%;
+    height: 3rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.recorrido_canciones {
+    display: none;
+    z-index: 10;
+    position: absolute;
+    width: 20rem;
+    margin-left: 2%;
+    margin-top: 7%;
+    background: rgb(180, 180, 180);
+    color: white;
+    border-radius: 3rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    padding-bottom: 2rem;
+}
+.recorrido_canciones_contenedor {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 .titulo_canciones {
     font-size: 3rem;
+}
+.recorrido_botones_canciones {
+    width: 80%;
+    height: 3rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.recorrido_filtros_contenedor {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.recorrido_filtros {
+    display: none;
+    z-index: 10;
+    position: absolute;
+    width: 20rem;
+    margin-top: 5%;
+    margin-left: 40%;
+    background: rgb(180, 180, 180);
+    color: white;
+    border-radius: 3rem;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
 }
 .titulo_filtros {
     font-size: 2rem;
 }
+.recorrido_botones_filtros {
+    margin-top: 2rem;
+}
+
 .saludo {
     display: none;
     z-index: 10;
     position: absolute;
-    width: 35%;
-    height: 15%;
     top: 45%;
     left: 35%;
     background: black;
@@ -179,6 +199,8 @@ body {
     border-radius: 3rem;
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
+    padding-left: 2rem;
+    padding-right: 2rem;
 }
 .contenedor_general_saludo {
     width: 100%;
@@ -903,55 +925,6 @@ body {
     .listas__mensaje {
         margin-top: 28rem;
     }
-
-    .recorrido {
-        height: 30%;
-        top: 30%;
-    }
-
-    .recorrido_botones {
-        margin-top: 5rem;
-    }
-
-    .recorrido_albumes {
-        height: 30%;
-        margin-top: 5%;
-    }
-
-    .recorrido_botones_albumes {
-        width: 98%;
-        margin-left: 1%;
-        margin-top: 5rem;
-    }
-
-    .titulo_albumes {
-        font-size: 3rem;
-        margin-top: 6rem;
-    }
-
-    .recorrido_texto_albumes {
-        margin-top: 4rem;
-    }
-
-    .recorrido_canciones {
-        height: 30%;
-    }
-
-   .titulo_canciones {
-       font-size: 2rem;
-   } 
-
-   .recorrido_botones_canciones {
-       margin-top: 5rem;
-   }
-
-   .recorrido_filtros {
-       height: 20%;
-   }
-
-   .recorrido_botones_filtros {
-       margin-top: 2rem;
-   }
 }
 
 
@@ -1026,47 +999,26 @@ body {
     }
 
     .recorrido {
-        height: 35%;
-        top: 32%;
+        width: 30rem;
+        margin-left: -15rem;
+
     }
 
-    .recorrido_botones {
-        margin-left: 20%;
-        width: 60%;
-        margin-top: 15%;
-    }
-
-    .recorrido_canciones {
-        width: 30%;
-        height: 35%;
-    }
-
-    .titulo_canciones {
-        margin-top: 3rem;
-    }
-
-    .recorrido_texto_canciones {
-        margin-top: 5rem;
-    }
-
-    .recorrido_botones_canciones {
-        margin-top: 8rem;
-    }
-
-    .recorrido_texto {
-        margin-top: 4rem;
+    .recorrido_albumes {
+        width: 20rem;
     }
 
     .recorrido_filtros {
-        height: 25%;
         margin-left: 55%;
     }
 
     .saludo {
-        width: 50%;
-        left: 25%;
+        left: 30%;
     }
-    
+
+    .recorrido {
+        left: 45%;
+    }
 }
 
 
@@ -1119,32 +1071,22 @@ body {
         width: 25rem;
     }
 
-    .recorrido_albumes {
-        height: 35%;
-    }
-
     .recorrido_canciones {
-        width: 80%;
-        height: 30%;
-    }
-
-    .recorrido_botones_canciones {
-        margin-top: 8rem;
+        margin-left: 15%;
+        margin-top: 13%;
     }
 
     .recorrido_filtros {
-        height: 30%;
-    }
-
-    .recorrido_botones_filtros {
-        margin-top: 4rem;
+        width: 10rem;
     }
 
     .saludo {
-        width: 80%;
-        left: 10%;
+        left: 25%;
     }
 
+    .recorrido {
+        width: 30rem;
+    }
 }
 
 
@@ -1210,12 +1152,11 @@ body {
         margin-top: -0.75rem;
     }
 
-    .recorrido_botones {
-        margin-top: 30%;
+    .recorrido_canciones {
+        margin-left: 30%;
     }
-
-    .recorrido_botones_filtros {
-        margin-top: 2rem;
+ 
+    .saludo {
+        left: 20%;
     }
-
 }

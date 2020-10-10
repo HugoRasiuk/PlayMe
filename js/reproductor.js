@@ -197,22 +197,22 @@ $(document).ready(function() {
     $("#btnMute").click(function() {
         if (media.muted) {
             CANCION.silencioSonido();
-            $("#btnMute_img").attr("src", "../imagenes/Botones/Mute.png");
+            $("#btnMute_img").attr("src", "../imagenes/Botones/Sonido.png");
             $("#btnMute_img").attr("alt", "Botón de silenciar");
         }else{
             CANCION.silencioSonido();
-            $("#btnMute_img").attr("src", "../imagenes/Botones/Sonido.png");
+            $("#btnMute_img").attr("src", "../imagenes/Botones/Mute.png");
             $("#btnMute_img").attr("alt", "Botón de habilitar sonido");
         }
     });
     $("#btnLoop").click(function() {
         if (media.loop) {
             media.loop = false;
-            $("#btnLoop_img").attr("src", "../imagenes/Botones/Loop.png");
+            $("#btnLoop_img").attr("src", "../imagenes/Botones/No_loop.png");
             $("#btnLoop_img").attr("alt", "Botón de loop");
         }else{
             media.loop = true;
-            $("#btnLoop_img").attr("src", "../imagenes/Botones/No_loop.png");
+            $("#btnLoop_img").attr("src", "../imagenes/Botones/Loop.png");
             $("#btnLoop_img").attr("alt", "Botón de quitar loop");
         }
     });

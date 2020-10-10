@@ -776,7 +776,7 @@ body {
 .btnDeslizdorVolumen::-moz-range-thumb {
     height: 1.5em;
     width: 1.5em;
-    background: rgb(100, 100, 100);
+    background: rgb(50, 50, 100);
     border-radius: 0.5em;
     border: none;
 }
@@ -790,18 +790,18 @@ body {
     -webkit-appearance: none;
     height: 1.5em;
     width: 1.5em;
-    background: white;
+    background: rgb(50, 50, 100);
     border-radius: 0.5em;
-    border: white solid 1px;
+    border: none
     cursor: pointer;
     margin-top: -0.5em;
 }
 .btnDeslizdorVolumen::-ms-thumb {
     height: 1.5em;
     width: 1.5em;
-    background: white;
+    background: rgb(50, 50, 100);
     border-radius: 0.5em;
-    border: white solid 1px;
+    border: none
     cursor: pointer;
 }
 /*Fill lower.*/
@@ -838,7 +838,7 @@ body {
     height: 0.3rem;
 }
 .barra_tiempo::-moz-range-thumb {
-    background: rgb(100, 100, 100);
+    background: rgb(50, 50, 100);
     border: none;
 }
 .barra_tiempo::-moz-range-thumb:hover {
@@ -857,7 +857,7 @@ body {
     -webkit-appearance: none;
     height: 1rem;
     width: 1rem;
-    background: rgb(100, 100, 100);
+    background: rgb(50, 50, 100);
     border-radius: 0.5rem;
     border: none;
     cursor: pointer;

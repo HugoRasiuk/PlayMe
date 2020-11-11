@@ -2,6 +2,7 @@
 //Módulo para las validaciones.
 
 
+
 var resultado = "";
 
 function validarUsuario(texto) {

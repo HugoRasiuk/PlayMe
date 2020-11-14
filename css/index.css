@@ -377,8 +377,8 @@ h3 {
 }
 
 .opciones input {
-    background: rgb(100, 100, 110);
-    color: white;
+    background: rgb(255, 255, 255);
+    color: black;
     font-size: 0.7rem;
     width: 22rem;
     height: 1rem;
@@ -634,8 +634,8 @@ h3 {
 }
 
 .opcionesRegistro input {
-    background: rgb(100, 100, 110);
-    color: white;
+    background: rgb(255, 255, 255);
+    color: black;
     font-size: 0.7rem;
     width: 22rem;
     height: 1rem;
